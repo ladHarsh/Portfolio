@@ -1,18 +1,18 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaStar } from 'react-icons/fa';
+import { FaTerminal } from 'react-icons/fa';
 
 const ProjectRating = ({ projectSlug }) => {
   const [rating, setRating] = useState(0);
-  const [hoverRating, setHoverRating] = useState(0);
   const [hasRated, setHasRated] = useState(false);
-  const [showConfetti, setShowConfetti] = useState(false);
+  const [log, setLog] = useState("");
 
   useEffect(() => {
     const storedRating = localStorage.getItem(`rating_${projectSlug}`);
     if (storedRating) {
       setRating(parseInt(storedRating));
       setHasRated(true);
+      setLog("PREVIOUS_AUDIT_FOUND");
     }
   }, [projectSlug]);
 
@@ -20,68 +20,64 @@ const ProjectRating = ({ projectSlug }) => {
     if (hasRated) return;
     setRating(value);
     setHasRated(true);
-    setShowConfetti(true);
+    setLog(`AUDIT_SUBMITTED::SCORE_[${value}/5]`);
     localStorage.setItem(`rating_${projectSlug}`, value.toString());
-    setTimeout(() => setShowConfetti(false), 2000);
   };
 
   return (
-    <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-lg border border-gray-100 dark:border-slate-800 relative overflow-hidden transition-colors">
-      
-      {/* Confetti */}
-      {showConfetti && (
-        <div className="absolute inset-0 pointer-events-none z-10">
-          {[...Array(20)].map((_, i) => (
-            <motion.div
-              key={i}
-              initial={{ x: '50%', y: '50%', scale: 0, opacity: 1 }}
-              animate={{ 
-                x: `${Math.random() * 100}%`, 
-                y: `${Math.random() * 100}%`,
-                scale: [0, 1, 0],
-                opacity: [1, 1, 0]
-              }}
-              transition={{ duration: 1.5, delay: i * 0.05 }}
-              className="absolute w-2 h-2 rounded-full"
-              style={{ backgroundColor: ['#3B82F6', '#8B5CF6', '#EC4899', '#F59E0B'][i % 4] }}
-            />
-          ))}
-        </div>
-      )}
+    <div className="bg-black rounded-xl p-6 border border-white/10 relative overflow-hidden group">
+       {/* Background Scan */}
+       <div className="absolute inset-0 bg-[linear-gradient(rgba(18,18,18,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] opacity-10 pointer-events-none"></div>
 
-      <h4 className="text-xs font-bold text-center mb-4 uppercase tracking-widest text-gray-900 dark:text-white">
-        {hasRated ? '✨ Thanks for Reviewing!' : 'Rate this Project'}
-      </h4>
+       <div className="relative z-10">
+          <div className="flex justify-between items-start mb-4">
+             <div>
+                <h4 className="flex items-center gap-2 text-xs font-bold text-white uppercase tracking-widest mb-1">
+                   <FaTerminal className="text-cyan-500" /> SYSTEM_AUDIT
+                </h4>
+                <p className="text-[10px] font-mono text-gray-500">{log || "WAITING_FOR_INPUT..."}</p>
+             </div>
+             
+             {hasRated && (
+                <div className="px-2 py-0.5 bg-green-900/30 text-green-400 border border-green-500/30 rounded text-[10px] font-mono font-bold uppercase tracking-wider">
+                   LOGGED
+                </div>
+             )}
+          </div>
 
-      <div className="flex justify-center gap-2 mb-4">
-        {[1, 2, 3, 4, 5].map((star) => (
-          <button
-            key={star}
-            onClick={() => handleRating(star)}
-            onMouseEnter={() => !hasRated && setHoverRating(star)}
-            onMouseLeave={() => !hasRated && setHoverRating(0)}
-            disabled={hasRated}
-            className={`transition-all duration-200 outline-none focus:outline-none ${
-              hasRated ? 'cursor-default' : 'cursor-pointer hover:scale-110'
-            }`}
-          >
-            <FaStar
-              className={`w-6 h-6 transition-colors duration-200 ${
-                star <= (hoverRating || rating)
-                  ? 'text-yellow-400 drop-shadow-sm' 
-                  : 'text-gray-200 dark:text-gray-700'
-              }`}
-            />
-          </button>
-        ))}
-      </div>
+          <div className="flex gap-1 mb-4">
+            {[1, 2, 3, 4, 5].map((score) => (
+              <button
+                key={score}
+                onClick={() => handleRating(score)}
+                disabled={hasRated}
+                className={`
+                   h-8 flex-1 rounded-sm border border-white/10 transition-all duration-300 relative overflow-hidden group/btn
+                   ${score <= rating 
+                     ? "bg-cyan-500/20 border-cyan-500/50" 
+                     : "bg-white/5 hover:bg-white/10 hover:border-white/30"
+                   }
+                `}
+              >
+                 {score <= rating && (
+                    <motion.div 
+                       initial={{ height: 0 }} 
+                       animate={{ height: "100%" }} 
+                       className="absolute bottom-0 left-0 w-full bg-cyan-500 opacity-50"
+                    ></motion.div>
+                 )}
+                 <span className={`relative z-10 text-xs font-mono font-bold ${score <= rating ? "text-cyan-400" : "text-gray-600"}`}>
+                    {score}
+                 </span>
+              </button>
+            ))}
+          </div>
 
-      <p className="text-center text-xs text-gray-400 font-medium tracking-wide">
-        {hasRated 
-          ? `You rated this ${rating} stars`
-          : 'Your feedback helps improve this portfolio'
-        }
-      </p>
+          <div className="flex justify-between items-center border-t border-white/5 pt-3">
+             <span className="text-[10px] text-gray-500 font-mono">PROTOCOL: USER_FEEDBACK_V1</span>
+             <span className="text-[10px] text-gray-500 font-mono">{hasRated ? "ACCESS_LOCKED" : "ACCESS_OPEN"}</span>
+          </div>
+       </div>
     </div>
   );
 };

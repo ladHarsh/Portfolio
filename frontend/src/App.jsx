@@ -10,13 +10,11 @@ import Contact from "./pages/Contact";
 import { ThemeProvider, useTheme } from "./context/ThemeContext";
 
 function AppContent() {
-  const { darkMode, toggleDarkMode } = useTheme();
+  const { darkMode } = useTheme(); // accessing for consistency, though always true now
   
   return (
-    <div
-      className={`min-h-screen flex flex-col bg-white dark:bg-dark-900 transition-colors duration-300`}
-    >
-      <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+    <div className="min-h-screen flex flex-col bg-gray-900 text-white transition-colors duration-300">
+      <Navbar />
       <main className="flex-grow">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -34,7 +32,7 @@ function AppContent() {
 
 function App() {
   return (
-    <Router>
+    <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <ThemeProvider>
         <AppContent />
       </ThemeProvider>

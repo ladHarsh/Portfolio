@@ -1,197 +1,226 @@
+import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { 
   FaPython, FaJava, FaJs, FaReact, FaNodeJs, FaHtml5, FaCss3, FaDocker, 
   FaGitAlt, FaGithub, FaDatabase, FaBrain, FaServer, FaCode, FaLaptopCode,
-  FaCheckCircle, FaStar, FaTools, FaCloud
+  FaCheckCircle, FaStar, FaTools, FaCloud, FaTerminal, FaNetworkWired, FaMicrochip
 } from "react-icons/fa";
 import { 
   SiNumpy, SiPandas, SiScikitlearn, SiMongodb, SiMysql, SiExpress, 
-  SiTailwindcss, SiPostman, SiVisualstudiocode, SiTensorflow, SiNextdotjs, SiTypescript
+  SiTailwindcss, SiPostman, SiVisualstudiocode, SiTensorflow, SiNextdotjs, SiTypescript, 
+  SiOpencv, SiKeras, SiPytorch, SiLinux
 } from "react-icons/si";
 
-const Skills = () => {
-  // 1. High-Level Competencies (The "Why")
-  const competencies = [
-    {
-      title: "AI & ML Foundation",
-      icon: <FaBrain />,
-      desc: "Experience in data preprocessing, model training, and integrating predictive AI capabilities into backend systems.",
-      color: "text-purple-600 bg-purple-100 dark:bg-purple-900/30",
-      border: "hover:border-purple-500/50"
-    },
-    {
-      title: "Full-Stack Development",
-      icon: <FaLaptopCode />,
-      desc: "Building data-driven web applications using the MERN stack (MongoDB, Express, React, Node) with secure REST APIs.",
-      color: "text-blue-600 bg-blue-100 dark:bg-blue-900/30",
-      border: "hover:border-blue-500/50"
-    },
-    {
-      title: "Core CS Concepts",
-      icon: <FaCode />,
-      desc: "Strong grasp of Data Structures (DSA), Object-Oriented Programming (OOP), and Computer Networks.",
-      color: "text-emerald-600 bg-emerald-100 dark:bg-emerald-900/30",
-      border: "hover:border-emerald-500/50"
-    }
-  ];
+// 3D Tilt Card Component for Skill Categories
+const SkillNode = ({ category, index }) => {
+   return (
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: index * 0.1 }}
+        className="relative group perspective-1000"
+      >
+         {/* Connector Lines (Decoration) */}
+         <div className="absolute top-1/2 -left-8 w-8 h-px bg-gray-800 hidden md:block group-hover:bg-primary-500 transition-colors"></div>
+         <div className="absolute top-1/2 -left-8 w-2 h-2 bg-gray-800 rounded-full -translate-x-1/2 -translate-y-1/2 hidden md:block group-hover:bg-primary-500 transition-colors"></div>
 
-  // 2. The Toolbelt (The "What")
+         <div className="relative overflow-hidden bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:border-primary-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(99,102,241,0.15)] group-hover:-translate-y-1">
+            {/* Background Grid */}
+            <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5 pointer-events-none"></div>
+            
+            {/* Header */}
+            <div className="flex items-center justify-between mb-6 relative z-10">
+               <div className="flex items-center gap-4">
+                  <div className="p-3 bg-white/5 rounded-lg border border-white/10 text-primary-400 group-hover:text-white group-hover:bg-primary-500 transition-colors duration-300">
+                     {category.icon}
+                  </div>
+                  <div>
+                     <h3 className="font-display font-bold text-lg text-white tracking-wide">{category.title}</h3>
+                     <p className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">{category.id}_MODULE::V1.0</p>
+                  </div>
+               </div>
+               <div className="hidden sm:block text-[10px] font-mono text-gray-600 px-2 py-1 border border-white/5 rounded">
+                  Status: ACTIVE
+               </div>
+            </div>
+
+            {/* Skills Grid */}
+            <div className="grid grid-cols-2 gap-3 relative z-10">
+               {category.skills.map((skill, i) => (
+                  <div key={i} className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors cursor-crosshair">
+                     <span className="text-gray-400 text-lg group-hover/skill:text-primary-400 transition-colors">
+                        {skill.icon}
+                     </span>
+                     <span className="text-sm font-mono text-gray-300">
+                        {skill.name}
+                     </span>
+                     
+                     {/* Proficiency Bar (Fake) */}
+                     <div className="ml-auto flex gap-0.5">
+                        {[1,2,3].map(d => (
+                           <div key={d} className={`w-1 h-3 rounded-full ${d <= (skill.level || 2) ? "bg-primary-500/50" : "bg-gray-800"}`}></div>
+                        ))}
+                     </div>
+                  </div>
+               ))}
+            </div>
+         </div>
+      </motion.div>
+   );
+};
+
+// --- NEW ANIMATION COMPONENT: THE NEURAL PROCESSOR ---
+const NeuralProcessor = () => {
+   return (
+      <div className="relative w-72 h-72 flex items-center justify-center">
+         {/* 1. Orbiting Data Packet */}
+         <div className="absolute w-64 h-64 rounded-full border border-white/5 animate-[spin_10s_linear_infinite]">
+            <div className="absolute -top-1 left-1/2 w-4 h-2 bg-primary-500 rounded-full shadow-[0_0_15px_rgba(99,102,241,1)]"></div>
+         </div>
+
+         {/* 2. Reverse Orbit */}
+         <div className="absolute w-48 h-48 rounded-full border border-dashed border-white/10 animate-[spin_15s_linear_infinite_reverse]"></div>
+
+         {/* 3. Central Core (The Brain) */}
+         <div className="relative z-10 flex flex-col items-center justify-center">
+            <div className="relative">
+               <div className="absolute inset-0 bg-primary-500/20 blur-xl rounded-full animate-pulse"></div>
+               <FaBrain className="text-7xl text-white relative z-10 drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]" />
+            
+               {/* Floating Icons (Satellites) */}
+               <motion.div 
+                  animate={{ y: [-5, 5, -5] }} 
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute -top-8 -right-8 p-2 bg-black/80 border border-white/20 rounded-lg"
+               >
+                  <FaCode className="text-cyan-400 text-lg" />
+               </motion.div>
+               
+               <motion.div 
+                   animate={{ y: [5, -5, 5] }} 
+                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                   className="absolute -bottom-6 -left-8 p-2 bg-black/80 border border-white/20 rounded-lg"
+               >
+                   <FaServer className="text-purple-400 text-lg" />
+               </motion.div>
+               
+               <motion.div 
+                   animate={{ x: [-5, 5, -5] }} 
+                   transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+                   className="absolute top-1/2 -right-16 p-2 bg-black/80 border border-white/20 rounded-lg"
+               >
+                   <SiTensorflow className="text-orange-400 text-lg" />
+               </motion.div>
+            </div>
+         </div>
+         
+         {/* 4. Scanning Radar Sector */}
+         <div className="absolute inset-0 rounded-full overflow-hidden opacity-20">
+             <div className="w-1/2 h-1/2 bg-gradient-to-br from-cyan-500 to-transparent absolute top-0 right-0 origin-bottom-left animate-[spin_4s_linear_infinite]"></div>
+         </div>
+      </div>
+   );
+};
+
+const Skills = () => {
   const skillCategories = [
     {
-      id: "ai",
-      title: "AI & Data Science",
-      description: "Python-based ecosystem for data analysis and machine learning.",
-      icon: <FaBrain className="text-purple-500" />,
+      id: "NEURAL_CORE",
+      title: "Artificial Intelligence",
+      icon: <FaBrain className="text-2xl" />,
       skills: [
-        { name: "Python", icon: <FaPython className="text-[#3776AB]" /> },
-        { name: "Scikit-Learn", icon: <SiScikitlearn className="text-[#F7931E]" /> },
-        { name: "Pandas", icon: <SiPandas className="text-[#150458] dark:text-white" /> },
-        { name: "NumPy", icon: <SiNumpy className="text-[#013243] dark:text-blue-300" /> },
-        { name: "Matplotlib", icon: <FaStar className="text-yellow-500" /> },
-        { name: "Data Preprocessing", icon: <FaDatabase className="text-gray-500" /> }
+        { name: "Python", icon: <FaPython />, level: 3 },
+        { name: "TensorFlow", icon: <SiTensorflow />, level: 2 },
+        { name: "Scikit-Learn", icon: <SiScikitlearn />, level: 3 },
+        { name: "Pandas", icon: <SiPandas />, level: 3 },
+        { name: "NumPy", icon: <SiNumpy />, level: 3 },
+        { name: "OpenCV", icon: <SiOpencv />, level: 2 }
       ]
     },
     {
-      id: "web",
-      title: "Web & Backend",
-      description: "Modern stack for scalable application development.",
-      icon: <FaLaptopCode className="text-blue-500" />,
+      id: "SYSTEM_ARCH",
+      title: "Backend Engineering",
+      icon: <FaServer className="text-2xl" />,
       skills: [
-        { name: "React.js", icon: <FaReact className="text-[#61DAFB]" /> },
-        { name: "Node.js", icon: <FaNodeJs className="text-[#339933]" /> },
-        { name: "Express.js", icon: <SiExpress className="text-gray-500 dark:text-gray-300" /> },
-        { name: "MongoDB", icon: <SiMongodb className="text-[#47A248]" /> },
-        { name: "MySQL", icon: <SiMysql className="text-[#4479A1]" /> },
-        { name: "Tailwind / CSS", icon: <SiTailwindcss className="text-[#38B2AC]" /> }
+        { name: "Node.js", icon: <FaNodeJs />, level: 3 },
+        { name: "Express", icon: <SiExpress />, level: 3 },
+        { name: "Java", icon: <FaJava />, level: 2 },
+        { name: "MongoDB", icon: <SiMongodb />, level: 3 },
+        { name: "MySQL", icon: <SiMysql />, level: 2 },
+        { name: "REST APIs", icon: <FaNetworkWired />, level: 3 }
       ]
     },
     {
-      id: "languages",
-      title: "Programming",
-      description: "Core languages and foundational problem-solving tools.",
-      icon: <FaCode className="text-emerald-500" />,
+      id: "INTERFACE",
+      title: "Frontend Interface",
+      icon: <FaLaptopCode className="text-2xl" />,
       skills: [
-        { name: "Java", icon: <FaJava className="text-[#007396]" /> },
-        { name: "Python", icon: <FaPython className="text-[#3776AB]" /> },
-        { name: "JavaScript", icon: <FaJs className="text-[#F7DF1E]" /> },
-        { name: "DSA", icon: <FaCloud className="text-gray-600 dark:text-gray-300" /> },
-        { name: "OOP", icon: <FaTools className="text-orange-500" /> },
-        { name: "REST APIs", icon: <FaServer className="text-blue-400" /> }
+        { name: "React", icon: <FaReact />, level: 3 },
+        { name: "JavaScript", icon: <FaJs />, level: 3 },
+        { name: "Tailwind", icon: <SiTailwindcss />, level: 3 },
+        { name: "Typescript", icon: <SiTypescript />, level: 2 },
+        { name: "HTML5", icon: <FaHtml5 />, level: 3 },
+        { name: "Framer", icon: <FaStar />, level: 2 }
       ]
     },
     {
-      id: "tools",
-      title: "Tools & Platforms",
-      description: "Version control, IDEs, and deployment infrastructure.",
-      icon: <FaTools className="text-orange-500" />,
+      id: "DEVOPS",
+      title: "Infrastructure",
+      icon: <FaDocker className="text-2xl" />,
       skills: [
-        { name: "Git / GitHub", icon: <FaGithub className="text-black dark:text-white" /> },
-        { name: "Docker", icon: <FaDocker className="text-[#2496ED]" /> },
-        { name: "Postman", icon: <SiPostman className="text-[#FF6C37]" /> },
-        { name: "VS Code", icon: <SiVisualstudiocode className="text-[#007ACC]" /> },
-        { name: "IntelliJ IDEA", icon: <FaJava className="text-purple-600" /> }, // Representing IntelliJ which is often used for Java
-        { name: "Render", icon: <FaCloud className="text-black dark:text-white" /> }
+        { name: "Docker", icon: <FaDocker />, level: 2 },
+        { name: "Git", icon: <FaGitAlt />, level: 3 },
+        { name: "Postman", icon: <SiPostman />, level: 3 },
+        { name: "Linux", icon: <SiLinux />, level: 2 },
+        { name: "VS Code", icon: <SiVisualstudiocode />, level: 3 },
+        { name: "Render", icon: <FaCloud />, level: 2 }
       ]
     }
   ];
 
   return (
-    <div className="w-full bg-white dark:bg-dark-900 min-h-screen relative overflow-hidden pt-24 pb-20">
+    <div className="w-full min-h-screen bg-black text-white relative overflow-hidden pt-24 pb-20 font-sans selection:bg-primary-500 selection:text-white">
       
-      {/* BACKGROUND BLOBS (Matches Home.jsx) */}
-      <div className="absolute top-0 right-0 w-2/3 h-2/3 bg-primary-100/40 dark:bg-primary-900/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-purple-100/40 dark:bg-purple-900/10 rounded-full blur-[100px] translate-y-1/4 -translate-x-1/4 pointer-events-none" />
+      {/* 0. Background Grid (Ambient) */}
+      <div className="fixed inset-0 z-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:40px_40px]"></div>
 
       <div className="section-container relative z-10">
         
-        {/* 1. HERO HEADER */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-4xl mx-auto mb-20"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 border border-primary-200 dark:border-primary-800 rounded-full bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 text-sm font-semibold mb-6">
-             <FaTools className="text-sm" /> Technical Arsenal
-          </div>
-          <h1 className="text-4xl md:text-6xl font-display font-bold text-dark-900 dark:text-white mb-6 leading-tight">
-            Aspiring AI Engineer with <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-purple-600">
-              Foundation in Excellence
-            </span>
-          </h1>
-          <p className="text-lg text-dark-600 dark:text-dark-300 max-w-2xl mx-auto leading-relaxed">
-            I combine a strong background in Machine Learning and Python with solid knowledge of DSA and Object-Oriented Programming to build practical, data-driven solutions.
-          </p>
-        </motion.div>
+        {/* 1. Header: System Diagnostic */}
+        <div className="flex flex-col md:flex-row items-center justify-between mb-20 gap-8">
+           <div className="text-center md:text-left">
+              <div className="inline-flex items-center gap-2 px-3 py-1 border border-primary-500/30 bg-primary-500/10 rounded-full text-xs font-mono text-primary-400 mb-4">
+                 <FaTerminal className="w-3 h-3" />
+                 <span>RUNNING DIAGNOSTIC...</span>
+              </div>
+              <h1 className="text-5xl md:text-7xl font-display font-bold mb-4">
+                 SYSTEM <br/>
+                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-purple-500">CAPABILITIES</span>
+              </h1>
+              <p className="text-gray-400 max-w-xl text-lg">
+                 Authorized personnel only. Below is a complete breakdown of the active neural modules and engineering protocols currently installed.
+              </p>
+           </div>
 
-        {/* 2. COMPETENCY CARDS (Matches Home.jsx style) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
-          {competencies.map((item, index) => (
-             <motion.div
-               key={index}
-               initial={{ opacity: 0, y: 20 }}
-               whileInView={{ opacity: 1, y: 0 }}
-               transition={{ delay: index * 0.1 }}
-               viewport={{ once: true }}
-               whileHover={{ y: -5 }}
-               className={`p-8 bg-white dark:bg-dark-800 rounded-2xl shadow-sm border border-dark-100 dark:border-dark-700 hover:shadow-xl transition-all duration-300 ${item.border}`}
-             >
-                <div className={`w-14 h-14 rounded-xl flex items-center justify-center text-2xl mb-6 ${item.color}`}>
-                  {item.icon}
-                </div>
-                <h3 className="text-xl font-bold text-dark-900 dark:text-white mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-dark-600 dark:text-dark-300 text-sm leading-relaxed">
-                  {item.desc}
-                </p>
-             </motion.div>
-          ))}
+           {/* 2. The New Animated Neural Processor */}
+           <div className="hidden md:block">
+              <NeuralProcessor />
+           </div>
         </div>
 
-        {/* 3. SKILL ECOSYSTEM GRID */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-           {skillCategories.map((category, index) => (
-             <motion.div
-               key={category.id}
-               initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-               whileInView={{ opacity: 1, x: 0 }}
-               viewport={{ once: true }}
-               transition={{ delay: index * 0.1 }}
-               className="bg-white/60 dark:bg-dark-800/60 backdrop-blur-xl border border-white/20 dark:border-dark-700 p-8 rounded-3xl shadow-lg"
-             >
-               <div className="flex items-center gap-4 mb-6">
-                 <div className="p-3 bg-white dark:bg-dark-900 rounded-lg shadow-sm text-xl border border-dark-100 dark:border-dark-700">
-                    {category.icon}
-                 </div>
-                 <div>
-                    <h3 className="text-xl font-bold text-dark-900 dark:text-white">
-                      {category.title}
-                    </h3>
-                    <p className="text-xs text-dark-500 dark:text-dark-400 font-medium tracking-wide">
-                      {category.description}
-                    </p>
-                 </div>
-               </div>
+        {/* 3. Skills Grid (Tree Structure) */}
+        <div className="relative">
+           {/* Central Line for Tree Layout on Desktop */}
+           <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary-500/50 via-gray-800 to-transparent hidden lg:block -translate-x-1/2"></div>
 
-               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                 {category.skills.map((skill, idx) => (
-                   <div 
-                    key={idx} 
-                    className="group flex flex-col items-center justify-center p-4 bg-white dark:bg-dark-900 rounded-xl border border-dark-100 dark:border-dark-700 hover:border-primary-500/50 dark:hover:border-primary-500/50 hover:shadow-md transition-all duration-300 cursor-default"
-                   >
-                      <div className="text-2xl mb-3 group-hover:scale-110 transition-transform duration-300">
-                        {skill.icon}
-                      </div>
-                      <span className="text-xs font-semibold text-dark-700 dark:text-dark-300 text-center">
-                        {skill.name}
-                      </span>
-                   </div>
-                 ))}
-               </div>
-             </motion.div>
-           ))}
+           <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-32 gap-y-16">
+              {skillCategories.map((category, index) => (
+                 <div key={index} className={index % 2 === 0 ? "lg:text-right" : "lg:text-left"}>
+                    <SkillNode category={category} index={index} />
+                 </div>
+              ))}
+           </div>
         </div>
 
       </div>

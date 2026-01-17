@@ -1,151 +1,145 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import ProjectCard from "../components/projects/ProjectCard";
-import LoadingSpinner from "../components/ui/LoadingSpinner";
+import { Link } from "react-router-dom";
 import { projectsApi } from "../services/api";
-import { FaLaptopCode, FaBrain, FaTools, FaLayerGroup } from "react-icons/fa";
+import { 
+  FaBrain, FaServer, FaCode, FaSearch, FaDatabase, FaNetworkWired, 
+  FaLaptopCode, FaMicrochip, FaArrowRight 
+} from "react-icons/fa";
+import LoadingSpinner from "../components/ui/LoadingSpinner";
+import ProjectCard from "../components/projects/ProjectCard";
 
 const Projects = () => {
-  const [allProjects, setAllProjects] = useState([]);
-  const [filteredProjects, setFilteredProjects] = useState([]);
+  const [activeTab, setActiveTab] = useState("all");
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [activeFilter, setActiveFilter] = useState("all");
-
-  const filters = [
-    { key: "all", label: "All Cases", icon: <FaLayerGroup /> },
-    { key: "ai", label: "AI Intelligence", icon: <FaBrain /> },
-    { key: "web", label: "Full Stack", icon: <FaLaptopCode /> },
-    { key: "edtech", label: "SaaS Platforms", icon: <FaTools /> },
-  ];
 
   useEffect(() => {
     fetchProjects();
   }, []);
 
-  useEffect(() => {
-    if (activeFilter === "all") {
-      setFilteredProjects(allProjects);
-    } else if (activeFilter === "web") {
-       setFilteredProjects(allProjects.filter(p => ["web", "fullstack"].includes(p.category)));
-    } else if (activeFilter === "edtech") {
-       setFilteredProjects(allProjects.filter(p => ["edtech", "saas"].includes(p.category)));
-    } else {
-      setFilteredProjects(allProjects.filter(p => p.category === activeFilter));
-    }
-  }, [activeFilter, allProjects]);
-
   const fetchProjects = async () => {
-    try {
-      setLoading(true);
-      const response = await projectsApi.getAll({});
-      setAllProjects(response.data);
-      setFilteredProjects(response.data);
-      setError(null);
-    } catch (err) {
-      setError("Failed to load projects. Please try again later.");
-      console.error("Error fetching projects:", err);
-    } finally {
-      setLoading(false);
-    }
+     try {
+       const res = await projectsApi.getAll();
+       setData(res.data);
+     } catch (err) {
+       console.error("Failed to load modules:", err);
+     } finally {
+       setLoading(false);
+     }
   };
 
+  const categories = [
+    { id: "all", label: "ALL_MODULES", icon: FaDatabase },
+    { id: "web", label: "FULL_STACK", icon: FaServer },
+    { id: "ai", label: "NEURAL_NETS", icon: FaBrain },
+    { id: "edtech", label: "PLATFORMS", icon: FaLaptopCode },
+  ];
+
+  // Filter Logic
+  const filteredData = activeTab === "all" 
+     ? data 
+     : data.filter(d => {
+         if (activeTab === "web") return ["web", "fullstack"].includes(d.category);
+         if (activeTab === "edtech") return ["edtech", "saas"].includes(d.category);
+         return d.category === activeTab;
+       });
+
   return (
-    <div className="pt-24 pb-16 min-h-screen bg-white dark:bg-dark-900">
-      <section className="section-container section-padding">
+    <div className="min-h-screen bg-black text-white pt-24 pb-20 font-sans selection:bg-primary-500 selection:text-white">
+      
+      {/* 0. Background Grid (Ambient) */}
+      <div className="fixed inset-0 z-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:32px_32px]"></div>
+
+      <div className="section-container relative z-10">
         
-        {/* Header Section */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h1 className="heading-primary mb-6">
-              Engineering <span className="text-primary-600">Portfolio</span>
-            </h1>
-            <p className="text-xl text-dark-600 dark:text-dark-300 leading-relaxed">
-              A curated collection of scalable systems, AI experiments, and full-stack applications solving real-world challenges.
-            </p>
-          </motion.div>
+        {/* 1. HEADER: COMMAND CENTER STYLE */}
+        <div className="mb-16 border-b border-white/10 pb-8">
+           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+              <div>
+                 <div className="flex items-center gap-3 mb-2 text-primary-500 font-mono text-xs tracking-[0.3em]">
+                    <span className="w-2 h-2 bg-primary-500 rounded-full animate-ping"></span>
+                    DATABASE_ACCESS_GRANTED
+                 </div>
+                 <h1 className="text-4xl md:text-6xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">
+                    DEPLOYED <br/> ARCHITECTURES
+                 </h1>
+              </div>
+              
+              <div className="max-w-md text-gray-400 text-sm leading-relaxed border-l-2 border-white/20 pl-4">
+                 Exploration of <span className="text-white font-bold">cognitive systems</span>, <span className="text-white font-bold">distributed networks</span>, and <span className="text-white font-bold">production-grade interfaces</span>. 
+                 Select a protocol below to inspect the codebase.
+              </div>
+           </div>
         </div>
 
-        {/* Filters */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex flex-wrap justify-center gap-4 mb-16"
-        >
-          {filters.map((filter) => (
-            <button
-              key={filter.key}
-              onClick={() => setActiveFilter(filter.key)}
-              className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 border ${
-                activeFilter === filter.key
-                  ? "bg-primary-600 text-white border-primary-600 shadow-lg shadow-primary-500/30 scale-105"
-                  : "bg-white dark:bg-dark-800 text-dark-600 dark:text-dark-300 border-dark-200 dark:border-dark-700 hover:border-primary-300 dark:hover:border-primary-700 hover:bg-primary-50 dark:hover:bg-dark-700"
-              }`}
-            >
-              <span className="text-lg">{filter.icon}</span>
-              {filter.label}
-            </button>
-          ))}
-        </motion.div>
+        {/* 2. CONTROLS: TABS & SEARCH */}
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-12">
+           {/* Futuristic Tabs */}
+           <div className="flex flex-wrap gap-2 p-1 bg-white/5 border border-white/10 rounded-lg backdrop-blur-sm">
+              {categories.map((cat) => (
+                 <button 
+                   key={cat.id}
+                   onClick={() => setActiveTab(cat.id)}
+                   className={`
+                     relative px-4 py-2 rounded-md text-sm font-mono font-bold tracking-wider transition-all
+                     ${activeTab === cat.id 
+                        ? 'text-black bg-primary-500 shadow-[0_0_15px_rgba(99,102,241,0.4)]' 
+                        : 'text-gray-400 hover:text-white hover:bg-white/5'
+                     }
+                   `}
+                 >
+                    <span className="flex items-center gap-2">
+                       <cat.icon className={activeTab === cat.id ? "text-black" : "text-gray-500"} />
+                       {cat.label}
+                    </span>
+                 </button>
+              ))}
+           </div>
+           
+           {/* Results Count */}
+           <div className="font-mono text-xs text-gray-500">
+              [ DIRECTORY_COUNT: <span className="text-primary-400">{filteredData.length}</span> ]
+           </div>
+        </div>
 
-        {/* Loading State */}
-        {loading && (
-          <div className="min-h-[400px] flex items-center justify-center">
-            <LoadingSpinner size="lg" />
-          </div>
+        {/* 3. GRID LAYOUT */}
+        {loading ? (
+           <div className="h-96 flex items-center justify-center">
+              <LoadingSpinner />
+           </div>
+        ) : (
+           <motion.div 
+             layout
+             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+           >
+              <AnimatePresence>
+                 {filteredData.map((project, idx) => (
+                    <motion.div
+                       layout
+                       key={project._id}
+                       initial={{ opacity: 0, scale: 0.9 }}
+                       animate={{ opacity: 1, scale: 1 }}
+                       exit={{ opacity: 0, scale: 0.9 }}
+                       transition={{ duration: 0.3, delay: idx * 0.05 }}
+                    >
+                       <ProjectCard project={project} index={idx} />
+                    </motion.div>
+                 ))}
+              </AnimatePresence>
+           </motion.div>
+        )}
+        
+        {/* Empty State */}
+        {!loading && filteredData.length === 0 && (
+           <div className="py-20 text-center border border-dashed border-white/10 rounded-xl bg-white/5">
+              <FaSearch className="text-4xl text-gray-600 mx-auto mb-4" />
+              <h3 className="text-xl text-white font-bold mb-2">NO RECORDS FOUND</h3>
+              <p className="text-gray-400">The requested query returned zero results. Adjust filters.</p>
+           </div>
         )}
 
-        {/* Error State */}
-        {error && !loading && (
-          <div className="min-h-[400px] flex flex-col items-center justify-center text-center">
-            <div className="w-16 h-16 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center mb-4">
-               <span className="text-2xl">⚠️</span>
-            </div>
-            <p className="text-dark-600 dark:text-dark-400 mb-4">{error}</p>
-            <button onClick={fetchProjects} className="btn-primary">
-              Try Again
-            </button>
-          </div>
-        )}
-
-        {/* Projects Grid */}
-        {!loading && !error && (
-          <AnimatePresence mode="wait">
-            {filteredProjects.length > 0 ? (
-              <motion.div 
-                layout
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-              >
-                {filteredProjects.map((project, index) => (
-                    <ProjectCard
-                      key={project._id}
-                      project={project}
-                      index={index}
-                    />
-                ))}
-              </motion.div>
-            ) : (
-              <div className="min-h-[400px] flex flex-col items-center justify-center text-center">
-                <div className="w-16 h-16 bg-dark-100 dark:bg-dark-800 rounded-full flex items-center justify-center mb-4 text-3xl">
-                  🔍
-                </div>
-                <h3 className="text-lg font-bold text-dark-900 dark:text-white mb-2">No Projects Found</h3>
-                <p className="text-dark-500 dark:text-dark-400 max-w-md mx-auto">
-                  We couldn't find any case studies matching this category. Please try selecting a different filter.
-                </p>
-              </div>
-            )}
-          </AnimatePresence>
-        )}
-      </section>
+      </div>
     </div>
   );
 };

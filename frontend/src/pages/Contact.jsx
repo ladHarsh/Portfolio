@@ -1,280 +1,192 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
-import {
-  FaGithub,
-  FaLinkedin,
-  FaEnvelope,
-  FaMapMarkerAlt,
-  FaCheck,
-  FaPaperPlane,
-} from "react-icons/fa";
-import SectionHeader from "../components/ui/SectionHeader";
-import LoadingSpinner from "../components/ui/LoadingSpinner";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaGithub, FaLinkedin, FaEnvelope, FaTerminal, FaSatellite, FaGlobeAmericas, FaPaperPlane } from "react-icons/fa";
 import { contactApi } from "../services/api";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-  const [status, setStatus] = useState({ type: null, message: "" });
-  const [loading, setLoading] = useState(false);
-  const [focusedField, setFocusedField] = useState(null);
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState("IDLE"); // IDLE, SENDING, SUCCESS, ERROR
+  const [logLines, setLogLines] = useState([
+     "> ESTABLISHING SECURE CONNECTION...",
+     "> ENCRYPTING DATA PACKETS...",
+     "> AWAITING INPUT..."
+  ]);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    if (status.type === "error") {
-      setStatus({ type: null, message: "" });
-    }
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!formData.name || !formData.email || !formData.message) return;
 
-    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
-      setStatus({ type: "error", message: "Please fill in all fields" });
-      return;
-    }
-
-    setLoading(true);
-    setStatus({ type: null, message: "" });
+    setStatus("SENDING");
+    addToLog(`> UPLOADING PACKET FROM [${formData.email}]...`);
 
     try {
-      const response = await contactApi.submit(formData);
-      setStatus({ type: "success", message: response.message });
-      setFormData({ name: "", email: "", message: "" });
+      await contactApi.submit(formData);
+      setTimeout(() => {
+         setStatus("SUCCESS");
+         addToLog("> TRANSMISSION COMPLETE. ACKNOWLEDGEMENT RECEIVED.");
+         setFormData({ name: "", email: "", message: "" });
+      }, 1500);
     } catch (error) {
-      const message = error.response?.data?.message || "Failed to send message. Please try again.";
-      setStatus({ type: "error", message });
-    } finally {
-      setLoading(false);
+       setStatus("ERROR");
+       addToLog("> FATAL ERROR: CONNECTION INTERRUPTED.");
     }
   };
 
-  const contactInfo = [
-    {
-      icon: FaEnvelope,
-      label: "Email",
-      value: "harshlad.dev@gmail.com",
-      href: "mailto:harshlad.dev@gmail.com",
-    },
-    {
-      icon: FaMapMarkerAlt,
-      label: "Location",
-      value: "Vadodara, Gujarat, India",
-      href: null,
-    },
-  ];
-
-  const socialLinks = [
-    {
-      icon: FaGithub,
-      label: "GitHub",
-      href: "https://github.com/ladHarsh",
-      color: "hover:bg-gray-800 hover:text-white"
-    },
-    {
-      icon: FaLinkedin,
-      label: "LinkedIn",
-      href: "https://linkedin.com/in/harsh-lad-dev",
-      color: "hover:bg-blue-600 hover:text-white"
-    },
-  ];
+  const addToLog = (line) => {
+     setLogLines(prev => [...prev.slice(-4), line]);
+  };
 
   return (
-    <div className="pt-24 pb-16 min-h-screen flex flex-col justify-center bg-white dark:bg-dark-900">
-      <section className="section-container section-padding">
-        
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            
-            {/* Left Column: Context & Info */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h1 className="text-4xl md:text-5xl font-display font-bold text-dark-900 dark:text-white mb-6 leading-tight">
-                Let's start a <br/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-purple-600">
-                  conversation.
-                </span>
-              </h1>
-              <p className="text-lg text-dark-600 dark:text-dark-300 mb-10 leading-relaxed max-w-md">
-                Interested in collaborating on an AI project or have a full-time opportunity? I'm ready to discuss how my skills can bring value to your team.
-              </p>
+    <div className="min-h-screen bg-black text-white pt-24 pb-20 relative overflow-hidden font-sans selection:bg-green-500 selection:text-black">
+      
+      {/* 0. Matrix Background */}
+      <div className="fixed inset-0 z-0 opacity-20 pointer-events-none">
+         <div className="absolute inset-0 bg-[linear-gradient(rgba(18,18,18,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] mix-blend-color-dodge bg-[length:100%_4px,6px_100%]"></div>
+      </div>
 
-              <div className="space-y-6 mb-10">
-                {contactInfo.map((info) => (
-                  <div key={info.label} className="flex items-center group">
-                    <div className="w-12 h-12 rounded-xl bg-primary-50 dark:bg-dark-800 flex items-center justify-center mr-5 group-hover:scale-110 group-hover:bg-primary-100 dark:group-hover:bg-dark-700 transition-all duration-300 shadow-sm">
-                      <info.icon className="w-5 h-5 text-primary-600 dark:text-primary-400" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-bold uppercase tracking-wider text-dark-400 dark:text-dark-500 mb-1">
-                        {info.label}
-                      </p>
-                      {info.href ? (
-                        <a href={info.href} className="text-lg font-medium text-dark-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-                          {info.value}
-                        </a>
-                      ) : (
-                        <p className="text-lg font-medium text-dark-900 dark:text-white">
-                          {info.value}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
+      <div className="section-container relative z-10 grid lg:grid-cols-2 gap-20 items-center">
+         
+         {/* 1. LEFT: VISUALIZATION & INFO */}
+         <div className="space-y-12">
+            <div>
+               <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-900/20 border border-green-500/30 rounded text-green-400 font-mono text-xs tracking-widest mb-6 animate-pulse">
+                  <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                  SIGNAL_STRENGTH: 100%
+               </div>
+               <h1 className="text-5xl md:text-7xl font-display font-bold mb-6">
+                  ESTABLISH <br/> 
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-500">UPLINK</span>
+               </h1>
+               <p className="text-gray-400 text-lg max-w-md leading-relaxed">
+                  Open frequency for collaboration, recruitment, or technical consultation. All transmissions are encrypted and prioritized.
+               </p>
+            </div>
 
-               <div className="flex gap-4">
-                  {socialLinks.map((social) => (
-                    <a
-                      key={social.label}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`flex items-center gap-2 px-5 py-3 rounded-full bg-dark-50 dark:bg-dark-800 text-dark-700 dark:text-dark-200 border border-dark-100 dark:border-dark-700 transition-all duration-300 ${social.color}`}
-                    >
-                      <social.icon className="w-5 h-5" />
-                      <span className="font-medium">{social.label}</span>
-                    </a>
-                  ))}
-                </div>
-            </motion.div>
+            {/* Holographic Globe Placeholder */}
+            <div className="relative w-64 h-64 border border-green-500/20 rounded-full flex items-center justify-center bg-green-500/5 backdrop-blur-sm animate-[spin_60s_linear_infinite]">
+               <FaGlobeAmericas className="text-9xl text-green-500/20 animate-pulse" />
+               <div className="absolute inset-0 border border-t-green-500/50 rounded-full animate-[spin_4s_linear_infinite]"></div>
+               <FaSatellite className="absolute -top-6 right-10 text-2xl text-white animate-bounce" />
+               
+               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-black border border-green-500/50 text-[10px] font-mono text-green-400">
+                  LOC: INDIA
+               </div>
+            </div>
 
-            {/* Right Column: The Form */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative"
-            >
-              {/* Decorative elements behind form */}
-              <div className="absolute -top-10 -right-10 w-32 h-32 bg-yellow-400/10 rounded-full blur-3xl"></div>
-              <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-primary-500/10 rounded-full blur-3xl"></div>
-
-              <div className="card p-8 md:p-10 relative bg-white/80 dark:bg-dark-800/80 backdrop-blur-xl border-white/20 shadow-2xl">
-                <h3 className="text-2xl font-bold text-dark-900 dark:text-white mb-6">
-                  Send a Message
-                </h3>
-
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  {/* Name Input */}
-                  <div className="relative">
-                    <label 
-                      htmlFor="name" 
-                      className={`absolute left-4 transition-all duration-300 pointer-events-none ${
-                        focusedField === 'name' || formData.name 
-                          ? '-top-2.5 bg-white dark:bg-dark-800 px-2 text-xs text-primary-500 font-medium' 
-                          : 'top-3.5 text-dark-400'
-                      }`}
-                    >
-                      Your Name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      onFocus={() => setFocusedField('name')}
-                      onBlur={() => setFocusedField(null)}
-                      className="w-full px-4 py-3.5 bg-transparent border border-dark-200 dark:border-dark-600 rounded-xl focus:border-primary-500 focus:ring-1 focus:ring-primary-500 outline-none transition-all dark:text-white"
-                      disabled={loading}
-                    />
-                  </div>
-
-                  {/* Email Input */}
-                  <div className="relative">
-                     <label 
-                      htmlFor="email" 
-                      className={`absolute left-4 transition-all duration-300 pointer-events-none ${
-                        focusedField === 'email' || formData.email 
-                          ? '-top-2.5 bg-white dark:bg-dark-800 px-2 text-xs text-primary-500 font-medium' 
-                          : 'top-3.5 text-dark-400'
-                      }`}
-                    >
-                      Email Address
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      onFocus={() => setFocusedField('email')}
-                      onBlur={() => setFocusedField(null)}
-                      className="w-full px-4 py-3.5 bg-transparent border border-dark-200 dark:border-dark-600 rounded-xl focus:border-primary-500 focus:ring-1 focus:ring-primary-500 outline-none transition-all dark:text-white"
-                      disabled={loading}
-                    />
-                  </div>
-
-                  {/* Message Input */}
-                  <div className="relative">
-                     <label 
-                      htmlFor="message" 
-                      className={`absolute left-4 transition-all duration-300 pointer-events-none ${
-                        focusedField === 'message' || formData.message 
-                          ? '-top-2.5 bg-white dark:bg-dark-800 px-2 text-xs text-primary-500 font-medium' 
-                          : 'top-3.5 text-dark-400'
-                      }`}
-                    >
-                      Tell me about your project...
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      onFocus={() => setFocusedField('message')}
-                      onBlur={() => setFocusedField(null)}
-                      rows={4}
-                      className="w-full px-4 py-3.5 bg-transparent border border-dark-200 dark:border-dark-600 rounded-xl focus:border-primary-500 focus:ring-1 focus:ring-primary-500 outline-none transition-all resize-none dark:text-white"
-                      disabled={loading}
-                    />
-                  </div>
-
-                  {/* Status Message */}
-                  {status.message && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      className={`p-3 rounded-lg text-sm flex items-center ${
-                        status.type === "success"
-                          ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
-                          : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
-                      }`}
-                    >
-                      {status.type === "success" && <FaCheck className="mr-2" />}
-                      {status.message}
-                    </motion.div>
-                  )}
-
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="w-full py-4 bg-primary-600 hover:bg-primary-700 text-white rounded-xl font-bold shadow-lg hover:shadow-primary-500/30 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center group disabled:opacity-70 disabled:cursor-not-allowed"
+            {/* Social Frequencies */}
+            <div className="flex gap-4">
+               {[
+                  { icon: FaGithub, href: "https://github.com/ladHarsh", label: "GITHUB_REPO" },
+                  { icon: FaLinkedin, href: "https://linkedin.com/in/harsh-lad-dev", label: "LINKED_NET" },
+                  { icon: FaEnvelope, href: "mailto:harshlad.dev@gmail.com", label: "MAIL_Relay" }
+               ].map((social, i) => (
+                  <a 
+                     key={i}
+                     href={social.href}
+                     target="_blank" 
+                     className="px-6 py-3 border border-white/10 bg-white/5 hover:bg-green-500/20 hover:border-green-500/50 hover:text-green-400 transition-all font-mono text-xs tracking-widest flex items-center gap-2"
                   >
-                    {loading ? (
-                      <LoadingSpinner size="sm" />
-                    ) : (
-                      <>
-                        Send Message 
-                        <FaPaperPlane className="ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                      </>
-                    )}
-                  </button>
-                </form>
-              </div>
-            </motion.div>
+                     <social.icon size={16} />
+                     {social.label}
+                  </a>
+               ))}
+            </div>
+         </div>
 
-          </div>
-        </div>
-      </section>
+         {/* 2. RIGHT: TERMINAL FORM */}
+         <div className="relative">
+            {/* Terminal Header */}
+            <div className="bg-[#1e1e1e] border-t border-x border-gray-700 rounded-t-lg p-3 flex items-center gap-2">
+               <div className="flex gap-1.5">
+                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                  <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
+               </div>
+               <div className="font-mono text-xs text-gray-400 ml-2">secure_msg_protocol.exe</div>
+            </div>
+
+            {/* Terminal Body */}
+            <div className="bg-black/80 backdrop-blur-xl border border-gray-700 rounded-b-lg p-6 shadow-2xl relative overflow-hidden">
+               
+               {/* Scanline Effect */}
+               <div className="absolute inset-0 bg-[linear-gradient(rgba(18,18,18,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] pointer-events-none opacity-10"></div>
+
+               {/* Log Output */}
+               <div className="mb-6 font-mono text-xs text-green-500/70 space-y-1">
+                  {logLines.map((line, i) => (
+                     <div key={i}>{line}</div>
+                  ))}
+               </div>
+
+               <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+                  <div className="group">
+                     <label className="block font-mono text-xs text-green-500 mb-2 group-focus-within:text-white transition-colors">
+                        &gt; ENTER_IDENTITY
+                     </label>
+                     <input 
+                        type="text" 
+                        name="name" 
+                        value={formData.name}
+                        onChange={handleChange}
+                        className="w-full bg-transparent border-b border-gray-700 text-white font-mono py-2 focus:border-green-500 focus:outline-none transition-colors placeholder-gray-800"
+                        placeholder="Name or Alias..."
+                        autoComplete="off"
+                     />
+                  </div>
+
+                  <div className="group">
+                     <label className="block font-mono text-xs text-green-500 mb-2 group-focus-within:text-white transition-colors">
+                        &gt; TARGET_RETURN_ADDRESS
+                     </label>
+                     <input 
+                        type="email" 
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        className="w-full bg-transparent border-b border-gray-700 text-white font-mono py-2 focus:border-green-500 focus:outline-none transition-colors placeholder-gray-800"
+                        placeholder="name@server.com..."
+                        autoComplete="off"
+                     />
+                  </div>
+
+                  <div className="group">
+                     <label className="block font-mono text-xs text-green-500 mb-2 group-focus-within:text-white transition-colors">
+                        &gt; DATA_PAYLOAD
+                     </label>
+                     <textarea 
+                        name="message" 
+                        rows="4"
+                        value={formData.message}
+                        onChange={handleChange}
+                        className="w-full bg-transparent border-b border-gray-700 text-white font-mono py-2 focus:border-green-500 focus:outline-none transition-colors placeholder-gray-800 resize-none"
+                        placeholder="Enter message content..."
+                     ></textarea>
+                  </div>
+
+                  <button 
+                     type="submit" 
+                     disabled={status === "SENDING" || status === "SUCCESS"}
+                     className={`w-full py-4 border border-green-500 text-green-500 font-mono font-bold tracking-widest hover:bg-green-500 hover:text-black transition-all flex items-center justify-center gap-3 relative overflow-hidden group ${status === "SUCCESS" ? "bg-green-500 text-black border-transparent" : ""}`}
+                  >
+                     {status === "SENDING" ? (
+                        <span className="animate-pulse">TRANSMITTING...</span>
+                     ) : status === "SUCCESS" ? (
+                        <span>TRANSMISSION SENT</span>
+                     ) : (
+                        <>
+                           INITIATE_TRANSFER <FaPaperPlane className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                        </>
+                     )}
+                  </button>
+               </form>
+            </div>
+         </div>
+
+      </div>
     </div>
   );
 };

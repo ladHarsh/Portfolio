@@ -15,69 +15,48 @@ const DemoCredentials = ({ credentials }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, x: 20 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ delay: 0.5 }}
-      // User-requested styling: Dynamic Backgrounds, Borders, Spacing
-      className="mb-6 p-6 rounded-2xl bg-white dark:bg-slate-800 backdrop-blur-sm bg-opacity-90 shadow-lg border border-gray-200 dark:border-slate-700"
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      className="bg-black border border-yellow-500/30 rounded-xl p-6 relative overflow-hidden group"
     >
-      <div className="flex items-center gap-2 mb-4">
-        {/* Accent Color: Indigo */}
-        <FaKey className="text-indigo-600 dark:text-indigo-400" />
-        <h4 className="font-bold text-gray-900 dark:text-white uppercase tracking-wider text-xs">
-          Demo Credentials
-        </h4>
+      <div className="absolute inset-0 bg-yellow-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+      
+      <div className="relative z-10">
+         <div className="flex items-center gap-2 mb-6">
+            <FaKey className="text-yellow-500" />
+            <h4 className="font-mono font-bold text-yellow-500 text-xs tracking-widest uppercase">SECURE_ACCESS_KEYS</h4>
+         </div>
+
+         <div className="space-y-4">
+            {credentials.map((cred, idx) => (
+               <div key={idx} className="space-y-2">
+                  <p className="text-[10px] font-mono text-gray-500 uppercase">{cred.role}</p>
+                  
+                  {/* Email */}
+                  <div 
+                     onClick={() => copyToClipboard(cred.email, `${idx}-email`)}
+                     className="flex items-center justify-between p-2 bg-white/5 border border-white/10 rounded cursor-pointer hover:border-yellow-500/50 hover:bg-white/10 transition-all group/field"
+                  >
+                     <code className="text-xs font-mono text-gray-300 truncate">{cred.email}</code>
+                     {copiedField === `${idx}-email` ? <FaCheck className="text-green-500 text-xs" /> : <FaCopy className="text-gray-600 group-hover/field:text-yellow-500 text-xs transition-colors" />}
+                  </div>
+
+                  {/* Password */}
+                  <div 
+                     onClick={() => copyToClipboard(cred.password, `${idx}-password`)}
+                     className="flex items-center justify-between p-2 bg-white/5 border border-white/10 rounded cursor-pointer hover:border-yellow-500/50 hover:bg-white/10 transition-all group/field"
+                  >
+                     <code className="text-xs font-mono text-gray-300 truncate">{cred.password}</code>
+                     {copiedField === `${idx}-password` ? <FaCheck className="text-green-500 text-xs" /> : <FaCopy className="text-gray-600 group-hover/field:text-yellow-500 text-xs transition-colors" />}
+                  </div>
+               </div>
+            ))}
+         </div>
+         
+         <div className="mt-4 pt-4 border-t border-white/10 text-center">
+            <p className="text-[10px] font-mono text-gray-600 uppercase">CAUTION: FOR AUTHORIZED TESTING ONLY</p>
+         </div>
       </div>
-
-      <div className="space-y-4">
-        {credentials.map((cred, idx) => (
-          <div key={idx} className="space-y-2">
-            <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
-              {cred.role}
-            </p>
-            
-            {/* Email Field */}
-            <div className="flex items-center gap-2 p-3 bg-gray-50 dark:bg-slate-900/50 rounded-lg border border-gray-200 dark:border-slate-700">
-              <code className="flex-1 font-mono text-sm text-gray-800 dark:text-gray-200 truncate">
-                {cred.email}
-              </code>
-              <button
-                onClick={() => copyToClipboard(cred.email, `${idx}-email`)}
-                className="p-2 rounded-md hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors text-gray-500 dark:text-gray-400"
-                title="Copy email"
-              >
-                {copiedField === `${idx}-email` ? (
-                  <FaCheck className="w-4 h-4 text-green-500" />
-                ) : (
-                  <FaCopy className="w-4 h-4" />
-                )}
-              </button>
-            </div>
-
-            {/* Password Field */}
-            <div className="flex items-center gap-2 p-3 bg-gray-50 dark:bg-slate-900/50 rounded-lg border border-gray-200 dark:border-slate-700">
-              <code className="flex-1 font-mono text-sm text-gray-800 dark:text-gray-200 truncate">
-                {cred.password}
-              </code>
-              <button
-                onClick={() => copyToClipboard(cred.password, `${idx}-password`)}
-                className="p-2 rounded-md hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors text-gray-500 dark:text-gray-400"
-                title="Copy password"
-              >
-                {copiedField === `${idx}-password` ? (
-                  <FaCheck className="w-4 h-4 text-green-500" />
-                ) : (
-                  <FaCopy className="w-4 h-4" />
-                )}
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <p className="mt-4 text-[10px] text-gray-500 dark:text-gray-400 italic text-center">
-        Use these details to access the live dashboard
-      </p>
     </motion.div>
   );
 };

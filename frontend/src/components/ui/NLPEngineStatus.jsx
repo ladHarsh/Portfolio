@@ -1,60 +1,46 @@
-import { FaBook, FaCogs, FaClock, FaCheckCircle, FaMicrochip } from 'react-icons/fa';
+import { FaBook, FaCogs, FaClock } from 'react-icons/fa';
 
 const NLPEngineStatus = () => {
   return (
-    <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-lg border border-gray-100 dark:border-slate-800 transition-colors">
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-2">
-          <FaBook className="text-emerald-500 text-sm" />
-          <h4 className="text-xs font-bold text-gray-900 dark:text-white uppercase tracking-widest">
-            NLP Engine
-          </h4>
-        </div>
-        
-        {/* Online Badge */}
-        <div className="flex items-center gap-1.5 bg-green-50 dark:bg-green-900/20 px-2.5 py-1 rounded-full border border-green-100 dark:border-green-800/30">
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500"></span>
-            </span>
-            <span className="text-[10px] font-bold text-green-700 dark:text-green-400 uppercase tracking-wider">
-              Online
-            </span>
-        </div>
-      </div>
+    <div className="bg-black border border-emerald-500/30 rounded-xl p-6 shadow-[0_0_20px_rgba(16,185,129,0.15)] relative overflow-hidden group">
+      {/* Background Pulse */}
+      <div className="absolute inset-0 bg-emerald-500/5 opacity-50 group-hover:opacity-100 transition-opacity"></div>
 
-      <div className="space-y-3">
-        {/* 1. Algorithm */}
-        <div className="flex items-center justify-between p-3 rounded-xl bg-gray-50 dark:bg-black/40 border border-gray-100 dark:border-slate-800 transition-colors">
-          <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-            Algorithm
-          </span>
-          <span className="text-xs font-bold text-gray-700 dark:text-gray-300 flex items-center gap-1.5">
-            <FaCogs className="text-emerald-400" />
-            TF-IDF + Cosine
-          </span>
-        </div>
+      <div className="relative z-10">
+         <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-2">
+               <FaBook className="text-emerald-500" />
+               <h4 className="font-mono font-bold text-emerald-400 text-xs tracking-widest uppercase">NLP_PROCESSOR</h4>
+            </div>
+            <div className="flex items-center gap-1.5 px-2 py-0.5 bg-emerald-500/10 border border-emerald-500/20 rounded">
+               <span className="relative flex h-2 w-2">
+                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+               </span>
+               <span className="text-[10px] font-bold font-mono text-emerald-300">ONLINE</span>
+            </div>
+         </div>
 
-        {/* 2. Dictionary */}
-        <div className="flex items-center justify-between p-3 rounded-xl bg-gray-50 dark:bg-black/40 border border-gray-100 dark:border-slate-800 transition-colors">
-          <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-            Dictionary
-          </span>
-          <span className="text-xs font-bold text-gray-700 dark:text-gray-300 flex items-center gap-1.5">
-            <FaBook className="text-emerald-400" />
-            ~10k Terms
-          </span>
-        </div>
-
-        {/* 3. Processing Speed - Highlighted */}
-        <div className="flex items-center justify-between p-3 rounded-xl bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800/30 transition-colors">
-          <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-300">
-            Processing
-          </span>
-          <span className="text-xs font-bold text-emerald-700 dark:text-emerald-300 flex items-center gap-1.5">
-             <FaClock className="text-emerald-500" /> &lt; 2s/Resume
-          </span>
-        </div>
+         <div className="space-y-4 font-mono text-xs">
+            <div className="flex justify-between items-center border-b border-emerald-500/20 pb-2">
+               <span className="text-gray-500">PIPELINE</span>
+               <span className="text-white font-bold flex items-center gap-2">
+                  <FaCogs className="text-emerald-500" /> TF-IDF / COSINE
+               </span>
+            </div>
+            <div className="flex justify-between items-center border-b border-emerald-500/20 pb-2">
+               <span className="text-gray-500">CORPUS_SIZE</span>
+               <span className="text-white font-bold flex items-center gap-2">
+                  <FaBook className="text-emerald-500" /> ~10K TERMS
+               </span>
+            </div>
+            <div className="flex justify-between items-center">
+               <span className="text-gray-500">THROUGHPUT</span>
+               <span className="text-emerald-400 font-bold flex items-center gap-2">
+                  <FaClock /> &lt; 2s / DOC
+               </span>
+            </div>
+         </div>
       </div>
     </div>
   );

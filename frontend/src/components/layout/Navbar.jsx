@@ -1,24 +1,25 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { HiMenu, HiX, HiMoon, HiSun } from "react-icons/hi";
+import { HiMenuAlt3, HiX } from "react-icons/hi";
+import { FaTerminal } from "react-icons/fa";
 
 const navLinks = [
-  { name: "Home", path: "/" },
-  { name: "About", path: "/about" },
-  { name: "Projects", path: "/projects" },
-  { name: "Skills", path: "/skills" },
-  { name: "Contact", path: "/contact" },
+  { name: "// HOME", path: "/" },
+  { name: "// MISSION", path: "/about" },
+  { name: "// MODULES", path: "/projects" },
+  { name: "// CORE", path: "/skills" },
+  { name: "// SIGNAL", path: "/contact" },
 ];
 
-const Navbar = ({ darkMode, toggleDarkMode }) => {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -28,105 +29,126 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
     setIsOpen(false);
   }, [location]);
 
+  // Framer Motion Variants
+  const navVariants = {
+    hidden: { y: -100, opacity: 0 },
+    visible: { 
+      y: 0, 
+      opacity: 1,
+      transition: { duration: 0.8, ease: "easeOut" }
+    }
+  };
+
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    <motion.header
+      variants={navVariants}
+      initial="hidden"
+      animate="visible"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 will-change-transform ${
         scrolled
-          ? "bg-white/90 dark:bg-dark-900/90 backdrop-blur-md shadow-sm"
-          : "bg-transparent"
+          ? "py-2"
+          : "py-4 md:py-6"
       }`}
     >
-      <nav className="section-container">
-        <div className="flex items-center justify-between h-16 sm:h-20">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-700 rounded-lg flex items-center justify-center">
-              <span className="text-white font-display font-bold text-xl">
-                H
-              </span>
-            </div>
-            <span className="font-display font-semibold text-xl text-dark-900 dark:text-white hidden sm:block">
-              Harsh Lad
-            </span>
+      <div className="section-container">
+        <div className={`
+          relative flex items-center justify-between px-6 py-3 md:px-8 md:py-4 rounded-full border transition-all duration-500
+          ${scrolled 
+            ? "bg-dark-900/80 backdrop-blur-xl border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)]" 
+            : "bg-transparent border-transparent"
+          }
+        `}>
+          
+          {/* Logo / System ID */}
+          <Link to="/" className="group flex items-center gap-3">
+             <div className={`p-2 rounded-lg bg-black/50 border border-white/10 group-hover:border-primary-500/50 transition-colors`}>
+                <FaTerminal className="text-primary-500 w-5 h-5" />
+             </div>
+             <div className="flex flex-col">
+                <span className="font-display font-bold text-lg tracking-wider text-white">
+                   HARSH<span className="text-primary-500">.AI</span>
+                </span>
+                <span className="text-[0.6rem] font-mono text-gray-400 tracking-[0.2em] -mt-1 group-hover:text-primary-400 transition-colors">
+                   SYSTEM_ARCHITECT
+                </span>
+             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <NavLink
-                key={link.path}
-                to={link.path}
-                className={({ isActive }) =>
-                  `nav-link ${isActive ? "nav-link-active" : ""}`
-                }
-              >
-                {link.name}
-              </NavLink>
-            ))}
-          </div>
-
-          {/* Right Section */}
-          <div className="flex items-center space-x-4">
-            {/* Dark Mode Toggle */}
-            <button
-              onClick={toggleDarkMode}
-              className="p-2 rounded-lg text-dark-600 dark:text-dark-300 hover:bg-dark-100 dark:hover:bg-dark-800 transition-colors"
-              aria-label="Toggle dark mode"
-            >
-              {darkMode ? (
-                <HiSun className="w-5 h-5" />
-              ) : (
-                <HiMoon className="w-5 h-5" />
-              )}
-            </button>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-lg text-dark-600 dark:text-dark-300 hover:bg-dark-100 dark:hover:bg-dark-800 transition-colors md:hidden"
-              aria-label="Toggle menu"
-            >
-              {isOpen ? (
-                <HiX className="w-6 h-6" />
-              ) : (
-                <HiMenu className="w-6 h-6" />
-              )}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Navigation */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.2 }}
-              className="md:hidden overflow-hidden"
-            >
-              <div className="py-4 space-y-2 border-t border-dark-100 dark:border-dark-800">
+          <nav className="hidden md:flex items-center gap-1">
+             <div className="flex items-center bg-black/20 rounded-full px-2 py-1 border border-white/5 backdrop-blur-sm">
                 {navLinks.map((link) => (
                   <NavLink
                     key={link.path}
                     to={link.path}
                     className={({ isActive }) =>
-                      `block px-4 py-2 rounded-lg transition-colors ${
+                      `relative px-5 py-2 text-xs font-mono font-bold tracking-widest transition-all duration-300 rounded-full hover:text-white ${
                         isActive
-                          ? "bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400"
-                          : "text-dark-600 dark:text-dark-300 hover:bg-dark-50 dark:hover:bg-dark-800"
+                          ? "text-black bg-primary-500 shadow-[0_0_20px_rgba(99,102,241,0.4)]"
+                          : "text-gray-400 hover:bg-white/5"
                       }`
                     }
                   >
                     {link.name}
                   </NavLink>
                 ))}
+             </div>
+          </nav>
+
+          {/* Right Controls */}
+          <div className="flex items-center gap-4">
+             {/* System Status Indicator */}
+             <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/20">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                <span className="text-[10px] font-mono text-green-500 font-bold tracking-wider">ONLINE</span>
+             </div>
+
+
+
+            {/* Mobile Menu Toggle */}
+             <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="md:hidden p-2 text-white hover:text-primary-500 transition-colors"
+            >
+              {isOpen ? <HiX size={24} /> : <HiMenuAlt3 size={24} />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="absolute top-full left-0 right-0 p-4 md:hidden"
+          >
+            <div className="bg-dark-900/95 backdrop-blur-2xl border border-white/10 rounded-2xl overflow-hidden shadow-2xl">
+              <div className="p-4 space-y-1">
+                {navLinks.map((link) => (
+                  <NavLink
+                    key={link.path}
+                    to={link.path}
+                    onClick={() => setIsOpen(false)}
+                    className={({ isActive }) =>
+                      `block px-4 py-3 text-sm font-mono tracking-wider rounded-xl transition-all ${
+                        isActive
+                          ? "bg-primary-500 text-black font-bold shadow-lg"
+                          : "text-gray-400 hover:bg-white/5 hover:text-white"
+                      }`
+                    }
+                  >
+                   <span className="opacity-50 mr-2">{">"}</span> {link.name}
+                  </NavLink>
+                ))}
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </nav>
-    </header>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.header>
   );
 };
 
