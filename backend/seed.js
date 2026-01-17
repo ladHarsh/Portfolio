@@ -188,35 +188,39 @@ const projects = [
     title: "Cookie",
     slug: "cookie-chat",
     shortDescription:
-      "Real-time social platform for instant messaging and video calling, connecting friends seamlessly.",
+      "A modern language learning social platform connecting learners worldwide through real-time chat and video calls, powered by Stream SDK.",
     problemStatement:
-      "Users often juggle multiple apps for social networking, text messaging, and video calls. There is a need for a unified platform that offers high-quality real-time communication with a simplified, modern user experience.",
+      "Language learners struggle to find native speakers and practice partners. Traditional learning apps lack social interaction, making it difficult to build meaningful connections and practice conversational skills. Users need a unified platform that combines language matching, real-time communication, and cultural exchange in an immersive environment.",
     solution:
-      "Cookie integrates Stream's powerful Chat and Video SDKs into a cohesive MERN stack application. It provides a seamless experience for finding friends, chatting in real-time, and launching instant video calls, all wrapped in a modern, responsive interface.",
+      "Cookie is a full-stack social network designed specifically for language learners. It intelligently matches users based on native and learning languages, enabling authentic conversations through Stream-powered chat and HD video calls. The platform features a friend system, profile customization with language preferences, and a beautiful responsive UI with dark/light themes, creating an engaging environment for language practice and cultural exchange.",
     architecture:
-      "Built on the MERN stack (MongoDB, Express, React, Node.js) with Vite for high-performance frontend tooling. Authentication is secure using JWT and cookies. Global state is managed by Zustand and async data by React Query. Real-time infrastructure is offloaded to Stream API for reliability.",
+      "Built on the MERN stack with Vite for optimized frontend performance. The backend implements JWT authentication with HTTP-only cookies for security, while Zustand manages global state and React Query handles server-state caching. Real-time infrastructure is powered by Stream Chat and Video SDKs, offloading complex WebRTC and messaging logic to a reliable third-party service. MongoDB stores user profiles, friend relationships, and language preferences with indexed queries for fast matching.",
     techStack: [
-      "React",
+      "React 18",
       "Vite",
       "Node.js",
       "Express.js",
       "MongoDB",
-      "Stream API",
+      "Stream Chat SDK",
+      "Stream Video SDK",
       "Tailwind CSS",
       "DaisyUI",
       "Zustand",
-      "JWT"
+      "React Query",
+      "JWT Authentication",
+      "bcryptjs"
     ],
     features: [
-      "Real-time Chat & Video Calls",
-      "Friend System (Requests, Friends List)",
-      "Secure Authentication & Onboarding",
-      "Real-time Notifications",
-      "Dark/Light Theme Support",
-      "Responsive UI with DaisyUI"
+      "Smart Language Matching: Connects users based on native and learning languages for optimal practice partnerships.",
+      "Real-Time Chat: Powered by Stream Chat SDK with emoji support, typing indicators, read receipts, and message history.",
+      "HD Video Calls: Built with Stream Video SDK featuring screen sharing, call controls, and multi-participant support.",
+      "Friend System: Send, receive, and manage friend requests with real-time notifications.",
+      "Profile Onboarding: Complete profile setup with bio, location, native language, and learning language preferences.",
+      "Theme Switching: Dark and light mode support with DaisyUI for a personalized user experience.",
+      "Secure Authentication: JWT-based auth with HTTP-only cookies, password hashing, and protected routes."
     ],
     outcome:
-      "Developed a production-ready communication platform capable of handling real-time interactions with low latency. Successfully integrated third-party SDKs (Stream) to deliver enterprise-grade chat and video features.",
+      "Successfully created a production-ready language learning social platform. The Stream SDK integration delivers enterprise-grade real-time communication with minimal latency, while the intelligent matching algorithm connects learners with compatible partners. The platform demonstrates how third-party services can be leveraged to build complex features without reinventing the wheel, resulting in a scalable, maintainable codebase.",
     demoCredentials: [
       {
         role: "User 1",
@@ -235,55 +239,7 @@ const projects = [
     thumbnailLight: "/A_sleek_lightthemed_2k_202601140011-800.webp",
     category: "fullstack",
     featured: true,
-    order: 6,
-  },
-  {
-    title: "AI Trip Planner",
-    slug: "ai-trip-planner",
-    shortDescription:
-      "Full-stack travel platform generating personalized itineraries using Google Gemini AI, with real-time hotel and transport booking.",
-    problemStatement:
-      "Planning a trip involves juggling multiple platforms for flights, hotels, and itineraries, often leading to fragmented plans and stress. Travelers need a unified tool that intelligently orchestrates every aspect of their journey.",
-    solution:
-      "AI Trip Planner leverages Google Gemini AI to create bespoke day-by-day itineraries based on user preferences. It seamlessly integrates real-time data from Booking.com and Google Maps to offer immediate actions—booking hotels, finding transport, and exploring local spots—all in one place.",
-    architecture:
-      "A robust MERN stack application. The backend integrates Gemini AI for generative planning, RapidAPI for real-time booking data, and Google Maps API for geolocation. The frontend uses React with React Query for efficient data management and Framer Motion for a polished UX.",
-    techStack: [
-      "React",
-      "Node.js",
-      "MongoDB",
-      "Express.js",
-      "Google Gemini AI",
-      "Google Maps API",
-      "RapidAPI",
-      "Tailwind CSS",
-      "React Query",
-      "JWT"
-    ],
-    features: [
-      "AI-Generated Personalized Itineraries",
-      "Real-time Hotel Search & Booking",
-      "Transport Booking (Flight/Train/Bus)",
-      "Interactive Maps & Directions",
-      "Trip Dashboard & Management",
-      "PDF Export for Itineraries"
-    ],
-    outcome:
-      "Created a seamless travel planning ecosystem. Reduced average trip planning time by ~70% through AI automation and centralized booking tools. Delivered a modern, responsive UI that simplifies complex travel logistics.",
-    demoCredentials: [
-      {
-        role: "Traveler",
-        email: "traveler@gmail.com",
-        password: "travel123"
-      }
-    ],
-    liveUrl: "https://trips-planner-blue.vercel.app/",
-    githubUrl: "https://github.com/ladHarsh/AI-TripPlanner",
-    thumbnail: "/A_sleek_darkthemed_2k_202601132323-800.webp",
-    thumbnailLight: "/A_sleek_lightthemed_2k_202601140015-800.webp",
-    category: "ai",
-    featured: true,
-    order: 7,
+    order: 5,
   },
   {
     title: "OtakuTrack",
@@ -329,7 +285,60 @@ const projects = [
     thumbnailLight: "/IMG_20260115_232743-800.webp",
     category: "fullstack",
     featured: true,
-    order: 8,
+    order: 6,
+  },
+  {
+    title: "AI Trip Planner",
+    slug: "ai-trip-planner",
+    shortDescription:
+      "A full-stack, AI-powered travel planning platform that generates personalized itineraries using Google Gemini AI, with real-time maps integration and seamless trip management.",
+    problemStatement:
+      "Planning multi-day trips is overwhelming. Travelers waste hours researching destinations, manually scheduling activities, and estimating budgets across scattered websites. Without intelligent optimization, itineraries become inefficient—missing hidden gems, creating unrealistic timelines, and exceeding budgets. The lack of a unified platform forces users to juggle spreadsheets, booking sites, and maps simultaneously.",
+    solution:
+      "AI Trip Planner is an intelligent travel companion that automates the entire planning workflow. It leverages Google Gemini AI to generate day-by-day itineraries based on destination, dates, budget, interests, and travel style. The system integrates real-time Google Maps for route optimization, provides cost estimates, and offers a centralized dashboard to manage all trips. It transforms chaotic planning into a structured, data-driven experience.",
+    architecture:
+      "Built on a MERN stack with dual-token JWT authentication (access + refresh tokens). The backend orchestrates AI requests via Google Gemini API with intelligent prompt engineering, handles geocoding through Google Maps API, and manages trip data with indexed MongoDB queries. The React frontend uses React Query for optimized data caching, Socket.IO for real-time notifications, and Framer Motion for smooth animations. The system implements rate limiting, input sanitization, and comprehensive error handling for production-grade reliability.",
+    techStack: [
+      "React 18",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Google Gemini AI",
+      "Google Maps API",
+      "Tailwind CSS",
+      "Framer Motion",
+      "React Query",
+      "Socket.IO",
+      "JWT Authentication",
+      "React Hook Form",
+      "Chart.js",
+      "jsPDF"
+    ],
+    features: [
+      "AI-Powered Itinerary Generation: Creates custom day-by-day schedules with activities, meals, and transportation using Google Gemini AI.",
+      "Intelligent Route Optimization: Automatically optimizes travel routes and activity scheduling for maximum efficiency.",
+      "Budget Planning & Tracking: Provides automatic cost estimation for activities, meals, and transportation with currency support.",
+      "Interactive Maps Integration: Real-time location services with Google Maps for directions, nearby places, and geocoding.",
+      "Dual-Token Authentication: Secure JWT-based system with access tokens (15min) and refresh tokens (7 days) for seamless sessions.",
+      "Real-Time Notifications: Socket.IO integration for live trip updates, booking confirmations, and system alerts.",
+      "PDF Export: Download beautifully formatted trip itineraries as PDF documents for offline access."
+    ],
+    outcome:
+      "Successfully automated travel planning for users worldwide. The platform reduces trip planning time from hours to minutes while ensuring optimized routes and budget adherence. The AI-powered system handles complex multi-day itineraries with intelligent recommendations, proving that machine learning can effectively enhance the travel experience. Currently deployed on Vercel (frontend) and Render (backend) with MongoDB Atlas for scalable data management.",
+    demoCredentials: [
+      {
+        role: "Traveler",
+        email: "demo@tripplanner.com",
+        password: "demo123"
+      }
+    ],
+    liveUrl: "https://trips-planner-blue.vercel.app/",
+    githubUrl: "https://github.com/ladHarsh/AI-TripPlanner",
+    thumbnail: "/A_sleek_darkthemed_2k_202601132323-800.webp",
+    thumbnailLight: "/A_sleek_lightthemed_2k_202601140015-800.webp",
+    category: "ai",
+    featured: true,
+    order: 7,
   },
 ];
 
@@ -337,6 +346,10 @@ const seedProjects = async () => {
   try {
     await mongoose.connect(process.env.MONGODB_URI);
     console.log("Connected to MongoDB");
+
+    // Drop all indexes except _id
+    await Project.collection.dropIndexes();
+    console.log("Dropped indexes");
 
     await Project.deleteMany({});
     console.log("Cleared existing projects");
@@ -346,7 +359,13 @@ const seedProjects = async () => {
 
     process.exit(0);
   } catch (error) {
-    console.error("Error seeding projects:", error);
+    console.error("Error seeding projects:", error.message);
+    if (error.writeErrors) {
+      error.writeErrors.forEach((err, index) => {
+        console.error(`\nError ${index + 1}:`, err.err.errmsg);
+        console.error("Document:", JSON.stringify(err.err.op, null, 2));
+      });
+    }
     process.exit(1);
   }
 };

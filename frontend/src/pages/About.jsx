@@ -43,10 +43,25 @@ const About = () => {
                   <div className="absolute top-0 left-0 w-full h-1 bg-cyan-500/50 animate-[scan_4s_ease-in-out_infinite] z-20 shadow-[0_0_15px_rgba(6,182,212,0.8)]"></div>
                   
                   <div className="relative h-[500px] w-full bg-gray-900 rounded-xl overflow-hidden group">
-                     <img src="/1767449525085.jpg" alt="Harsh Lad" className="absolute inset-0 w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 transition-all duration-700 contrast-125" />
+                     {/* 1. The Profile Image */}
+                     <img 
+                        src="/I_need_to_2k_202601172105.jpeg" 
+                        alt="Harsh Lad" 
+                        className="absolute inset-0 w-full h-full object-cover opacity-90 grayscale contrast-[1.2] brightness-90 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100 group-hover:scale-[1.02] transition-all duration-700 ease-in-out" 
+                        style={{
+                           maskImage: "radial-gradient(circle at center, black 50%, transparent 90%)",
+                           WebkitMaskImage: "radial-gradient(circle at center, black 50%, transparent 90%)"
+                        }}
+                     />
+                     
+                     {/* 2. Holographic Blue Tint (Idle State) */}
+                     <div className="absolute inset-0 bg-cyan-500 mix-blend-overlay opacity-30 group-hover:opacity-0 transition-opacity duration-500 pointer-events-none z-10"></div>
+
+                     {/* 3. Hard Vignette Overlay (Crushes Edges to Black) */}
+                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,rgba(0,0,0,0.8)_100%)] pointer-events-none z-10"></div>
                      
                      {/* HUD Overlay */}
-                     <div className="absolute inset-0 p-6 flex flex-col justify-between">
+                     <div className="absolute inset-0 p-6 flex flex-col justify-between z-20">
                         <div className="flex justify-between items-start">
                            <FaMicrochip className="text-4xl text-cyan-500/50 animate-pulse" />
                            <div className="text-right">
@@ -61,7 +76,7 @@ const About = () => {
                               <span className="text-xs font-mono text-green-400 font-bold">SYSTEM_OPTIMIZED</span>
                            </div>
                            <p className="text-xs text-gray-300 font-mono leading-relaxed">
-                              "Engineering is not just code; it is the architecture of intelligence. I build systems that think."
+                               "Engineering is not just code; it is the architecture of intelligence. I build systems that think."
                            </p>
                         </div>
                      </div>

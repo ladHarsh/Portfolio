@@ -77,6 +77,38 @@ const RICHER_CONTENT = {
           { title: "SERENDIPITY_ENGINE", desc: "Discovery of hidden gems via semantic linkages." }
       ],
       status: { cpu: "67%", ram: "2.4GB", net: "LIVE" }
+  },
+  "cookie-chat": {
+      videoUrl: "https://youtu.be/YOUR_COOKIE_VIDEO_ID", // TODO: Add actual video URL
+      architecture: [
+          { title: "STREAM_SDK_INTEGRATION", desc: "Offloaded real-time chat and video to Stream API for enterprise-grade reliability." },
+          { title: "LANGUAGE_MATCHING", desc: "MongoDB indexed queries match users by native/learning languages in <50ms." },
+          { title: "JWT_COOKIE_AUTH", desc: "HTTP-only cookies with bcrypt hashing prevent XSS and ensure secure sessions." },
+          { title: "STATE_ORCHESTRATION", desc: "Zustand (global) + React Query (server) for optimized data flow." }
+      ],
+      impact: [
+          { title: "ZERO_LATENCY_CHAT", desc: "Stream SDK delivers sub-100ms message delivery with WebSocket fallback." },
+          { title: "SMART_PAIRING", desc: "Language-based matching connects learners with compatible practice partners." },
+          { title: "SCALABLE_VIDEO", desc: "Stream Video SDK handles multi-participant HD calls without custom WebRTC." },
+          { title: "THEME_FLEXIBILITY", desc: "DaisyUI theming enables instant dark/light mode switching." }
+      ],
+      status: { cpu: "38%", ram: "1.1GB", net: "STREAM" }
+  },
+  "ai-trip-planner": {
+      videoUrl: "https://youtu.be/2isgUskJNqY",
+      architecture: [
+          { title: "DUAL_TOKEN_AUTH", desc: "JWT access (15min) + refresh (7d) tokens for seamless session management." },
+          { title: "AI_ORCHESTRATION", desc: "Gemini API integration with intelligent prompt engineering for itinerary generation." },
+          { title: "GEOCODING_ENGINE", desc: "Google Maps API for real-time route optimization and location services." },
+          { title: "REACTIVE_CACHE", desc: "React Query managing server state with optimistic updates and background sync." }
+      ],
+      impact: [
+          { title: "TIME_REDUCTION", desc: "Planning time reduced from hours to minutes via AI automation." },
+          { title: "ROUTE_OPTIMIZATION", desc: "Intelligent scheduling maximizes efficiency and minimizes travel time." },
+          { title: "BUDGET_ACCURACY", desc: "Automatic cost estimation with 95%+ accuracy across currencies." },
+          { title: "REAL_TIME_SYNC", desc: "Socket.IO enables live notifications and collaborative planning." }
+      ],
+      status: { cpu: "52%", ram: "1.8GB", net: "GLOBAL" }
   }
 };
 

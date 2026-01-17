@@ -74,7 +74,7 @@ const Home = () => {
     }
   };
 
-  const profileImage = "/1767449525085.jpg";
+  const profileImage = "/I_need_to_2k_202601172105.jpeg";
 
   // If Booting, show Terminal
   if (bootSequence) {
@@ -159,16 +159,31 @@ const Home = () => {
                    {/* Scanner Line */}
                    <div className="absolute top-0 w-full h-1 bg-primary-400 shadow-[0_0_15px_rgba(99,102,241,1)] animate-[scan_4s_ease-in-out_infinite] z-20 opacity-50"></div>
 
-                   <img src={profileImage} alt="Harsh Lad" className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity grayscale group-hover:grayscale-0 duration-500" />
+                   {/* 3. The Profile Image */}
+                   <img 
+                      src={profileImage} 
+                      alt="Harsh Lad" 
+                      className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-500 ease-in-out grayscale contrast-[1.2] brightness-90 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100 group-hover:scale-[1.02]"
+                      style={{
+                        maskImage: "radial-gradient(circle at center, black 50%, transparent 90%)",
+                        WebkitMaskImage: "radial-gradient(circle at center, black 50%, transparent 90%)"
+                      }}
+                   />
+
+                   {/* 4. NEW: Holographic Blue Tint (Idle State) */}
+                   <div className="absolute inset-0 bg-primary-500 mix-blend-overlay opacity-30 group-hover:opacity-0 transition-opacity duration-500 pointer-events-none z-10"></div>
+
+                   {/* 5. NEW: Hard Vignette Overlay (Crushes Edges to Black) */}
+                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,rgba(0,0,0,0.8)_100%)] pointer-events-none z-10"></div>
                    
                    {/* HUD Overlays */}
-                   <div className="absolute bottom-6 left-6 right-6">
+                   <div className="absolute bottom-6 left-6 right-6 z-20">
                       <div className="flex justify-between text-xs font-mono text-primary-300 mb-2">
                          <span>STATUS: ONLINE</span>
                          <span>CPU: 98%</span>
                       </div>
                       <div className="h-1 w-full bg-white/10 rounded-full overflow-hidden">
-                         <div className="h-full bg-primary-500 w-[98%]"></div>
+                         <div className="h-full bg-primary-500 w-[98%] shadow-[0_0_10px_rgba(99,102,241,0.8)]"></div>
                       </div>
                       <h3 className="text-xl font-bold font-display mt-4 text-white">Harsh Lad</h3>
                       <p className="text-xs font-mono text-gray-400">AI_ENGINEER :: V.2.0</p>

@@ -25,7 +25,15 @@ const images = [
   'Premium_uiux_project_2k_202601141102.jpeg',
   'A_premium_hyperrealistic_2k_202601141108.jpeg',
   'IMG_20260115_232743.jpg',
-  'IMG_20260115_232801.jpg'
+  'IMG_20260115_232801.jpg',
+  'A_dark_futuristic_2k_202601172100.jpeg',
+  'I_need_to_2k_202601172105.jpeg',
+  'A_dark_futuristic_2k_202601172114.jpeg',
+  'A_dark_futuristic_2k_202601172120.jpeg',
+  'A_dark_futuristic_2k_202601172127.jpeg',
+  'A_dark_futuristic_2k_202601172133.jpeg',
+  'A_dark_futuristic_2k_202601172138.jpeg',
+  'A_dark_futuristic_2k_202601172142.jpeg'
 ];
 
 async function optimizeImages() {
