@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FaGithub, FaExternalLinkAlt, FaReact, FaNodeJs, FaDatabase, FaServer, 
   FaBrain, FaChartPie, FaKey, FaArrowLeft, FaExclamationTriangle, FaBolt, FaCopy, FaLightbulb,
-  FaLayerGroup, FaCheck, FaTerminal, FaCode, FaMicrochip, FaNetworkWired, FaMemory
+  FaLayerGroup, FaCheck, FaTerminal, FaCode, FaMicrochip, FaNetworkWired, FaMemory, FaGem, FaUpload
 } from 'react-icons/fa';
 import { 
   SiMongodb, SiExpress, SiTailwindcss, SiStreamlit, SiScikitlearn, 
@@ -39,15 +39,20 @@ const RICHER_CONTENT = {
   "designmate-ai": {
     videoUrl: "https://youtu.be/ReS6LMpoUiQ",
     architecture: [
-       { title: "BUFFER_STREAMING", desc: "In-memory image processing avoiding disk I/O bottlenecks." },
-       { title: "VISION_TRANSFORMER", desc: "Gemini 1.5 Pro extracting UI topology & hex codes." },
-       { title: "CODE_SYNTHESIS", desc: "Recursive mapping of visual elements to Tailwind utility classes." }
+       { title: "MULTI_MODAL_INGESTION", desc: "Gemini 2.5 Flash Vision pipeline implementing Chain-of-Thought reasoning on raw pixels." },
+       { title: "STRUCTURAL_DETERMINISM", desc: "Zod Schema Validation forcing LLM output into strictly typed, compilable JSON." },
+       { title: "MEMORY_STREAM_PROCESSING", desc: " Zero-disk latency via in-memory Multer buffer streams for image analysis." },
+       { title: "ATOMIC_SYNTHESIS", desc: "Recursive algorithm mapping abstract design tokens to Tailwind utility classes." }
     ],
     impact: [
-       { title: "VELOCITY_INCREASE", desc: "90% reduction in frontend boilerplate generation time." },
-       { title: "COMPLIANCE_CHECK", desc: "Automated WCAG accessibility validation pre-render." },
-       { title: "MULTIMODAL_INPUT", desc: "Native support for wireframe sketches & high-fidelity mocks." }
+       { title: "VELOCITY_ACCELERATION", desc: "Automates 40% of the design-to-code feedback loop." },
+       { title: "COMPLIANCE_ENFORCEMENT", desc: "Mathematical verification of WCAG AA/AAA contrast ratios." },
+       { title: "COGNITIVE_OFFLOAD", desc: "Eliminates decision fatigue for typography and color theory." }
     ],
+    engineStatus: { 
+      algorithm: "GEMINI 2.5 FLASH", 
+      metric: "45ms INFERENCE" 
+    },
     status: { cpu: "88%", ram: "4.1GB", net: "UPLINK" }
   },
   "career-launch": {
@@ -154,18 +159,50 @@ const ProjectDetails = () => {
   ];
   const status = project.status || { cpu: "30%", ram: "1GB", net: "STANDBY" };
 
-  // Helper for Tech Icons
+  // Helper for Tech Icons (Official Brand Colors)
   const getTechIcon = (name) => {
     const n = (typeof name === 'string' ? name : name.name).toLowerCase();
-    if (n.includes('react')) return <FaReact />;
-    if (n.includes('node')) return <FaNodeJs />;
-    if (n.includes('mongo')) return <SiMongodb />;
-    if (n.includes('python')) return <FaBrain />;
-    if (n.includes('flask')) return <SiFlask />;
-    if (n.includes('next')) return <SiNextdotjs />;
-    if (n.includes('type')) return <FaCode />;
-    if (n.includes('tail')) return <SiTailwindcss />;
-    return <FaMicrochip />;
+    
+    // React - Light Blue Atom
+    if (n.includes('react')) return <FaReact className="text-[#61DAFB] text-lg" />;
+    
+    // Node.js - Green Hexagon
+    if (n.includes('node')) return <FaNodeJs className="text-[#68A063] text-lg" />;
+    
+    // Express - White 'ex' (using SiExpress standard)
+    if (n.includes('express')) return <SiExpress className="text-white text-lg" />;
+    
+    // MongoDB - Green Leaf
+    if (n.includes('mongo')) return <SiMongodb className="text-[#47A248] text-lg" />;
+    
+    // Gemini - Yellow Lightning Bolt
+    if (n.includes('gemini')) return <FaBolt className="text-yellow-400 text-lg" />;
+    
+    // Framer Motion - White/Pink (Standardizing to White for contrast)
+    if (n.includes('framer')) return <SiFramer className="text-white text-lg" />;
+    
+    // Tailwind CSS - Light Blue Wave
+    if (n.includes('tail')) return <SiTailwindcss className="text-[#38B2AC] text-lg" />;
+    
+    // Socket.io - White Lightning
+    if (n.includes('socket')) return <SiSocketdotio className="text-white text-lg" />;
+    
+    // Zod - Blue Diamond
+    if (n.includes('zod')) return <FaGem className="text-[#3E67B1] text-lg" />;
+    
+    // JWT - Purple Shield
+    if (n.includes('jwt')) return <SiJsonwebtokens className="text-[#D63AFF] text-lg" />;
+    
+    // Multer - Orange Upload
+    if (n.includes('multer')) return <FaUpload className="text-[#F06529] text-lg" />;
+    
+    // Python - Blue/Yellow (using Blue branding)
+    if (n.includes('python')) return <FaBrain className="text-[#3776AB] text-lg" />;
+    
+    // Next.js - White
+    if (n.includes('next')) return <SiNextdotjs className="text-white text-lg" />;
+    
+    return <FaMicrochip className="text-gray-400 text-lg" />;
   };
 
   return (
@@ -364,20 +401,24 @@ const ProjectDetails = () => {
                    </div>
                 )}
                 
-                {/* Tech Stack Chips (Moved from Left) */}
-                <div className="bg-white/5 border border-white/10 rounded-xl p-6 relative overflow-hidden">
-                   <h3 className="font-mono text-xs text-gray-500 mb-4 uppercase tracking-widest flex items-center gap-2">
-                      <FaMemory /> DEPENDENCIES_INSTALLED
+                {/* Tech Stack Chips (SKILL BOARD DESIGN) */}
+                <div className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl p-5 relative overflow-hidden group hover:border-cyan-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] hover:-translate-y-1">
+                   {/* Background Grid */}
+                   <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5 pointer-events-none"></div>
+                   
+                   <h3 className="font-mono text-gray-500 mb-6 uppercase tracking-widest flex items-center gap-2 text-sm font-bold relative z-10">
+                      <FaMemory className="text-cyan-500" /> DEPENDENCIES_INSTALLED
                    </h3>
-                   <div className="flex flex-wrap gap-2">
+                   <div className="flex flex-wrap gap-2 relative z-10">
                       {project.techStack?.map((tech, i) => (
-                         <div key={i} className="flex items-center gap-2 px-3 py-1.5 bg-black border border-white/20 rounded text-xs font-mono text-gray-300 hover:text-white hover:border-cyan-500 transition-colors cursor-default">
+                         <div key={i} className="flex items-center gap-2 px-3 py-2 bg-black border border-white/20 rounded-lg text-xs font-bold font-mono text-white tracking-wider hover:bg-white/10 hover:border-cyan-500 transition-colors cursor-default">
                             {getTechIcon(tech)}
                             {(typeof tech === 'string' ? tech : tech.name).toUpperCase()}
                          </div>
                       ))}
                    </div>
                 </div>
+
 
                 {/* Impact Analysis */}
                 <div className="space-y-4">

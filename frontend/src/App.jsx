@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import Home from "./pages/Home";
@@ -10,8 +11,13 @@ import Contact from "./pages/Contact";
 import { ThemeProvider, useTheme } from "./context/ThemeContext";
 
 function AppContent() {
-  const { darkMode } = useTheme(); // accessing for consistency, though always true now
-  
+  const { darkMode } = useTheme();
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
     <div className="min-h-screen flex flex-col bg-gray-900 text-white transition-colors duration-300">
       <Navbar />

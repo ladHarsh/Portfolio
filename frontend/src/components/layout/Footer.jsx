@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import { FaGithub, FaLinkedin, FaEnvelope, FaCode, FaTerminal } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaCode, FaTerminal, FaBrain } from "react-icons/fa";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { name: "GITHUB", icon: FaGithub, url: "https://github.com/harshlad" },
-    { name: "LINKEDIN", icon: FaLinkedin, url: "https://linkedin.com/in/harshlad" },
+    { name: "GITHUB", icon: FaGithub, url: "https://github.com/ladHarsh" },
+    { name: "LINKEDIN", icon: FaLinkedin, url: "https://linkedin.com/in/harsh-lad-dev" },
     { name: "MAIL_DROPOFF", icon: FaEnvelope, url: "mailto:harshlad.dev@gmail.com" },
   ];
 
@@ -23,13 +23,12 @@ const Footer = () => {
            <div className="md:col-span-5 space-y-6">
               <Link to="/" className="inline-flex items-center gap-2 group">
                  <div className="p-3 bg-white/5 border border-white/10 rounded-lg group-hover:bg-primary-500 group-hover:text-black transition-colors duration-300">
-                    <FaCode size={24} />
+                    <FaBrain size={24} />
                  </div>
                  <span className="font-display font-bold text-2xl tracking-tight">HARSH LAD</span>
               </Link>
-              <p className="text-gray-400 max-w-sm text-lg leading-relaxed">
-                 Engineering intelligent systems for the next decade. 
-                 Bridging the gap between <span className="text-white">Cognition</span> and <span className="text-white">Code</span>.
+              <p className="text-gray-400 max-w-md text-lg leading-relaxed">
+                 Moving beyond static software. I engineer <span className="text-white">Adaptive Systems</span> that bridge the gap between human intent and machine intelligence.
               </p>
               
               <div className="flex items-center gap-4 pt-4">
@@ -53,10 +52,10 @@ const Footer = () => {
               <h4 className="font-mono text-xs text-primary-500 mb-6 uppercase tracking-widest">// NAVIGATION</h4>
               <ul className="space-y-4">
                  {[
-                    {name: "HOME_BASE", path: "/"},
-                    {name: "MISSION_LOG", path: "/about"},
-                    {name: "MODULES", path: "/projects"},
-                    {name: "CAPABILITIES", path: "/skills"}
+                    {name: "// HOME", path: "/"},
+                    {name: "// MISSION", path: "/about"},
+                    {name: "// MODULES", path: "/projects"},
+                    {name: "// CORE", path: "/skills"}
                  ].map((link) => (
                     <li key={link.path}>
                        <Link to={link.path} className="text-gray-400 hover:text-primary-400 transition-colors font-mono text-sm tracking-wide">

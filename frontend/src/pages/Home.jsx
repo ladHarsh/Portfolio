@@ -121,9 +121,9 @@ const Home = () => {
                <div className="p-6 border-l-2 border-primary-500 bg-white/5 backdrop-blur-sm rounded-r-xl max-w-xl">
                   <p className="font-mono text-sm text-gray-400 mb-2">// MISSION_PROFILE</p>
                   <p className="text-lg text-gray-200 leading-relaxed">
-                     I construct <span className="text-primary-400 font-bold">Intelligent Systems</span>. 
-                     Merging high-performance software engineering with predictive AI models. 
-                     Targeting 2030 standards of scalability and cognition.
+                     I engineer <span className="text-primary-400 font-bold">Intelligence</span>, not just interfaces. 
+                     My focus is absolute: advancing as an AI Engineer to build the autonomous systems of tomorrow. 
+                     I fuse robust Software Architecture with Machine Learning to create intelligent, adaptive solutions.
                   </p>
                </div>
 
@@ -132,7 +132,7 @@ const Home = () => {
                      <span className="relative z-10 flex items-center gap-2">Initialize Portfolio <FaArrowRight /></span>
                      <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
                   </Link>
-                  <Link to="/about" className="px-8 py-4 border border-white/20 hover:bg-white/10 transition-colors font-mono text-sm uppercase tracking-wider text-gray-300">
+                  <Link to="/about" className="px-8 py-4 border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-white/30 transition-all font-mono text-sm uppercase tracking-wider text-gray-300">
                      Access Dossier
                   </Link>
                </div>
@@ -146,7 +146,7 @@ const Home = () => {
                className="relative flex justify-center perspective-1000 will-change-transform"
             >
                 {/* Holographic Circle */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-primary-500/20 to-purple-500/20 rounded-full blur-[80px] animate-pulse"></div>
+                <div className="absolute inset-0 bg-gradient-to-tr from-primary-500/30 to-purple-500/20 rounded-full blur-[100px] animate-pulse"></div>
                 
                 {/* Tech Orbitals - Slowed down for smoothness */}
                 <div className="absolute w-[120%] h-[120%] border border-white/10 rounded-full animate-[spin_60s_linear_infinite] will-change-transform"></div>
@@ -157,7 +157,7 @@ const Home = () => {
                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                    
                    {/* Scanner Line */}
-                   <div className="absolute top-0 w-full h-1 bg-primary-400 shadow-[0_0_15px_rgba(99,102,241,1)] animate-[scan_4s_ease-in-out_infinite] z-20 opacity-50"></div>
+                   <div className="absolute top-0 w-full h-1 bg-primary-400 shadow-[0_0_15px_rgba(99,102,241,1)] animate-[scan_4s_ease-in-out_infinite] z-20 opacity-30"></div>
 
                    {/* 3. The Profile Image */}
                    <img 

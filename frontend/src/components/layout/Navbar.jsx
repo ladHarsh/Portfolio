@@ -75,7 +75,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden md:flex items-center gap-4">
              <div className="flex items-center bg-black/20 rounded-full px-2 py-1 border border-white/5 backdrop-blur-sm">
                 {navLinks.map((link) => (
                   <NavLink

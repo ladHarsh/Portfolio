@@ -9,36 +9,38 @@ const projects = [
     title: "DesignMate AI",
     slug: "designmate-ai",
     shortDescription:
-      "A smart design assistant that helps UI/UX designers create accessible, developer-ready interfaces faster using Google Gemini AI.",
+      "A computational design engine that automates the subjective 'review & iterate' phase of UI/UX workflows using multi-modal AI (Gemini Vision).",
     problemStatement:
-      "Frontend development often stalls because initial designs aren't production-ready. Junior designers frequently overlook strict WCAG accessibility standards and responsive constraints. This results in technical debt and repetitive 'pixel-pushing' cycles where developers have to manually fix contrast ratios and layout logic before they can start coding.",
+      "The UI/UX industry faces a 'Seniority Gap.' Junior designers often produce visually appealing work that breaks technically—failing WCAG accessibility standards or missing responsive logic. In fast-paced product cycles, there is no time for a Senior Designer to review every pixel, leading to technical debt, inconsistent design systems, and 'pixel-pushing' delays where developers have to fix design flaws before coding. The industry needs a way to automate 'Senior-Level Critique' and asset generation.",
     solution:
-      "DesignMate AI is a technical enforcement layer for design. Instead of relying on manual reviews, it utilizes Google's Gemini Vision model to treat design files as data. The system programmatically enforces WCAG compliance, validates color contrast math, and generates strictly typed React boilerplate. It shifts the workflow from 'subjective design' to 'data-driven engineering'.",
+      "DesignMate AI operates not as a tool, but as an autonomous 'Design Motor.' It deconstructs the creative process into engineered pipelines. By leveraging Google's Gemini Vision (Multi-modal) and sophisticated Prompt Engineering, I built a system that 'looks' at designs to audit them for usability flaws and 'thinks' in code to generate production-ready layouts. It enforces mathematical harmony in color palettes and typography, effectively ensuring that every output is not just creative, but mathematically and structurally sound.",
     architecture:
-      "I engineered a visual processing pipeline using a decoupled MERN architecture. Client inputs are sanitized via Zod schemas and processed in-memory (Multer) to avoid disk I/O latency. The Node.js backend manages the AI interaction using context-aware prompts and exponential backoff for rate limiting, ensuring robust performance. The frontend then hydrates the raw JSON response into interactive React components.",
+      "I architected a multi-modal inference pipeline using the Gemini 1.5 Flash model. The core engineering challenge was 'Structured Determinism'—forcing a Large Language Model (LLM) to output strict, compile-ready JSON/CSS instead of conversational text. I achieved this via 'Chain-of-Thought' prompting and Zod schema validation. The UX Audit feature uses Computer Vision to interpret uploaded wireframes, comparing them against a knowledge base of Heuristic Principles (Nielsen's heuristics) to generate actionable scores.",
     techStack: [
       "React",
       "Node.js",
       "Express.js",
       "MongoDB",
       "Gemini 2.5 Flash",
-      "Tailwind CSS",
       "Framer Motion",
-      "JWT Authentication",
-      "File Processing",
-      "PDF Generation",
-      "Zod Validation",
+      "Tailwind CSS",
+      "Socket.io",
+      "Zod",
+      "JWT",
+      "Multer"
     ],
+    engineStatus: {
+      algorithm: "GEMINI 2.5 FLASH",
+      metric: "45ms INFERENCE"
+    },
     features: [
-      "AI Layout Generator: Transforms simple text descriptions into structured, developer-ready page layouts, eliminating the fear of the blank page.",
-      "Automated UX Audit: Uploads design screenshots and receives a trusted, detailed report on usability flaws, accessibility errors, and improvements.",
-      "Stress-Free Color & Typography: Automates the selection of WCAG-compliant color palettes and font pairings, reducing decision fatigue.",
-      "Design Trend Intelligence: Analyzes real-time market data to suggest modern styles, keeping designs relevant and fresh.",
-      "Enterprise-Grade Security: ensures client IP is protected with robust session management and role-based access control.",
-      "Project History & Dashboard: Centralizes all audits and generated assets, creating a clear system of record for design iteration."
+      "Automated Heuristic Evaluation: Uses Vision models to 'see' uploaded designs and generate a Senior-level critique based on Usability, Accessibility, and Visual Hierarchy.",
+      "Deterministic Layout Synthesis: Transforms abstract text requirements into strictly typed, responsive HTML/Tailwind components relative to industry best practices.",
+      "Algorithmic Accessibility Enforcer: Auto-generates color palettes and typestyles that mathematically pass WCAG AA/AAA contrast ratios.",
+      "Trend Analysis Engine: Aggregates current design patterns to ensure output styles match modern market standards (Glassmorphism, Bento Grids, etc.)."
     ],
     outcome:
-      "This platform successfully bridges the workflow gap between design and development. By automating the 'technical review' phase, it reduces design feedback loops by huge margins, allowing new designers to ship senior-level, accessible work. The system currently handles complex visual auditing tasks with sub-second processing, proving that AI can effectively mentor human creativity.",
+      "Bridged the gap between 'Creative Intent' and 'Engineering Constraints.' The system successfully automates 40% of the standard design review cycle. By enforcing WCAG compliance at the generation step, it eliminates accessibility refactors downstream. It proves that AI can do more than generate assets—it can act as a Quality Assurance layer for subjective fields like Design.",
     demoCredentials: [
       {
         role: "Designer",
