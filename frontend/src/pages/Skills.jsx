@@ -3,12 +3,14 @@ import { motion } from "framer-motion";
 import { 
   FaPython, FaJava, FaJs, FaReact, FaNodeJs, FaHtml5, FaCss3, FaDocker, 
   FaGitAlt, FaGithub, FaDatabase, FaBrain, FaServer, FaCode, FaLaptopCode,
-  FaCheckCircle, FaStar, FaTools, FaCloud, FaTerminal, FaNetworkWired, FaMicrochip
+  FaCheckCircle, FaStar, FaTools, FaCloud, FaTerminal, FaNetworkWired, FaMicrochip,
+  FaRobot, FaLayerGroup, FaCubes, FaLock, FaKey
 } from "react-icons/fa";
 import { 
   SiNumpy, SiPandas, SiScikitlearn, SiMongodb, SiMysql, SiExpress, 
   SiTailwindcss, SiPostman, SiVisualstudiocode, SiTensorflow, SiNextdotjs, SiTypescript, 
-  SiOpencv, SiKeras, SiPytorch, SiLinux
+  SiOpencv, SiKeras, SiPytorch, SiLinux, SiOpenai, 
+  SiRedis, SiPostgresql, SiGraphql, SiFastapi, SiVite, SiStreamlit, SiDaisyui, SiZod
 } from "react-icons/si";
 
 // 3D Tilt Card Component for Skill Categories
@@ -132,49 +134,70 @@ const Skills = () => {
       skills: [
         { name: "Python", icon: <FaPython />, level: 3 },
         { name: "TensorFlow", icon: <SiTensorflow />, level: 2 },
+        { name: "PyTorch", icon: <SiPytorch />, level: 2 },
+        { name: "OpenAI API", icon: <SiOpenai />, level: 3 },
+        { name: "LangChain", icon: <FaRobot />, level: 3 },
         { name: "Scikit-Learn", icon: <SiScikitlearn />, level: 3 },
         { name: "Pandas", icon: <SiPandas />, level: 3 },
         { name: "NumPy", icon: <SiNumpy />, level: 3 },
-        { name: "OpenCV", icon: <SiOpencv />, level: 2 }
+        { name: "OpenCV", icon: <SiOpencv />, level: 2 },
+        { name: "Keras", icon: <SiKeras />, level: 2 }
       ]
     },
     {
-      id: "SYSTEM_ARCH",
-      title: "Backend Engineering",
+      id: "BACKEND_SYNDICATE",
+      title: "System Architecture",
       icon: <FaServer className="text-2xl" />,
       skills: [
         { name: "Node.js", icon: <FaNodeJs />, level: 3 },
         { name: "Express", icon: <SiExpress />, level: 3 },
-        { name: "Java", icon: <FaJava />, level: 2 },
+        { name: "FastAPI", icon: <SiFastapi />, level: 2 },
         { name: "MongoDB", icon: <SiMongodb />, level: 3 },
-        { name: "MySQL", icon: <SiMysql />, level: 2 },
-        { name: "REST APIs", icon: <FaNetworkWired />, level: 3 }
+        { name: "PostgreSQL", icon: <SiPostgresql />, level: 2 },
+        { name: "Redis", icon: <SiRedis />, level: 2 },
+        { name: "GraphQL", icon: <SiGraphql />, level: 2 },
+        { name: "REST APIs", icon: <FaNetworkWired />, level: 3 },
+        { name: "Java", icon: <FaJava />, level: 2 }
       ]
     },
     {
-      id: "INTERFACE",
-      title: "Frontend Interface",
+      id: "FRONTEND_MATRIX",
+      title: "Interface Engineering",
       icon: <FaLaptopCode className="text-2xl" />,
       skills: [
         { name: "React", icon: <FaReact />, level: 3 },
-        { name: "JavaScript", icon: <FaJs />, level: 3 },
+        { name: "Next.js", icon: <SiNextdotjs />, level: 3 },
+        { name: "TypeScript", icon: <SiTypescript />, level: 2 },
         { name: "Tailwind", icon: <SiTailwindcss />, level: 3 },
-        { name: "Typescript", icon: <SiTypescript />, level: 2 },
-        { name: "HTML5", icon: <FaHtml5 />, level: 3 },
-        { name: "Framer", icon: <FaStar />, level: 2 }
+        { name: "Three.js", icon: <FaCubes />, level: 2 },
+        { name: "Framer Motion", icon: <FaStar />, level: 2 },
+        { name: "Vite", icon: <SiVite />, level: 3 },
+        { name: "Streamlit", icon: <SiStreamlit />, level: 3 }
       ]
     },
     {
-      id: "DEVOPS",
-      title: "Infrastructure",
+      id: "INFRA_GRID",
+      title: "DevOps & Tools",
       icon: <FaDocker className="text-2xl" />,
       skills: [
         { name: "Docker", icon: <FaDocker />, level: 2 },
+        { name: "Linux", icon: <SiLinux />, level: 2 },
         { name: "Git", icon: <FaGitAlt />, level: 3 },
         { name: "Postman", icon: <SiPostman />, level: 3 },
-        { name: "Linux", icon: <SiLinux />, level: 2 },
         { name: "VS Code", icon: <SiVisualstudiocode />, level: 3 },
-        { name: "Render", icon: <FaCloud />, level: 2 }
+        { name: "Render/Vercel", icon: <FaCloud />, level: 3 }
+      ]
+    },
+    {
+      id: "SECURITY_LAYER",
+      title: "Auth & Security",
+      icon: <FaLock className="text-2xl" />,
+      skills: [
+        { name: "JWT", icon: <FaLock />, level: 3 },
+        { name: "Zod Validation", icon: <SiZod />, level: 3 },
+        { name: "Bcrypt", icon: <FaKey />, level: 3 }, // FaKey wasn't imported, using FaLock fallback if needed, but wait, FaKey isn't in my import list above? checking...
+        // FaKey isn't in my import list. Use FaLock.
+        { name: "Auth Pipelines", icon: <FaCheckCircle />, level: 3 }
       ]
     }
   ];

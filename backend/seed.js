@@ -143,7 +143,7 @@ const projects = [
     thumbnailLight: "/A_sleek_lightthemed_2k_202601140004-800.webp",
     category: "edtech",
     featured: true,
-    order: 2,
+    order: 3,
   },
   {
     title: "Career Launch",
@@ -200,7 +200,7 @@ const projects = [
     thumbnailLight: "/A_sleek_lightthemed_2k_202601140008-800.webp",
     category: "ai",
     featured: true,
-    order: 3,
+    order: 4,
   },
   {
     title: "VibeStream",
@@ -257,7 +257,7 @@ const projects = [
     thumbnailLight: "/A_sleek_lightthemed_2k_202601140010-800.webp",
     category: "ai",
     featured: false,
-    order: 4,
+    order: 5,
   },
   {
     title: "Cookie",
@@ -329,7 +329,7 @@ const projects = [
     thumbnailLight: "/A_sleek_lightthemed_2k_202601140011-800.webp",
     category: "fullstack",
     featured: true,
-    order: 5,
+    order: 6,
   },
   {
     title: "OtakuTrack",
@@ -395,7 +395,7 @@ const projects = [
     thumbnailLight: "/IMG_20260115_232743-800.webp",
     category: "fullstack",
     featured: true,
-    order: 6,
+    order: 7,
   },
   {
     title: "AI Trip Planner",
@@ -462,7 +462,7 @@ const projects = [
     thumbnailLight: "/A_sleek_lightthemed_2k_202601140015-800.webp",
     category: "ai",
     featured: true,
-    order: 7,
+    order: 2,
   },
 ];
 

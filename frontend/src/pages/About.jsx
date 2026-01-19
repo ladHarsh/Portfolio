@@ -15,9 +15,9 @@ const About = () => {
   }, []);
 
   const timeline = [
-    { year: "2026", event: "SYSTEM_UPGRADE: B.Tech Completion", desc: "Specializing in AI/ML Architectures", loc: "KPGU, Vadodara" },
-    { year: "2024", event: "CORE_UPDATE: Full Stack Integration", desc: "Mastered MERN & Predictive Modeling", loc: "Remote / Hybrid" },
-    { year: "2022", event: "INITIAL_BOOT: CS Foundation", desc: "Started Engineering Journey", loc: "Vadodara" }
+    { year: "2026", event: "SYSTEM_OPTIMIZED: B.Tech Degree", desc: "Specialization in Generative AI & High-Dimensional Logic.", loc: "KPGU, Vadodara" },
+    { year: "2024", event: "PROTOCOL_MERGED: Full Stack", desc: "Integrated MERN Stack dependencies for scalable web architecture.", loc: "Remote / Hybrid" },
+    { year: "2022", event: "INITIALIZED_KERNEL: CS Start", desc: "Boot sequence initiated. Exploring foundational algorithms.", loc: "Vadodara" }
   ];
 
   return (
@@ -101,8 +101,8 @@ const About = () => {
                   </h1>
                   <div className="h-1 w-32 bg-cyan-500 rounded-full mb-6"></div>
                   <p className="text-xl text-gray-400 leading-relaxed max-w-2xl font-light border-l-2 border-cyan-500/30 pl-6">
-                     I am an <span className="text-white font-bold">AI Engineer</span> bridging the gap between biological cognition and silicon efficiency. 
-                     My mission is to architect scalable, intelligent software that solves complexity with elegance.
+                     I operate at the intersection of <span className="text-white font-bold">biological cognition</span> and <span className="text-white font-bold">silicon efficiency</span>. 
+                     My function is to translate abstract human intent into deterministic machine logic, architecting scalable systems that solve complexity with algorithmic elegance.
                   </p>
                </div>
 
@@ -142,9 +142,9 @@ const About = () => {
 
            <div className="grid md:grid-cols-3 gap-8">
               {[
-                 { icon: FaBrain, title: "INGEST", desc: "Analyzing raw problem spaces and identifying data patterns." },
-                 { icon: FaCode, title: "COMPILE", desc: "Architecting efficient, scalable code structures to solve the core issue." },
-                 { icon: FaServer, title: "DEPLOY", desc: "Releasing robust solutions into production environments." }
+                 { icon: FaBrain, title: "DECONSTRUCT", desc: "Parsing raw problem spaces into component vectors. Identifying constraints and defining the optimal loss function." },
+                 { icon: FaCode, title: "SYNTHESIZE", desc: "Architecting neural pathways. Selecting optimal model topologies and engineered prompt chains to maximize inference accuracy." },
+                 { icon: FaServer, title: "EXECUTE", desc: "Deployment of optimized graphs to production. Ensuring O(1) scalability and zero-shot generalization." }
               ].map((step, i) => (
                  <motion.div 
                     key={i}
