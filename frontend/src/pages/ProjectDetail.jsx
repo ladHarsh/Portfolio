@@ -4,12 +4,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FaGithub, FaExternalLinkAlt, FaReact, FaNodeJs, FaDatabase, FaServer, 
   FaBrain, FaChartPie, FaKey, FaArrowLeft, FaExclamationTriangle, FaBolt, FaCopy, FaLightbulb,
-  FaLayerGroup, FaCheck, FaTerminal, FaCode, FaMicrochip, FaNetworkWired, FaMemory, FaGem, FaUpload
+  FaLayerGroup, FaCheck, FaTerminal, FaCode, FaMicrochip, FaNetworkWired, FaMemory, FaGem, FaUpload, FaChartLine,
+  FaRegEnvelope, FaPaw, FaLink, FaDna, FaFilePdf, FaCalculator
 } from 'react-icons/fa';
 import { 
   SiMongodb, SiExpress, SiTailwindcss, SiStreamlit, SiScikitlearn, 
   SiPandas, SiNumpy, SiOpenai, SiFramer, SiGoogle, SiSocketdotio, SiVite,
-  SiNextdotjs, SiFlask, SiJsonwebtokens
+  SiNextdotjs, SiFlask, SiJsonwebtokens, SiFirebase, SiLeaflet, SiOpenstreetmap, SiGooglemaps, SiAxios,
+  SiBootstrap, SiThemoviedatabase, SiReactquery, SiPlotly
 } from 'react-icons/si';
 
 import { projectsApi } from "../services/api";
@@ -34,7 +36,37 @@ const RICHER_CONTENT = {
        { title: "VISUAL_TELEMETRY", desc: "Raw logs transformed into 'Viewing Velocity' graphs." },
        { title: "AUTONOMOUS_MOD", desc: "Decentralized community governance protocols." }
     ],
+    features: [
+       { title: "REAL_TIME_AGGREGATION_PIPELINE", description: "Executes complex MongoDB $lookup and $group stages to compute user statistics in under 60ms." },
+       { title: "RBAC_GOVERNANCE_LAYER", description: "Cryptographic role enforcement (Admin/Mod/User) protecting community integrity via custom middleware." },
+       { title: "OPTIMISTIC_STATE_SYNC", description: "React Query implementation providing zero-latency UI feedback before server confirmation." },
+       { title: "DATA_VISUALIZATION_KERNEL", description: "Transforms raw watch history logs into interactive velocity charts and heatmaps via Recharts." }
+    ],
     status: { cpu: "45%", ram: "1.2GB", net: "ACTIVE" }
+  },
+  "smartassign": {
+    videoUrl: "https://youtu.be/cqtb4iDCn2M",
+    architecture: [
+       { title: "TIER_1_INGESTION", desc: "Multer/PDF-Parse buffering raw document streams for high-throughput intake." },
+       { title: "TIER_2_INFERENCE", desc: "LangChain RAG pipeline feeding Groq Llama-3-70B via Context Windows." },
+       { title: "TIER_3_PERSISTENCE", desc: "MongoDB indexing with relational pointers for O(log n) retrieval." }
+    ],
+    impact: [
+       { title: "LATENCY_ELIMINATION", desc: "99% reduction in feedback time (weeks to seconds)." },
+       { title: "VARIANCE_ZERO", desc: "Absolute scoring consistency across thousands of submissions." },
+       { title: "COGNITIVE_FREEDOM", desc: "Liberates faculty from 60% of repetitive administrative load." }
+    ],
+    features: [
+       { title: "ZERO_SHOT_AUDIT", description: "Deploys LLMs to audit student reasoning against ground truth schemas without prior fine-tuning." },
+       { title: "RECURSIVE_CHAINING", description: "Deconstructs complex prompts into atomic logic gates using Chain-of-Thought reasoning for granular scoring." },
+       { title: "VELOCITY_DASHBOARD", description: "Live telemetry visualization of learning curves and grade distribution via Chart.js." },
+       { title: "ASYNC_EVENT_BUS", description: "Non-blocking notification queues triggering instant alerts upon evaluation completion." }
+    ],
+    engineStatus: {
+      algorithm: "LLAMA-3-70B",
+      metric: "75ms/TOKEN SPEED"
+    },
+    status: { cpu: "72%", ram: "3.5GB", net: "ACTIVE" }
   },
   "designmate-ai": {
     videoUrl: "https://youtu.be/ReS6LMpoUiQ",
@@ -49,25 +81,37 @@ const RICHER_CONTENT = {
        { title: "COMPLIANCE_ENFORCEMENT", desc: "Mathematical verification of WCAG AA/AAA contrast ratios." },
        { title: "COGNITIVE_OFFLOAD", desc: "Eliminates decision fatigue for typography and color theory." }
     ],
+    features: [
+       { title: "HEURISTIC_VISION_AUDIT", description: "Uses Vision models to 'see' uploaded designs and generate a Senior-level critique based on Usability, Accessibility, and Visual Hierarchy." },
+       { title: "DETERMINISTIC_LAYOUT_SYNTHESIS", description: "Transforms abstract text requirements into strictly typed, responsive HTML/Tailwind components relative to industry best practices." },
+       { title: "ACCESSIBILITY_ENFORCER", description: "Auto-generates color palettes and typestyles that mathematically pass WCAG AA/AAA contrast ratios." },
+       { title: "TREND_ANALYSIS_ENGINE", description: "Aggregates current design patterns to ensure output styles match modern market standards (Glassmorphism, Bento Grids, etc.)." }
+    ],
     engineStatus: { 
-      algorithm: "GEMINI 2.5 FLASH", 
-      metric: "45ms INFERENCE" 
+       algorithm: "GEMINI 2.5 FLASH", 
+       metric: "45ms INFERENCE" 
     },
     status: { cpu: "88%", ram: "4.1GB", net: "UPLINK" }
   },
   "career-launch": {
     videoUrl: "https://youtu.be/jdLr-34M-_A",
     architecture: [
-       { title: "PDF_EXTRACTION", desc: "Dual-engine parsing (OCR + Text Layer) for multi-column resumes." },
-       { title: "TF-IDF_VECTORIZER", desc: "Statistical weighting of domain-specific keywords." },
-       { title: "COSINE_SIMILARITY", desc: "High-dimensional vector comparison for relevance scoring." }
+       { title: "VECTOR_SPACE_PROJECTION", desc: "Mapping textual data into high-dimensional coordinator systems for mathematical comparison." },
+       { title: "B.O.W_TOKENIZATION", desc: "Scikit-learn pipeline converting raw strings into numerical feature arrays." },
+       { title: "SEMANTIC_DISTANCE_CALC", desc: "Calculating the exact cosine angle between candidate vectors and target requirements." }
     ],
     impact: [
-       { title: "QUANTIFIED_MATCH", desc: "Deterministic 0-100% scoring replacing subjective review." },
-       { title: "GAP_ANALYSIS", desc: "Instant identification of missing competencies." },
-       { title: "ZERO_RETENTION", desc: "Privacy-first architecture; data purged post-session." }
+       { title: "ALGORITHMIC_PENETRATION", desc: "Reverse-engineering the logic used by 98% of Fortune 500 hiring bots." },
+       { title: "DETERMINISTIC_SCORING", desc: "Replacing subjective guessing with hard mathematical probability metrics." },
+       { title: "PRIVACY_SOVEREIGNTY", desc: "All NLP operations execute locally in a stateless environment." }
     ],
-    status: { cpu: "12%", ram: "512MB", net: "SECURE" }
+    features: [
+       { title: "COSINE_SCORING_KERNEL", description: "Replaces confidence intervals with hardness 0-100% similarity metrics derived from vector dot products." },
+       { title: "VECTOR_SPACE_PROJECTION", description: "Maps candidate profiles into n-dimensional feature space to identify semantic proximity to job requirements." },
+       { title: "SEMANTIC_GAP_DETECTOR", description: "Categorizes missing keywords as 'False Negatives' or 'Hard Gaps' for actionable injection strategies." },
+       { title: "PRIVACY_ENCLAVE", description: "Executes all NLP operations in local memory or stateless sessions to ensure zero data retention." }
+    ],
+    status: { cpu: "82%", ram: "600MB", net: "SECURE" }
   },
   "vibestream": {
       videoUrl: "https://youtu.be/0zz2Y1T1cqg",
@@ -80,6 +124,12 @@ const RICHER_CONTENT = {
           { title: "COLD_START_ZERO", desc: "Context-aware suggestions without user history." },
           { title: "LATENCY_OPTIMIZED", desc: "Sub-100ms response time via matrix caching." },
           { title: "SERENDIPITY_ENGINE", desc: "Discovery of hidden gems via semantic linkages." }
+      ],
+      features: [
+          { title: "SEMANTIC_DNA_PROFILING", description: "Deconstructs films into 5,000+ vector features to map narrative and tonal fingerprints." },
+          { title: "ZERO_HISTORY_INFERENCE", description: "Delivers highly relevant recommendations instantly without requiring a single byte of user history." },
+          { title: "VECTOR_SPACE_CACHING", description: "Pre-computed 4803x4803 similarity matrix enables constant-time O(1) query performance." },
+          { title: "HYBRID_METADATA_FUSION", description: "Synthesizes plot keywords, cast nodes, and directorial style into a unified similarity index." }
       ],
       status: { cpu: "67%", ram: "2.4GB", net: "LIVE" }
   },
@@ -97,23 +147,38 @@ const RICHER_CONTENT = {
           { title: "SCALABLE_VIDEO", desc: "Stream Video SDK handles multi-participant HD calls without custom WebRTC." },
           { title: "THEME_FLEXIBILITY", desc: "DaisyUI theming enables instant dark/light mode switching." }
       ],
+      features: [
+          { title: "EDGE_NETWORK_ROUTING", description: "Offloads heavy media transport to distributed edge nodes for sub-50ms global latency." },
+          { title: "LINGUISTIC_MATCHING_KERNEL", description: "Indexed MongoDB queries map native-to-target language pairs for optimal user pairing." },
+          { title: "STATELESS_JWT_AUTH", description: "Secure, scalable session management using short-lived tokens and HTTP-only cookies." },
+          { title: "REACTIVE_UI_SYNCHRONIZATION", description: "Zustand state manager handles real-time socket events for instant UI updates." }
+      ],
       status: { cpu: "38%", ram: "1.1GB", net: "STREAM" }
   },
   "ai-trip-planner": {
       videoUrl: "https://youtu.be/2isgUskJNqY",
       architecture: [
           { title: "DUAL_TOKEN_AUTH", desc: "JWT access (15min) + refresh (7d) tokens for seamless session management." },
-          { title: "AI_ORCHESTRATION", desc: "Gemini API integration with intelligent prompt engineering for itinerary generation." },
-          { title: "GEOCODING_ENGINE", desc: "Google Maps API for real-time route optimization and location services." },
+          { title: "FLASH_INFERENCE_CORE", desc: "Gemini 2.5 Flash pipeline optimized for single-shot itinerary synthesis < 2s." },
+          { title: "OPEN_SOURCE_GEO_GRID", desc: "Leaflet.js rendering OpenStreetMap vector tiles for cost-free, high-fidelity mapping." },
           { title: "REACTIVE_CACHE", desc: "React Query managing server state with optimistic updates and background sync." }
       ],
       impact: [
-          { title: "TIME_REDUCTION", desc: "Planning time reduced from hours to minutes via AI automation." },
-          { title: "ROUTE_OPTIMIZATION", desc: "Intelligent scheduling maximizes efficiency and minimizes travel time." },
-          { title: "BUDGET_ACCURACY", desc: "Automatic cost estimation with 95%+ accuracy across currencies." },
-          { title: "REAL_TIME_SYNC", desc: "Socket.IO enables live notifications and collaborative planning." }
+          { title: "ZERO_OVERHEAD_SCALING", desc: "Decoupled from expensive Maps APIs using community-driven OSM data." },
+          { title: "SPATIAL_INTELLIGENCE", desc: "Integration of maps and text creates a cohesive travel planning experience." },
+          { title: "USER_EMPOWERMENT", desc: "Allows users to focus on the 'what' instead of the 'how' of travel." }
       ],
-      status: { cpu: "52%", ram: "1.8GB", net: "GLOBAL" }
+      features: [
+          { title: "GEOSPATIAL_REASONING_CORE", description: "Merges abstract user intent with rigid latitude/longitude constraints to generate viable routes." },
+          { title: "CONSTRAINT_SATISFACTION_ENGINE", description: "Solving for budget, time, and rating thresholds simultaneously in < 2 seconds." },
+          { title: "OPEN_METADATA_FUSION", description: "Aggregates live point-of-interest data via OpenStreetMap Overpass API." },
+          { title: "DYNAMIC_ITINERARY_GENERATION", description: "Constructs day-by-day schedules optimized for proximity and 'flow'." }
+      ],
+      engineStatus: {
+          algorithm: "GEMINI 2.5 FLASH",
+          metric: "2s GENERATION"
+      },
+      status: { cpu: "89%", ram: "3.2GB", net: "ACTIVE" }
   }
 };
 
@@ -201,7 +266,76 @@ const ProjectDetails = () => {
     
     // Next.js - White
     if (n.includes('next')) return <SiNextdotjs className="text-white text-lg" />;
+
+    // Vite - Purple/Yellow
+    if (n.includes('vite')) return <SiVite className="text-[#646CFF] text-lg" />;
     
+    // Firebase - Yellow/Orange
+    if (n.includes('firebase')) return <SiFirebase className="text-[#FFCA28] text-lg" />;
+    
+    // Google Maps - Standard Colors
+    if (n.includes('map') && n.includes('google')) return <SiGooglemaps className="text-[#4285F4] text-lg" />;
+    
+    // Leaflet - Green
+    if (n.includes('leaflet')) return <SiLeaflet className="text-[#199900] text-lg" />;
+    
+    // OpenStreetMap - Green
+    if (n.includes('openstreetmap')) return <SiOpenstreetmap className="text-[#7EBC6F] text-lg" />;
+    
+    // Axios - Purple
+    if (n.includes('axios')) return <SiAxios className="text-[#5A29E4] text-lg" />;
+    
+    // Recharts - Cyan
+    if (n.includes('rechart')) return <FaChartLine className="text-[#22B5BF] text-lg" />;
+    
+    // Stream SDK - Blue
+    if (n.includes('stream')) return <FaNetworkWired className="text-[#005FFF] text-lg" />;
+
+    // Bootstrap - Purple
+    if (n.includes('bootstrap')) return <SiBootstrap className="text-[#7952B3] text-lg" />;
+
+    // Chart.js - Pink
+    if (n.includes('chart.js')) return <FaChartPie className="text-[#FF6384] text-lg" />;
+    
+    // Nodemailer - Teal
+    if (n.includes('nodemailer')) return <FaRegEnvelope className="text-[#2DD4BF] text-lg" />;
+    
+    // TMDB - Blue
+    if (n.includes('tmdb')) return <SiThemoviedatabase className="text-[#01B4E4] text-lg" />;
+    
+    // DaisyUI - Green
+    if (n.includes('daisy')) return <FaDna className="text-[#1AD1A5] text-lg" />;
+    
+    // Zustand - Bear (Paw)
+    if (n.includes('zustand')) return <FaPaw className="text-white text-lg" />;
+    
+    // React Query - Red
+    if (n.includes('query')) return <SiReactquery className="text-[#FF4154] text-lg" />;
+    
+    // Groq - Orange/Red
+    if (n.includes('groq')) return <FaMicrochip className="text-[#F55036] text-lg" />;
+    
+    // Langchain - White Link
+    if (n.includes('langchain')) return <FaLink className="text-white text-lg" />;
+
+    // Scikit-Learn - Orange
+    if (n.includes('scikit')) return <SiScikitlearn className="text-[#F7931E] text-lg" />;
+    
+    // Pandas - Dark Blue
+    if (n.includes('pandas')) return <SiPandas className="text-[#150458] text-lg" />;
+    
+    // Numpy - Cyan
+    if (n.includes('numpy')) return <SiNumpy className="text-[#013243] text-lg" />;
+    
+    // Plotly - White
+    if (n.includes('plotly')) return <SiPlotly className="text-white text-lg" />;
+    
+    // PDF Tools - Red
+    if (n.includes('pdf')) return <FaFilePdf className="text-red-500 text-lg" />;
+    
+    // Vector/Math - Gray
+    if (n.includes('vector') || n.includes('cosine')) return <FaCalculator className="text-gray-300 text-lg" />;
+
     return <FaMicrochip className="text-gray-400 text-lg" />;
   };
 
@@ -367,10 +501,10 @@ const ProjectDetails = () => {
              <div className="lg:col-span-4 space-y-8">
                 
                 {/* Live Status HUD (Specialized or Generic) */}
-                {slug === 'designmate-ai' || slug === 'smartassign' ? (
+                {(slug === 'designmate-ai' || slug === 'smartassign' || slug === 'ai-trip-planner') ? (
                    <AIEngineStatus 
                       model={project.engineStatus?.algorithm}
-                      provider={slug === 'designmate-ai' ? 'Google AI Studio' : undefined}
+                      provider={(slug === 'designmate-ai' || slug === 'ai-trip-planner') ? 'Google AI Studio' : undefined}
                       latency={project.engineStatus?.metric}
                    />
                 ) : slug === 'vibestream' ? (

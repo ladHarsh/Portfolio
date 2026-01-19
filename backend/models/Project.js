@@ -37,18 +37,21 @@ const projectSchema = new mongoose.Schema(
         required: true,
       },
     ],
-    features: [
-      {
-        type: String,
-        required: true,
-      },
-    ],
+    features: [mongoose.Schema.Types.Mixed],
     outcome: {
       type: String,
       required: [true, "Outcome/impact is required"],
     },
     liveUrl: {
       type: String,
+      default: null,
+    },
+    videoUrl: {
+      type: String,
+      default: null,
+    },
+    engineStatus: {
+      type: Object,
       default: null,
     },
     githubUrl: {
