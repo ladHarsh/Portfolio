@@ -18,12 +18,12 @@ import {
 } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
 
-// 3D Tilt Card Component for Skill Categories
+// Mobile-First Skill Card Component
 const SkillNode = ({ category, index }) => {
    // Determine if the card is on the left side (even index) or right side (odd index) of the tree
    const isLeft = index % 2 === 0;
 
-   // Connector positioning classes
+   // Connector positioning classes - Only visible on desktop
    const lineClass = isLeft 
       ? "absolute top-1/2 -right-8 w-8 h-px bg-gray-800 hidden lg:block group-hover:bg-primary-500 transition-colors" 
       : "absolute top-1/2 -left-8 w-8 h-px bg-gray-800 hidden lg:block group-hover:bg-primary-500 transition-colors";
@@ -33,103 +33,112 @@ const SkillNode = ({ category, index }) => {
       : "absolute top-1/2 -left-8 w-2 h-2 bg-gray-800 rounded-full -translate-x-1/2 -translate-y-1/2 hidden lg:block group-hover:bg-primary-500 transition-colors";
 
    return (
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: index * 0.1 }}
+      <motion.article
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ delay: index * 0.05 }}
         className="relative group perspective-1000"
       >
-         {/* Connector Lines (Decoration) */}
-         <div className={lineClass}></div>
-         <div className={dotClass}></div>
+         {/* Connector Lines (Desktop Only) */}
+         <div className={lineClass} aria-hidden="true"></div>
+         <div className={dotClass} aria-hidden="true"></div>
 
-         <div className="relative overflow-hidden bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:border-primary-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(99,102,241,0.15)] group-hover:-translate-y-1">
-            {/* Background Grid */}
-            <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5 pointer-events-none"></div>
+         <div className="relative overflow-hidden bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:border-primary-500/50 active:border-primary-500/70 transition-all duration-500 hover:shadow-[0_0_30px_rgba(99,102,241,0.15)] group-hover:-translate-y-1 active:scale-[0.98]">
+            {/* Background Grid - Reduced opacity on mobile */}
+            <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-[0.02] sm:opacity-5 pointer-events-none" aria-hidden="true"></div>
             
-            {/* Header */}
-            <div className="flex items-center justify-between mb-6 relative z-10">
-               <div className="flex items-center gap-3">
-                  <div className="p-2 bg-white/5 rounded-lg border border-white/10 text-primary-400 group-hover:text-white group-hover:bg-primary-500 transition-colors duration-300">
-                     {category.icon}
+            {/* Header - Mobile optimized */}
+            <div className="flex items-center justify-between mb-4 sm:mb-6 relative z-10">
+               <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="p-1.5 sm:p-2 bg-white/5 rounded-lg border border-white/10 text-primary-400 group-hover:text-white group-hover:bg-primary-500 transition-colors duration-300">
+                     <div className="text-lg sm:text-2xl">
+                        {category.icon}
+                     </div>
                   </div>
                   <div className="text-left">
-                     <h3 className="font-display font-bold text-lg text-white tracking-wide leading-none mb-1">{category.title}</h3>
-                     <p className="text-[10px] font-mono text-gray-500 uppercase tracking-widest leading-none">{category.id}_MODULE::V1.0</p>
+                     <h3 className="font-display font-bold text-sm sm:text-base lg:text-lg text-white tracking-wide leading-none mb-1">{category.title}</h3>
+                     <p className="text-[9px] sm:text-[10px] font-mono text-gray-500 uppercase tracking-widest leading-none">{category.id}_MODULE::V1.0</p>
                   </div>
                </div>
-               <div className="hidden sm:block text-[10px] font-mono text-gray-600 px-2 py-1 border border-white/5 rounded">
+               <div className="hidden sm:block text-[9px] sm:text-[10px] font-mono text-gray-600 px-2 py-1 border border-white/5 rounded">
                   Status: ACTIVE
                </div>
             </div>
 
-            {/* Skills Grid */}
-            <div className="grid grid-cols-2 gap-3 relative z-10">
+            {/* Skills Grid - Mobile optimized */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 relative z-10">
                {category.skills.map((skill, i) => (
-                  <div key={i} className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors cursor-crosshair text-left">
-                     <span className="text-gray-400 text-lg group-hover/skill:text-primary-400 transition-colors">
+                  <div 
+                     key={i} 
+                     className="flex items-center gap-2 sm:gap-3 p-2 rounded-lg hover:bg-white/5 active:bg-white/10 transition-colors cursor-pointer text-left group/skill min-h-[44px] sm:min-h-0"
+                  >
+                     <span className="text-gray-400 text-base sm:text-lg group-hover/skill:text-primary-400 transition-colors flex-shrink-0" aria-hidden="true">
                         {skill.icon}
                      </span>
-                     <span className="text-sm font-mono text-gray-300">
+                     <span className="text-xs sm:text-sm font-mono text-gray-300 flex-1">
                         {skill.name}
                      </span>
                      
-                     {/* Proficiency Bar (Fake) */}
-                     <div className="ml-auto flex gap-0.5">
+                     {/* Proficiency Bar - Mobile optimized */}
+                     <div className="ml-auto flex gap-0.5 flex-shrink-0" aria-label={`Proficiency level ${skill.level || 2} out of 3`}>
                         {[1,2,3].map(d => (
-                           <div key={d} className={`w-1 h-3 rounded-full ${d <= (skill.level || 2) ? "bg-primary-500/50" : "bg-gray-800"}`}></div>
+                           <div 
+                              key={d} 
+                              className={`w-1 h-2.5 sm:h-3 rounded-full ${d <= (skill.level || 2) ? "bg-primary-500/50" : "bg-gray-800"}`}
+                              aria-hidden="true"
+                           ></div>
                         ))}
                      </div>
                   </div>
                ))}
             </div>
          </div>
-      </motion.div>
+      </motion.article>
    );
 };
 
-// --- NEW ANIMATION COMPONENT: THE NEURAL PROCESSOR ---
+// Neural Processor - Hidden on mobile for performance
 const NeuralProcessor = () => {
    return (
-      <div className="relative w-72 h-72 flex items-center justify-center">
+      <div className="relative w-64 sm:w-72 h-64 sm:h-72 flex items-center justify-center" aria-hidden="true">
          {/* 1. Orbiting Data Packet */}
-         <div className="absolute w-64 h-64 rounded-full border border-white/5 animate-[spin_10s_linear_infinite]">
-            <div className="absolute -top-1 left-1/2 w-4 h-2 bg-primary-500 rounded-full shadow-[0_0_15px_rgba(99,102,241,1)]"></div>
+         <div className="absolute w-56 sm:w-64 h-56 sm:h-64 rounded-full border border-white/5 animate-[spin_10s_linear_infinite]">
+            <div className="absolute -top-1 left-1/2 w-3 sm:w-4 h-1.5 sm:h-2 bg-primary-500 rounded-full shadow-[0_0_15px_rgba(99,102,241,1)]"></div>
          </div>
 
          {/* 2. Reverse Orbit */}
-         <div className="absolute w-48 h-48 rounded-full border border-dashed border-white/10 animate-[spin_15s_linear_infinite_reverse]"></div>
+         <div className="absolute w-40 sm:w-48 h-40 sm:h-48 rounded-full border border-dashed border-white/10 animate-[spin_15s_linear_infinite_reverse]"></div>
 
          {/* 3. Central Core (The Brain) */}
          <div className="relative z-10 flex flex-col items-center justify-center">
             <div className="relative">
                <div className="absolute inset-0 bg-primary-500/20 blur-xl rounded-full animate-pulse"></div>
-               <FaBrain className="text-7xl text-white relative z-10 drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]" />
+               <FaBrain className="text-5xl sm:text-7xl text-white relative z-10 drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]" />
             
-               {/* Floating Icons (Satellites) */}
+               {/* Floating Icons (Satellites) - Smaller on mobile */}
                <motion.div 
                   animate={{ y: [-5, 5, -5] }} 
                   transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -top-8 -right-8 p-2 bg-black/80 border border-white/20 rounded-lg"
+                  className="absolute -top-6 sm:-top-8 -right-6 sm:-right-8 p-1.5 sm:p-2 bg-black/80 border border-white/20 rounded-lg"
                >
-                  <FaCode className="text-cyan-400 text-lg" />
+                  <FaCode className="text-cyan-400 text-sm sm:text-lg" />
                </motion.div>
                
                <motion.div 
                    animate={{ y: [5, -5, 5] }} 
                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                   className="absolute -bottom-6 -left-8 p-2 bg-black/80 border border-white/20 rounded-lg"
+                   className="absolute -bottom-4 sm:-bottom-6 -left-6 sm:-left-8 p-1.5 sm:p-2 bg-black/80 border border-white/20 rounded-lg"
                >
-                   <FaServer className="text-purple-400 text-lg" />
+                   <FaServer className="text-purple-400 text-sm sm:text-lg" />
                </motion.div>
                
                <motion.div 
                    animate={{ x: [-5, 5, -5] }} 
                    transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-                   className="absolute top-1/2 -right-16 p-2 bg-black/80 border border-white/20 rounded-lg"
+                   className="absolute top-1/2 -right-12 sm:-right-16 p-1.5 sm:p-2 bg-black/80 border border-white/20 rounded-lg"
                >
-                   <SiTensorflow className="text-orange-400 text-lg" />
+                   <SiTensorflow className="text-orange-400 text-sm sm:text-lg" />
                </motion.div>
             </div>
          </div>
@@ -233,48 +242,52 @@ const Skills = () => {
   ];
 
   return (
-    <div className="w-full min-h-screen bg-black text-white relative overflow-hidden pt-24 pb-20 font-sans selection:bg-primary-500 selection:text-white">
+    <div className="w-full min-h-screen bg-black text-white relative overflow-hidden pt-16 sm:pt-20 md:pt-24 pb-12 sm:pb-16 md:pb-20 font-sans selection:bg-primary-500 selection:text-white">
       
-      {/* 0. Background Grid (Ambient) */}
-      <div className="fixed inset-0 z-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+      {/* 0. Background Grid - Reduced on mobile */}
+      <div className="fixed inset-0 z-0 bg-[linear-gradient(to_right,#80808005_1px,transparent_1px),linear-gradient(to_bottom,#80808005_1px,transparent_1px)] sm:bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:40px_40px]" aria-hidden="true"></div>
 
       <div className="section-container relative z-10">
         
-        {/* 1. Header: System Diagnostic */}
-        <div className="flex flex-col md:flex-row items-center justify-between mb-20 gap-8">
-           <div className="text-center md:text-left">
-              <div className="inline-flex items-center gap-2 px-3 py-1 border border-primary-500/30 bg-primary-500/10 rounded-full text-xs font-mono text-primary-400 mb-4">
-                 <FaTerminal className="w-3 h-3" />
+        {/* 1. Header - Mobile optimized */}
+        <div className="flex flex-col md:flex-row items-center justify-between mb-12 sm:mb-16 lg:mb-20 gap-6 sm:gap-8">
+           <div className="text-center md:text-left w-full md:w-auto">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 border border-primary-500/30 bg-primary-500/10 rounded-full text-[10px] sm:text-xs font-mono text-primary-400 mb-3 sm:mb-4">
+                 <FaTerminal className="w-2.5 h-2.5 sm:w-3 sm:h-3" aria-hidden="true" />
                  <span>RUNNING DIAGNOSTIC...</span>
               </div>
-              <h1 className="text-5xl md:text-7xl font-display font-bold mb-4">
-                 SYSTEM <br/>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-display font-bold mb-3 sm:mb-4 leading-tight">
+                 SYSTEM <br className="sm:hidden"/>
                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-purple-500">CAPABILITIES</span>
               </h1>
-              <p className="text-gray-400 max-w-xl text-lg">
+              <p className="text-gray-400 max-w-xl text-sm sm:text-base lg:text-lg leading-relaxed px-4 md:px-0">
                  Authorized personnel only. Below is a complete breakdown of the active neural modules and engineering protocols currently installed.
               </p>
            </div>
 
-           {/* 2. The New Animated Neural Processor */}
-           <div className="hidden md:block">
+           {/* 2. Neural Processor - Hidden on small mobile */}
+           <div className="hidden md:flex justify-center md:justify-end">
               <NeuralProcessor />
            </div>
         </div>
 
-        {/* 3. Skills Grid (Tree Structure) */}
-        <div className="relative">
-           {/* Central Line for Tree Layout on Desktop */}
-           <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary-500/50 via-gray-800 to-transparent hidden lg:block -translate-x-1/2"></div>
+        {/* 3. Skills Grid - Mobile-first layout */}
+        <section className="relative" aria-label="Skills and capabilities">
+           {/* Central Line for Tree Layout - Desktop Only */}
+           <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary-500/50 via-gray-800 to-transparent hidden lg:block -translate-x-1/2" aria-hidden="true"></div>
 
-           <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-32 gap-y-16">
+           {/* Grid - Vertical on mobile, tree on desktop */}
+           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-x-32 lg:gap-y-16">
               {skillCategories.map((category, index) => (
-                 <div key={index} className={index % 2 === 0 ? "lg:text-right" : "lg:text-left"}>
+                 <div 
+                    key={index} 
+                    className={`${index % 2 === 0 ? "lg:text-right" : "lg:text-left"}`}
+                 >
                     <SkillNode category={category} index={index} />
                  </div>
               ))}
            </div>
-        </div>
+        </section>
 
       </div>
     </div>
