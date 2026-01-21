@@ -4,17 +4,34 @@ import {
   FaPython, FaJava, FaJs, FaReact, FaNodeJs, FaHtml5, FaCss3, FaDocker, 
   FaGitAlt, FaGithub, FaDatabase, FaBrain, FaServer, FaCode, FaLaptopCode,
   FaCheckCircle, FaStar, FaTools, FaCloud, FaTerminal, FaNetworkWired, FaMicrochip,
-  FaRobot, FaLayerGroup, FaCubes, FaLock, FaKey
+  FaRobot, FaLayerGroup, FaCubes, FaLock, FaKey, FaChartLine, FaCogs, FaProjectDiagram, FaAws,
+  FaCalculator, FaFileWord, FaMousePointer
 } from "react-icons/fa";
 import { 
   SiNumpy, SiPandas, SiScikitlearn, SiMongodb, SiMysql, SiExpress, 
-  SiTailwindcss, SiPostman, SiVisualstudiocode, SiTensorflow, SiNextdotjs, SiTypescript, 
+  SiTailwindcss, SiPostman, SiTensorflow, SiNextdotjs, SiTypescript, 
   SiOpencv, SiKeras, SiPytorch, SiLinux, SiOpenai, 
-  SiRedis, SiPostgresql, SiGraphql, SiFastapi, SiVite, SiStreamlit, SiDaisyui, SiZod
+  SiRedis, SiPostgresql, SiGraphql, SiFastapi, SiVite, SiStreamlit, SiDaisyui, SiZod,
+  SiSocketdotio, SiReactquery, SiGoogle, SiKubernetes,
+  SiCplusplus, SiBootstrap, SiCanva, SiIntellijidea, SiPycharm, SiJupyter, SiAnaconda, 
+  SiVercel, SiHeroku, SiKaggle, SiRender
 } from "react-icons/si";
+import { VscVscode } from "react-icons/vsc";
 
 // 3D Tilt Card Component for Skill Categories
 const SkillNode = ({ category, index }) => {
+   // Determine if the card is on the left side (even index) or right side (odd index) of the tree
+   const isLeft = index % 2 === 0;
+
+   // Connector positioning classes
+   const lineClass = isLeft 
+      ? "absolute top-1/2 -right-8 w-8 h-px bg-gray-800 hidden lg:block group-hover:bg-primary-500 transition-colors" 
+      : "absolute top-1/2 -left-8 w-8 h-px bg-gray-800 hidden lg:block group-hover:bg-primary-500 transition-colors";
+      
+   const dotClass = isLeft
+      ? "absolute top-1/2 -right-8 w-2 h-2 bg-gray-800 rounded-full translate-x-1/2 -translate-y-1/2 hidden lg:block group-hover:bg-primary-500 transition-colors"
+      : "absolute top-1/2 -left-8 w-2 h-2 bg-gray-800 rounded-full -translate-x-1/2 -translate-y-1/2 hidden lg:block group-hover:bg-primary-500 transition-colors";
+
    return (
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
@@ -24,8 +41,8 @@ const SkillNode = ({ category, index }) => {
         className="relative group perspective-1000"
       >
          {/* Connector Lines (Decoration) */}
-         <div className="absolute top-1/2 -left-8 w-8 h-px bg-gray-800 hidden md:block group-hover:bg-primary-500 transition-colors"></div>
-         <div className="absolute top-1/2 -left-8 w-2 h-2 bg-gray-800 rounded-full -translate-x-1/2 -translate-y-1/2 hidden md:block group-hover:bg-primary-500 transition-colors"></div>
+         <div className={lineClass}></div>
+         <div className={dotClass}></div>
 
          <div className="relative overflow-hidden bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:border-primary-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(99,102,241,0.15)] group-hover:-translate-y-1">
             {/* Background Grid */}
@@ -33,13 +50,13 @@ const SkillNode = ({ category, index }) => {
             
             {/* Header */}
             <div className="flex items-center justify-between mb-6 relative z-10">
-               <div className="flex items-center gap-4">
-                  <div className="p-3 bg-white/5 rounded-lg border border-white/10 text-primary-400 group-hover:text-white group-hover:bg-primary-500 transition-colors duration-300">
+               <div className="flex items-center gap-3">
+                  <div className="p-2 bg-white/5 rounded-lg border border-white/10 text-primary-400 group-hover:text-white group-hover:bg-primary-500 transition-colors duration-300">
                      {category.icon}
                   </div>
-                  <div>
-                     <h3 className="font-display font-bold text-lg text-white tracking-wide">{category.title}</h3>
-                     <p className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">{category.id}_MODULE::V1.0</p>
+                  <div className="text-left">
+                     <h3 className="font-display font-bold text-lg text-white tracking-wide leading-none mb-1">{category.title}</h3>
+                     <p className="text-[10px] font-mono text-gray-500 uppercase tracking-widest leading-none">{category.id}_MODULE::V1.0</p>
                   </div>
                </div>
                <div className="hidden sm:block text-[10px] font-mono text-gray-600 px-2 py-1 border border-white/5 rounded">
@@ -50,7 +67,7 @@ const SkillNode = ({ category, index }) => {
             {/* Skills Grid */}
             <div className="grid grid-cols-2 gap-3 relative z-10">
                {category.skills.map((skill, i) => (
-                  <div key={i} className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors cursor-crosshair">
+                  <div key={i} className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors cursor-crosshair text-left">
                      <span className="text-gray-400 text-lg group-hover/skill:text-primary-400 transition-colors">
                         {skill.icon}
                      </span>
@@ -128,76 +145,89 @@ const NeuralProcessor = () => {
 const Skills = () => {
   const skillCategories = [
     {
+      id: "COGNITIVE_FOUNDATION",
+      title: "Computer Science & Math",
+      icon: <FaCalculator className="text-2xl" />,
+      skills: [
+        { name: "DSA", icon: <FaCode />, level: 3 },
+        { name: "DBMS", icon: <FaDatabase />, level: 3 },
+        { name: "OS / Linux", icon: <SiLinux />, level: 2 },
+        { name: "Computer Networks", icon: <FaNetworkWired />, level: 3 },
+        { name: "Software Eng", icon: <FaCogs />, level: 3 },
+        { name: "Linear Algebra", icon: <FaCalculator />, level: 3 },
+        { name: "Probability/Stats", icon: <FaChartLine />, level: 3 }
+      ]
+    },
+    {
       id: "NEURAL_CORE",
-      title: "Artificial Intelligence",
+      title: "AI / ML / Data Science",
       icon: <FaBrain className="text-2xl" />,
       skills: [
         { name: "Python", icon: <FaPython />, level: 3 },
         { name: "TensorFlow", icon: <SiTensorflow />, level: 2 },
-        { name: "PyTorch", icon: <SiPytorch />, level: 2 },
-        { name: "OpenAI API", icon: <SiOpenai />, level: 3 },
-        { name: "LangChain", icon: <FaRobot />, level: 3 },
         { name: "Scikit-Learn", icon: <SiScikitlearn />, level: 3 },
-        { name: "Pandas", icon: <SiPandas />, level: 3 },
-        { name: "NumPy", icon: <SiNumpy />, level: 3 },
+        { name: "Pandas / NumPy", icon: <SiPandas />, level: 3 },
+        { name: "Matplotlib/Seaborn", icon: <FaChartLine />, level: 3 },
+        { name: "EDA / Feature Eng", icon: <FaCogs />, level: 3 },
+        { name: "NLP / CNN / RNN", icon: <FaBrain />, level: 3 },
         { name: "OpenCV", icon: <SiOpencv />, level: 2 },
-        { name: "Keras", icon: <SiKeras />, level: 2 }
+        { name: "Kaggle", icon: <SiKaggle />, level: 2 }
+      ]
+    },
+     {
+      id: "GENERATIVE_NEXUS",
+      title: "Generative AI & LLMs",
+      icon: <FaRobot className="text-2xl" />,
+      skills: [
+        { name: "Gemini / OpenAI", icon: <SiGoogle />, level: 3 },
+        { name: "Claude / Groq", icon: <FaRobot />, level: 3 },
+        { name: "Prompt Eng", icon: <FaMicrochip />, level: 3 },
+        { name: "GitHub Copilot", icon: <FaGithub />, level: 3 },
+        { name: "Antigravity/Agents", icon: <FaRobot />, level: 3 }
       ]
     },
     {
-      id: "BACKEND_SYNDICATE",
-      title: "System Architecture",
+      id: "SYSTEM_ARCH",
+      title: "Backend & Languages",
       icon: <FaServer className="text-2xl" />,
       skills: [
-        { name: "Node.js", icon: <FaNodeJs />, level: 3 },
-        { name: "Express", icon: <SiExpress />, level: 3 },
-        { name: "FastAPI", icon: <SiFastapi />, level: 2 },
-        { name: "MongoDB", icon: <SiMongodb />, level: 3 },
-        { name: "PostgreSQL", icon: <SiPostgresql />, level: 2 },
-        { name: "Redis", icon: <SiRedis />, level: 2 },
-        { name: "GraphQL", icon: <SiGraphql />, level: 2 },
+        { name: "C / C++", icon: <SiCplusplus />, level: 2 },
+        { name: "Java", icon: <FaJava />, level: 2 },
+        { name: "Node.js / Express", icon: <FaNodeJs />, level: 3 },
+        { name: "FastAPI", icon: <SiFastapi />, level: 3 },
+        { name: "MongoDB Atlas", icon: <SiMongodb />, level: 3 },
+        { name: "MySQL / SQL", icon: <SiMysql />, level: 2 },
         { name: "REST APIs", icon: <FaNetworkWired />, level: 3 },
-        { name: "Java", icon: <FaJava />, level: 2 }
+        { name: "JWT / Bcrypt", icon: <FaKey />, level: 3 }
       ]
     },
     {
-      id: "FRONTEND_MATRIX",
-      title: "Interface Engineering",
+      id: "INTERFACE_MATRIX",
+      title: "Frontend & UI",
       icon: <FaLaptopCode className="text-2xl" />,
       skills: [
         { name: "React", icon: <FaReact />, level: 3 },
-        { name: "Next.js", icon: <SiNextdotjs />, level: 3 },
-        { name: "TypeScript", icon: <SiTypescript />, level: 2 },
-        { name: "Tailwind", icon: <SiTailwindcss />, level: 3 },
-        { name: "Three.js", icon: <FaCubes />, level: 2 },
-        { name: "Framer Motion", icon: <FaStar />, level: 2 },
         { name: "Vite", icon: <SiVite />, level: 3 },
+        { name: "Tailwind CSS", icon: <SiTailwindcss />, level: 3 },
+        { name: "Bootstrap", icon: <SiBootstrap />, level: 3 },
+        { name: "HTML5 / CSS3", icon: <FaHtml5 />, level: 3 },
+        { name: "Canva", icon: <SiCanva />, level: 2 },
         { name: "Streamlit", icon: <SiStreamlit />, level: 3 }
       ]
     },
     {
       id: "INFRA_GRID",
-      title: "DevOps & Tools",
-      icon: <FaDocker className="text-2xl" />,
+      title: "DevOps, Tools & Cloud",
+      icon: <FaCloud className="text-2xl" />,
       skills: [
+        { name: "Git / GitHub", icon: <FaGithub />, level: 3 },
         { name: "Docker", icon: <FaDocker />, level: 2 },
-        { name: "Linux", icon: <SiLinux />, level: 2 },
-        { name: "Git", icon: <FaGitAlt />, level: 3 },
+        { name: "VS Code / Cursor", icon: <VscVscode />, level: 3 },
+        { name: "IntelliJ / PyCharm", icon: <SiIntellijidea />, level: 2 },
+        { name: "Jupyter / Colab", icon: <SiJupyter />, level: 3 },
         { name: "Postman", icon: <SiPostman />, level: 3 },
-        { name: "VS Code", icon: <SiVisualstudiocode />, level: 3 },
-        { name: "Render/Vercel", icon: <FaCloud />, level: 3 }
-      ]
-    },
-    {
-      id: "SECURITY_LAYER",
-      title: "Auth & Security",
-      icon: <FaLock className="text-2xl" />,
-      skills: [
-        { name: "JWT", icon: <FaLock />, level: 3 },
-        { name: "Zod Validation", icon: <SiZod />, level: 3 },
-        { name: "Bcrypt", icon: <FaKey />, level: 3 }, // FaKey wasn't imported, using FaLock fallback if needed, but wait, FaKey isn't in my import list above? checking...
-        // FaKey isn't in my import list. Use FaLock.
-        { name: "Auth Pipelines", icon: <FaCheckCircle />, level: 3 }
+        { name: "Vercel / Render", icon: <SiVercel />, level: 3 },
+        { name: "MS Word", icon: <FaFileWord />, level: 3 }
       ]
     }
   ];
