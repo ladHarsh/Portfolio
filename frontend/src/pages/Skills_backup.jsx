@@ -29,7 +29,7 @@ const SkillNode = ({ category, index }) => {
       : "absolute top-1/2 -left-8 w-8 h-px bg-gray-800 hidden lg:block group-hover:bg-primary-500 transition-colors";
       
    const dotClass = isLeft
-      ? "absolute top-1/2 -right-8 w-2 h-2 bg-gray-800 rounded-full translate-x/2 -translate-y-1/2 hidden lg:block group-hover:bg-primary-500 transition-colors"
+      ? "absolute top-1/2 -right-8 w-2 h-2 bg-gray-800 rounded-full translate-x-1/2 -translate-y-1/2 hidden lg:block group-hover:bg-primary-500 transition-colors"
       : "absolute top-1/2 -left-8 w-2 h-2 bg-gray-800 rounded-full -translate-x-1/2 -translate-y-1/2 hidden lg:block group-hover:bg-primary-500 transition-colors";
 
    return (
@@ -298,18 +298,10 @@ const Skills = () => {
            </div>
         </div>
 
-
         {/* 2. CATEGORY NAVIGATION - Mobile Sticky Filter */}
         <div className="md:hidden sticky top-16 z-20 bg-black/95 backdrop-blur-md border-b border-white/10 -mx-4 px-4 py-3 mb-8">
-           {/* Scrollable Container - CSS Mask Fade */}
-           <div 
-              className="overflow-x-auto -mx-4 px-4 pr-8 no-scrollbar"
-              style={{
-                maskImage: 'linear-gradient(to right, black 85%, transparent 100%)',
-                WebkitMaskImage: 'linear-gradient(to right, black 85%, transparent 100%)'
-              }}
-           >
-              <div className="inline-flex gap-2 min-w-max pb-2">
+           <div className="overflow-x-auto pb-2 -mx-4 px-4">
+              <div className="inline-flex gap-2 min-w-max">
                  {mobileOrderedCategories.map((cat, idx) => (
                     <a 
                        key={cat.id}
@@ -325,7 +317,7 @@ const Skills = () => {
 
         {/* 3. SKILLS GRID */}
         <section className="relative" aria-label="Skills and capabilities">
-           {/* MOBILE LAYOUT (< md) - "Stacked Schematic" */}
+           {/* MOBILE LAYOUT (< md) - "Deconstructed HUD" */}
            <div className="block md:hidden space-y-12">
                {mobileOrderedCategories.map((category) => {
                   const isAICore = category.id.includes('NEURAL') || category.id.includes('GENERATIVE');
@@ -340,7 +332,7 @@ const Skills = () => {
                            </h2>
                         </div>
 
-                        {/* Neural Grid - Stacked Schematic Layout */}
+                        {/* Neural Grid - High Fidelity Micro-Modules */}
                         <div className="grid grid-cols-2 gap-3">
                            {category.skills.map((skill, idx) => {
                               // Proficiency Logic for Segmented Ticks
@@ -350,7 +342,7 @@ const Skills = () => {
                                  <div 
                                     key={idx} 
                                     className={`
-                                       relative overflow-hidden group p-3 rounded-lg min-h-[80px] h-auto flex flex-col
+                                       relative overflow-hidden group p-3 rounded-lg
                                        bg-white/[0.03] backdrop-blur-sm border border-white/10
                                        ${isAICore ? 'border-l-2 border-l-cyan-500' : ''}
                                     `}
@@ -358,37 +350,35 @@ const Skills = () => {
                                     {/* Hover Glow */}
                                     <div className="absolute inset-0 bg-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
 
-                                    {/* Top Row: Icon + Name (Full Width) */}
-                                    <div className="flex items-center gap-2 mb-auto">
-                                       <span className="text-gray-400 text-xs group-hover:text-white transition-colors shrink-0">
-                                          {skill.icon}
-                                       </span>
-                                       <span className="text-[11px] font-bold text-white whitespace-normal break-words leading-tight">
-                                          {skill.name}
+                                    {/* Top: Icon + Name + Tag */}
+                                    <div className="flex items-center justify-between mb-3">
+                                       <div className="flex items-center gap-2 overflow-hidden">
+                                          <span className="text-gray-400 text-xs group-hover:text-white transition-colors shrink-0">
+                                             {skill.icon}
+                                          </span>
+                                          <span className="text-xs font-bold text-white truncate">
+                                             {skill.name}
+                                          </span>
+                                       </div>
+                                       {/* Text Hierarchy: Core Tag */}
+                                       <span className="text-[10px] font-mono tracking-wider text-emerald-400 shrink-0 ml-1">
+                                          {skill.level === 3 ? '// CORE' : ':: STD'}
                                        </span>
                                     </div>
 
-                                    {/* Bottom Row: Progress Bar + Tag */}
-                                    <div className="flex items-center justify-between gap-2 mt-2">
-                                       {/* Segmented Ticks Progress Bar */}
-                                       <div className="flex gap-0.5 flex-1">
-                                          {[1, 2, 3, 4, 5].map((block) => (
-                                             <div 
-                                                key={block}
-                                                className={`
-                                                   h-1.5 flex-1 rounded-[1px]
-                                                   ${block <= activeBlocks 
-                                                      ? 'bg-cyan-500 shadow-[0_0_8px_rgba(6,182,212,0.6)]' 
-                                                      : 'bg-gray-800'}
-                                                `}
-                                             ></div>
-                                          ))}
-                                       </div>
-                                       
-                                       {/* Proficiency Tag */}
-                                       <span className="text-[9px] font-mono text-cyan-500 whitespace-nowrap">
-                                          {skill.level === 3 ? ':: CORE' : '// STD'}
-                                       </span>
+                                    {/* Bottom: Segmented Ticks Progress Bar */}
+                                    <div className="flex gap-0.5 mt-auto">
+                                       {[1, 2, 3, 4, 5].map((block) => (
+                                          <div 
+                                             key={block}
+                                             className={`
+                                                h-1.5 flex-1 rounded-[1px]
+                                                ${block <= activeBlocks 
+                                                   ? 'bg-cyan-500 shadow-[0_0_8px_rgba(6,182,212,0.6)]' 
+                                                   : 'bg-gray-800'}
+                                             `}
+                                          ></div>
+                                       ))}
                                     </div>
                                  </div>
                               );
