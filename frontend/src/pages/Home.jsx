@@ -22,6 +22,8 @@ import {
   SiTensorflow,
   SiDocker,
   SiMongodb,
+  SiTailwindcss,
+  SiPostgresql,
 } from "react-icons/si";
 import ProjectCard from "../components/projects/ProjectCard";
 import LoadingSpinner from "../components/ui/LoadingSpinner";
@@ -111,133 +113,200 @@ const Home = () => {
       {/* 0. NEURAL BACKGROUND LAYER */}
       <NeuralBackground />
 
-      {/* 1. HERO: THE SYSTEM CORE - Mobile Optimized */}
-      <section className="min-h-screen flex items-center justify-center relative z-10 pt-16 sm:pt-20 px-4 sm:px-6">
-        <div className="section-container w-full grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
+      {/* 1. HERO: THE SYSTEM CORE - Final Mobile Polish */}
+      <section className="min-h-screen flex items-center justify-center relative z-10 pt-20 sm:pt-24 px-4 sm:px-6">
+        <div className="section-container w-full">
           
-          {/* Left: Data Stream - Mobile First */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-6 sm:space-y-8 order-2 lg:order-1"
-          >
-            {/* Status Badge - Mobile optimized */}
-            <div className="inline-flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 border border-primary-500/30 bg-primary-500/10 rounded-none backdrop-blur-md">
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" aria-hidden="true"></div>
-              <span className="font-mono text-[10px] sm:text-xs text-primary-400 tracking-[0.15em] sm:tracking-[0.2em] uppercase">
-                System Identity :: Architect
-              </span>
-            </div>
-
-            {/* Main Heading - Responsive Typography */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-tight">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-purple-400">
-                NEURAL
-              </span>
-              <br />
-              ARCHITECT
-            </h1>
-
-            {/* Mission Profile - Mobile optimized */}
-            <div className="p-4 sm:p-6 border-l-2 border-primary-500 bg-white/5 backdrop-blur-sm rounded-r-xl max-w-xl">
-              <p className="font-mono text-xs sm:text-sm text-gray-400 mb-2">
-                // MISSION_PROFILE
-              </p>
-              <p className="text-sm sm:text-base lg:text-lg text-gray-200 leading-relaxed">
-                I engineer{" "}
-                <span className="text-primary-400 font-bold">Intelligence</span>
-                , not just interfaces. My focus is absolute: advancing as an AI
-                Engineer to build the autonomous systems of tomorrow. I fuse
-                robust Software Architecture with Machine Learning to create
-                intelligent, adaptive solutions.
-              </p>
-            </div>
-
-            {/* CTA Buttons - Touch Optimized */}
-            <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 pt-2 sm:pt-4">
-              <Link
-                to="/projects"
-                className="relative overflow-hidden group px-6 sm:px-8 py-4 bg-primary-600 font-bold text-white tracking-wider uppercase text-xs sm:text-sm min-h-[48px] flex items-center justify-center rounded-sm"
-                aria-label="View all projects"
-              >
-                <span className="relative z-10 flex items-center gap-2">
-                  <span className="hidden sm:inline">Initialize Portfolio</span>
-                  <span className="sm:hidden">Projects</span>
-                  <FaArrowRight aria-hidden="true" />
-                </span>
-                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" aria-hidden="true"></div>
-              </Link>
-              <Link
-                to="/about"
-                className="px-6 sm:px-8 py-4 border-2 border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 active:bg-white/15 hover:border-white/30 transition-all font-mono text-xs sm:text-sm uppercase tracking-wider text-gray-300 min-h-[48px] flex items-center justify-center rounded-sm"
-                aria-label="Learn more about me"
-              >
-                <span className="hidden sm:inline">Access Dossier</span>
-                <span className="sm:hidden">About</span>
-              </Link>
-            </div>
-          </motion.div>
-
-          {/* Right: The Core Visual - Mobile Optimized */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative flex justify-center perspective-1000 will-change-transform order-1 lg:order-2"
-          >
-            {/* Holographic Circle - Reduced on mobile */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-primary-500/20 sm:from-primary-500/30 to-purple-500/10 sm:to-purple-500/20 rounded-full blur-[60px] sm:blur-[100px] animate-pulse" aria-hidden="true"></div>
-
-            {/* Tech Orbitals - Hidden on mobile for performance */}
-            <div className="hidden sm:block absolute w-[120%] h-[120%] border border-white/10 rounded-full animate-[spin_60s_linear_infinite] will-change-transform" aria-hidden="true"></div>
-            <div className="hidden sm:block absolute w-[140%] h-[140%] border border-dashed border-primary-500/20 rounded-full animate-[spin_80s_linear_infinite_reverse] will-change-transform" aria-hidden="true"></div>
-
-            {/* The "Card" - Responsive sizing */}
-            <div className="relative z-10 w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[360px] h-[24rem] sm:h-[26rem] lg:h-[28rem] bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl group transition-transform duration-500 active:scale-[0.98] lg:hover:scale-[1.02]">
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true"></div>
-
-              {/* Scanner Line */}
-              <div className="absolute top-0 w-full h-1 bg-primary-400 shadow-[0_0_15px_rgba(99,102,241,1)] animate-[scan_4s_ease-in-out_infinite] z-20 opacity-30" aria-hidden="true"></div>
-
-              {/* Profile Image - Lazy loading */}
-              <img
-                src={profileImage}
-                alt="Harsh Lad - AI Engineer and Full Stack Developer"
-                loading="lazy"
-                className="w-full h-full object-cover opacity-90 active:opacity-100 lg:group-hover:opacity-100 transition-all duration-500 ease-in-out grayscale contrast-[1.2] brightness-90 active:grayscale-0 active:contrast-100 active:brightness-100 lg:group-hover:grayscale-0 lg:group-hover:contrast-100 lg:group-hover:brightness-100 lg:group-hover:scale-[1.02]"
-                style={{
-                  maskImage:
-                    "radial-gradient(circle at center, black 50%, transparent 90%)",
-                  WebkitMaskImage:
-                    "radial-gradient(circle at center, black 50%, transparent 90%)",
-                }}
-              />
-
-              {/* Holographic Tint */}
-              <div className="absolute inset-0 bg-primary-500 mix-blend-overlay opacity-30 group-hover:opacity-0 group-active:opacity-0 transition-opacity duration-500 pointer-events-none z-10" aria-hidden="true"></div>
-
-              {/* Vignette Overlay */}
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,rgba(0,0,0,0.8)_100%)] pointer-events-none z-10" aria-hidden="true"></div>
-
-              {/* HUD Overlays - Mobile optimized */}
-              <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 z-20">
-                <div className="flex justify-between text-[10px] sm:text-xs font-mono text-primary-300 mb-2">
-                  <span>STATUS: ONLINE</span>
-                  <span>CPU: 98%</span>
-                </div>
-                <div className="h-1 w-full bg-white/10 rounded-full overflow-hidden">
-                  <div className="h-full bg-primary-500 w-[98%] shadow-[0_0_10px_rgba(99,102,241,0.8)]"></div>
-                </div>
-                <h2 className="text-lg sm:text-xl font-bold font-display mt-3 sm:mt-4 text-white">
-                  Harsh Lad
-                </h2>
-                <p className="text-[10px] sm:text-xs font-mono text-gray-400">
-                  AI_ENGINEER :: V.2.0
+          {/* Mobile-First Layout: Title → Profile */}
+          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-16 items-center">
+            
+            {/* Content Column - Clean & Open */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="space-y-5 sm:space-y-6 lg:space-y-8 w-full order-1 lg:order-1"
+            >
+              {/* Main Heading - Improved Spacing */}
+              <div>
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-[1.15] sm:leading-[1.1]">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-purple-400">
+                    NEURAL
+                  </span>
+                  <br />
+                  ARCHITECT
+                </h1>
+                {/* System Identity - Now a Subtitle */}
+                <p className="text-xs sm:text-sm font-mono text-cyan-400/80 tracking-widest mt-2 sm:mt-3 uppercase">
+                  System Identity :: Architect
                 </p>
               </div>
-            </div>
-          </motion.div>
+
+              {/* Mission Profile - Lighter Text */}
+              <div className="p-3 sm:p-4 lg:p-6 border-l-2 border-primary-500 bg-white/5 backdrop-blur-sm rounded-r-xl max-w-xl">
+                <p className="font-mono text-[10px] sm:text-xs text-gray-500 mb-1 sm:mb-2">
+                  // MISSION_PROFILE
+                </p>
+                <p className="text-xs sm:text-sm lg:text-base xl:text-lg text-gray-400 leading-relaxed">
+                  I engineer{" "}
+                  <span className="text-primary-400 font-bold">Intelligence</span>
+                  , not just interfaces. My focus is absolute: advancing as an AI
+                  Engineer to build the autonomous systems of tomorrow. I fuse
+                  robust Software Architecture with Machine Learning to create
+                  intelligent, adaptive solutions.
+                </p>
+              </div>
+
+              {/* CTA Buttons - 2-Column Grid on Mobile */}
+              <div className="grid grid-cols-2 gap-3 sm:gap-4 pt-1">
+                <Link
+                  to="/projects"
+                  className="relative overflow-hidden group px-4 sm:px-6 py-4 bg-primary-600 font-bold text-white tracking-wider uppercase text-xs sm:text-sm min-h-[48px] flex items-center justify-center rounded-sm col-span-2 sm:col-span-1"
+                  aria-label="View all projects"
+                >
+                  <span className="relative z-10 flex items-center gap-2">
+                    <span className="hidden sm:inline">Projects</span>
+                    <span className="sm:hidden">Projects</span>
+                    <FaArrowRight aria-hidden="true" />
+                  </span>
+                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" aria-hidden="true"></div>
+                </Link>
+                <Link
+                  to="/about"
+                  className="px-4 sm:px-6 py-4 bg-white/5 backdrop-blur-sm hover:bg-white/10 active:bg-white/15 transition-all font-mono text-xs sm:text-sm uppercase tracking-wider text-gray-300 min-h-[48px] flex items-center justify-center rounded-sm col-span-2 sm:col-span-1"
+                  aria-label="Learn more about me"
+                >
+                  <span className="hidden sm:inline">About</span>
+                  <span className="sm:hidden">About</span>
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* Profile Card - Transforms on Mobile */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative w-full order-2 lg:order-2"
+            >
+              {/* Desktop: Portrait Card (md and up) */}
+              <div className="hidden md:flex justify-center perspective-1000 will-change-transform">
+                {/* Holographic Circle */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-primary-500/30 to-purple-500/20 rounded-full blur-[100px] animate-pulse" aria-hidden="true"></div>
+
+                {/* Tech Orbitals */}
+                <div className="absolute w-[120%] h-[120%] border border-white/10 rounded-full animate-[spin_60s_linear_infinite] will-change-transform" aria-hidden="true"></div>
+                <div className="absolute w-[140%] h-[140%] border border-dashed border-primary-500/20 rounded-full animate-[spin_80s_linear_infinite_reverse] will-change-transform" aria-hidden="true"></div>
+
+                {/* The Portrait Card */}
+                <div className="relative z-10 w-full max-w-[320px] lg:max-w-[360px] h-[26rem] lg:h-[28rem] bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden shadow-2xl group transition-transform duration-500 hover:scale-[1.02]">
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true"></div>
+
+                  {/* Scanner Line */}
+                  <div className="absolute top-0 w-full h-1 bg-primary-400 shadow-[0_0_15px_rgba(99,102,241,1)] animate-[scan_4s_ease-in-out_infinite] z-20 opacity-30" aria-hidden="true"></div>
+
+                  {/* Profile Image */}
+                  <img
+                    src={profileImage}
+                    alt="Harsh Lad - AI Engineer and Full Stack Developer"
+                    loading="lazy"
+                    className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-500 ease-in-out grayscale contrast-[1.2] brightness-90 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100 group-hover:scale-[1.02]"
+                    style={{
+                      maskImage:
+                        "radial-gradient(circle at center, black 50%, transparent 90%)",
+                      WebkitMaskImage:
+                        "radial-gradient(circle at center, black 50%, transparent 90%)",
+                    }}
+                  />
+
+                  {/* Holographic Tint */}
+                  <div className="absolute inset-0 bg-primary-500 mix-blend-overlay opacity-30 group-hover:opacity-0 transition-opacity duration-500 pointer-events-none z-10" aria-hidden="true"></div>
+
+                  {/* Vignette Overlay */}
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,rgba(0,0,0,0.8)_100%)] pointer-events-none z-10" aria-hidden="true"></div>
+
+                  {/* HUD Overlays */}
+                  <div className="absolute bottom-6 left-6 right-6 z-20">
+                    <div className="flex justify-between text-xs font-mono text-primary-300 mb-2">
+                      <span>STATUS: ONLINE</span>
+                      <span>CPU: 98%</span>
+                    </div>
+                    <div className="h-1 w-full bg-white/10 rounded-full overflow-hidden">
+                      <div className="h-full bg-primary-500 w-[98%] shadow-[0_0_10px_rgba(99,102,241,0.8)]"></div>
+                    </div>
+                    <h2 className="text-xl font-bold font-display mt-4 text-white">
+                      Harsh Lad
+                    </h2>
+                    <p className="text-xs font-mono text-gray-400">
+                      AI_ENGINEER :: V.2.0
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Mobile: Full-Width Bottom HUD "Iron Man Style" (<md) */}
+              <div className="md:hidden w-full">
+                {/* Avatar with Fade-In Effect */}
+                <div className="relative w-full">
+                  {/* Main Container - Full Width, Dark Glass */}
+                  <div className="w-full bg-black/80 backdrop-blur-xl border-t border-white/10 shadow-2xl">
+                    {/* Fade-in Gradient Mask */}
+                    <div 
+                      className="absolute inset-0 pointer-events-none" 
+                      style={{
+                        background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 50%, transparent 100%)'
+                      }}
+                      aria-hidden="true"
+                    ></div>
+                    
+                    {/* Content */}
+                    <div className="relative flex items-center gap-3 sm:gap-4 p-4 sm:p-5">
+                      {/* Left: Small Avatar */}
+                      <div className="relative flex-shrink-0">
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-lg overflow-hidden border-2 border-primary-500/40 shadow-lg">
+                          <img
+                            src={profileImage}
+                            alt="Harsh Lad"
+                            loading="lazy"
+                            className="w-full h-full object-cover grayscale contrast-[1.2] brightness-90"
+                          />
+                          {/* Holographic Tint */}
+                          <div className="absolute inset-0 bg-primary-500 mix-blend-overlay opacity-30 pointer-events-none"></div>
+                        </div>
+                        {/* Scanner Line */}
+                        <div className="absolute top-0 left-0 right-0 h-0.5 bg-primary-400 shadow-[0_0_10px_rgba(99,102,241,1)] animate-[scan_4s_ease-in-out_infinite] opacity-50" aria-hidden="true"></div>
+                      </div>
+
+                      {/* Right: Identity Data */}
+                      <div className="flex-1 min-w-0">
+                        <h2 className="text-sm sm:text-base font-bold font-display text-white mb-0.5 truncate">
+                          Harsh Lad
+                        </h2>
+                        <p className="text-[9px] sm:text-[10px] font-mono text-gray-400 mb-2">
+                          AI_ENGINEER :: V.2.0
+                        </p>
+                        
+                        {/* Status Indicator - Compact */}
+                        <div className="flex items-center gap-2 text-[9px] sm:text-[10px]">
+                          <div className="flex items-center gap-1">
+                            <div className="w-1 h-1 bg-green-500 rounded-full animate-pulse"></div>
+                            <span className="font-mono text-green-400 uppercase tracking-wider">Online</span>
+                          </div>
+                          <span className="text-gray-600">•</span>
+                          <span className="font-mono text-primary-300">CPU: 98%</span>
+                        </div>
+                        
+                        {/* Mini Progress Bar */}
+                        <div className="h-0.5 w-full bg-white/10 rounded-full overflow-hidden mt-1.5">
+                          <div className="h-full bg-primary-500 w-[98%] shadow-[0_0_8px_rgba(99,102,241,0.6)]"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
 
         {/* Scroll Hint - Hidden on mobile */}
@@ -250,9 +319,10 @@ const Home = () => {
       </section>
 
       {/* 2. CAPABILITIES GRID - Mobile Optimized */}
+      {/* 2. CAPABILITIES GRID - Mobile Optimized */}
       <section className="py-16 sm:py-24 lg:py-32 relative z-10" aria-labelledby="capabilities-heading">
         <div className="section-container">
-          <div className="flex items-center gap-3 sm:gap-4 mb-12 sm:mb-16">
+          <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-16">
             <span className="h-px flex-1 bg-gradient-to-r from-transparent to-white/20" aria-hidden="true"></span>
             <div className="flex items-center gap-2 px-3 sm:px-4 py-2 border border-primary-500/30 bg-primary-500/10 rounded-full">
               <FaNetworkWired className="text-primary-400 text-sm sm:text-base" aria-hidden="true" />
@@ -263,7 +333,8 @@ const Home = () => {
             <span className="h-px flex-1 bg-gradient-to-l from-transparent to-white/20" aria-hidden="true"></span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          {/* Horizontal Scroll on Mobile, Grid on Desktop */}
+          <div className="flex flex-row overflow-x-auto snap-x snap-mandatory px-4 gap-4 pb-8 -mx-4 sm:mx-0 sm:pb-0 sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-6 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
             {[
               {
                 icon: FaBrain,
@@ -292,12 +363,8 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ delay: idx * 0.1 }}
-                whileHover={{
-                  scale: 1.05,
-                  borderColor: "rgba(99,102,241,0.5)",
-                }}
-                whileTap={{ scale: 0.98 }}
-                className="relative bg-black/40 backdrop-blur-sm border border-white/10 p-6 sm:p-8 rounded-xl sm:rounded-2xl transition-all group overflow-hidden"
+                tabIndex={0}
+                className="relative bg-black/40 backdrop-blur-sm border border-white/10 p-6 sm:p-8 rounded-xl sm:rounded-2xl transition-all group overflow-hidden min-w-[85vw] sm:min-w-0 snap-center focus:outline-none focus:border-primary-500/50"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true"></div>
 
@@ -314,6 +381,17 @@ const Home = () => {
                 </div>
               </motion.article>
             ))}
+            
+            {/* Spacer for mobile to show last card fully if needed, or margin handles it */}
+            <div className="w-1 sm:hidden"></div>
+          </div>
+
+          {/* Swipe Hint - Mobile Only */}
+          <div className="flex sm:hidden justify-center mt-2">
+             <div className="flex items-center gap-2 text-[10px] font-mono text-primary-400/60 animate-pulse">
+                <span>SWIPE TO INSPECT</span>
+                <span className="text-lg">→</span>
+             </div>
           </div>
         </div>
       </section>
@@ -359,74 +437,103 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 4. TECH STACK - Mobile Optimized */}
-      <section className="py-12 sm:py-16 lg:py-20 border-t border-white/5 relative z-10" aria-labelledby="tech-stack-heading">
-        <div className="section-container">
-          <h2 id="tech-stack-heading" className="sr-only">Technology Stack</h2>
-          <p className="text-center font-mono text-[10px] sm:text-xs text-gray-600 mb-6 sm:mb-8 uppercase tracking-widest">
-            Powered By
-          </p>
-          <div className="flex flex-wrap justify-center gap-6 sm:gap-10 md:gap-16 opacity-40 sm:opacity-50 grayscale hover:grayscale-0 transition-all duration-700">
-            <SiPython className="text-3xl sm:text-4xl lg:text-5xl hover:text-yellow-400 transition-colors" aria-label="Python" />
-            <SiTensorflow className="text-3xl sm:text-4xl lg:text-5xl hover:text-orange-500 transition-colors" aria-label="TensorFlow" />
-            <SiReact className="text-3xl sm:text-4xl lg:text-5xl hover:text-cyan-400 transition-colors" aria-label="React" />
-            <SiNodedotjs className="text-3xl sm:text-4xl lg:text-5xl hover:text-green-500 transition-colors" aria-label="Node.js" />
-            <SiDocker className="text-3xl sm:text-4xl lg:text-5xl hover:text-blue-500 transition-colors" aria-label="Docker" />
-          </div>
-        </div>
-      </section>
-
-      {/* 5. CTA: SECURE HANDSHAKE - Mobile Optimized */}
+      {/* 5. CTA: SECURE HANDSHAKE (Moved UP) - The "Uplink Terminal" */}
       <section className="py-16 sm:py-24 lg:py-32 relative z-10 text-center overflow-hidden" aria-labelledby="cta-heading">
-        {/* Background Pulse - Reduced on mobile */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[400px] md:w-[600px] h-[300px] sm:h-[400px] md:h-[600px] bg-primary-900/10 sm:bg-primary-900/20 rounded-full blur-[80px] sm:blur-[120px] animate-pulse" aria-hidden="true"></div>
+        {/* Background Pulse & Radar Scan */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-primary-900/10 rounded-full blur-[80px] animate-pulse" aria-hidden="true"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150vw] h-[150vw] bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0deg,transparent_60deg,rgba(59,130,246,0.05)_90deg,transparent_90deg)] animate-[spin_5s_linear_infinite] opacity-50 pointer-events-none" aria-hidden="true"></div>
 
         <div className="section-container relative z-20">
-          <h2 id="cta-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-display font-bold text-white mb-6 sm:mb-8 px-4">
-            INITIATE{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-purple-400">
-              COLLABORATION
+          
+          {/* Signal Badge */}
+          <div className="flex justify-center mb-6">
+             <div className="flex items-center gap-2 px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full backdrop-blur-sm">
+                <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_5px_rgba(34,197,94,0.8)]"></span>
+                <span className="text-[10px] sm:text-xs font-mono text-green-400 tracking-widest uppercase">
+                   ● UPLINK ESTABLISHED
+                </span>
+             </div>
+          </div>
+
+          <h2 id="cta-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-display font-bold text-white mb-6 sm:mb-8 px-4 leading-[0.9] sm:leading-tight flex flex-col items-center">
+            <span>INITIATE</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-purple-400 flex items-center gap-1">
+              COLLABORATION<span className="text-primary-400 animate-pulse">_</span>
             </span>
           </h2>
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-400 mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed px-4">
-            I am actively accepting signals for high-impact engineering roles.{" "}
-            <br className="hidden sm:inline" />
-            If your team requires a cognitive upgrade, transmit your protocol
-            below.
+
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-400 mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed px-4 font-mono">
+            // Awaiting encrypted transmission protocol...
           </p>
 
-          <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 px-4">
+          {/* Holographic Keys */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 max-w-md mx-auto sm:max-w-none sm:flex sm:justify-center gap-4 px-4">
             <a
               href="mailto:harshlad.dev@gmail.com"
-              className="flex items-center justify-center gap-3 px-8 sm:px-10 py-4 sm:py-5 bg-white text-black font-bold text-sm sm:text-base lg:text-lg hover:bg-primary-400 active:bg-primary-500 transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.2)] min-h-[52px] rounded-sm"
-              aria-label="Send email to Harsh Lad"
+              className="flex items-center justify-center gap-2 px-6 py-4 bg-transparent border border-blue-500/50 text-blue-400 font-bold font-mono text-xs sm:text-sm tracking-widest hover:bg-blue-500/10 hover:border-blue-400 hover:text-blue-300 hover:shadow-[inset_0_0_20px_rgba(59,130,246,0.4)] active:scale-[0.98] transition-all duration-300 min-h-[52px] rounded-sm group uppercase shadow-[inset_0_0_10px_rgba(59,130,246,0.1)]"
+              aria-label="Send email"
             >
-              <FaEnvelope aria-hidden="true" /> 
-              <span className="hidden sm:inline">TRANSMIT MAIL</span>
-              <span className="sm:hidden">EMAIL</span>
+              <FaEnvelope className="text-lg group-hover:animate-pulse" /> 
+              <span>TRANSMIT SIGNAL -&gt;</span>
             </a>
             <a
               href="https://linkedin.com/in/harsh-lad-dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 px-8 sm:px-10 py-4 sm:py-5 border-2 border-white/20 text-white font-bold text-sm sm:text-base lg:text-lg hover:bg-white/10 active:bg-white/15 hover:border-white/40 transition-all min-h-[52px] rounded-sm"
+              className="flex items-center justify-center gap-2 px-6 py-4 bg-transparent border border-white/20 text-white font-bold font-mono text-xs sm:text-sm tracking-widest hover:bg-white/5 hover:border-white/40 active:scale-[0.98] transition-all duration-300 min-h-[52px] rounded-sm uppercase"
               aria-label="Connect on LinkedIn"
             >
-              <FaLinkedin aria-hidden="true" /> 
-              <span className="hidden sm:inline">ESTABLISH UPLINK</span>
-              <span className="sm:hidden">LINKEDIN</span>
+              <FaLinkedin className="text-lg" /> 
+              <span>ESTABLISH LINK :: LN</span>
             </a>
           </div>
         </div>
       </section>
 
+      {/* 4. TECH STACK (Moved Down) - Infinite Marquee Footer Texture */}
+      <section className="py-8 sm:py-12 border-t border-white/5 relative z-10 overflow-hidden bg-black/40 backdrop-blur-sm" aria-labelledby="tech-stack-heading">
+        <h2 id="tech-stack-heading" className="sr-only">Technology Stack</h2>
+        
+        {/* Infinite Scroll Wrapper */}
+        <div className="relative flex overflow-x-hidden group">
+          <div className="animate-marquee flex gap-12 sm:gap-24 items-center whitespace-nowrap opacity-30 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700 px-12">
+            {[
+               { Icon: SiPython, label: "Python" },
+               { Icon: SiTensorflow, label: "TensorFlow" },
+               { Icon: SiReact, label: "React" },
+               { Icon: SiNodedotjs, label: "Node.js" },
+               { Icon: SiDocker, label: "Docker" },
+               { Icon: SiMongodb, label: "MongoDB" },
+               { Icon: SiTailwindcss, label: "Tailwind" },
+               { Icon: SiPostgresql, label: "PostgreSQL" },
+               // Duplicates for seamless loop
+               { Icon: SiPython, label: "Python" },
+               { Icon: SiTensorflow, label: "TensorFlow" },
+               { Icon: SiReact, label: "React" },
+               { Icon: SiNodedotjs, label: "Node.js" },
+               { Icon: SiDocker, label: "Docker" },
+               { Icon: SiMongodb, label: "MongoDB" },
+               { Icon: SiTailwindcss, label: "Tailwind" },
+               { Icon: SiPostgresql, label: "PostgreSQL" },
+            ].map((tech, idx) => (
+              <tech.Icon key={idx} className="text-2xl sm:text-4xl" aria-label={tech.label} />
+            ))}
+          </div>
+          
+          {/* Gradient Fade Masks */}
+          <div className="absolute inset-y-0 left-0 w-8 sm:w-20 bg-gradient-to-r from-black to-transparent z-10"></div>
+          <div className="absolute inset-y-0 right-0 w-8 sm:w-20 bg-gradient-to-l from-black to-transparent z-10"></div>
+        </div>
+      </section>
+
       {/* GLOBAL KEYFRAMES */}
       <style>{`
-        @keyframes scan {
-          0%, 100% { top: 0%; opacity: 0; }
-          10% { opacity: 1; }
-          90% { opacity: 1; }
-          100% { top: 100%; opacity: 0; }
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+          animation: marquee 30s linear infinite;
         }
         
         /* Screen reader only class */

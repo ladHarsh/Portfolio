@@ -56,19 +56,21 @@ const Navbar = () => {
       variants={navVariants}
       initial="hidden"
       animate="visible"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 will-change-transform ${
-        scrolled
-          ? "py-1.5 sm:py-2"
-          : "py-3 sm:py-4 md:py-6"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 will-change-transform
+        ${/* Mobile: Full-width bar */ "bg-black/80 backdrop-blur-xl border-b border-white/10 h-16 flex items-center shadow-lg"}
+        ${/* Desktop: Reset to transparent */ "md:bg-transparent md:backdrop-blur-none md:border-none md:h-auto md:block md:shadow-none"}
+        ${scrolled ? "md:py-2" : "md:py-6"}
+      `}
       role="banner"
     >
-      <div className="section-container">
+      <div className="section-container w-full md:w-auto">
         <div className={`
-          relative flex items-center justify-between px-4 sm:px-6 py-2.5 sm:py-3 md:px-8 md:py-4 rounded-full border transition-all duration-500
+          relative flex items-center justify-between transition-all duration-500
+          ${/* Mobile: Reset internal pill styles */ "w-full px-4 border-none bg-transparent"}
+          ${/* Desktop: Floating Pill styles */ "md:px-8 md:py-4 md:rounded-full md:border md:border-transparent"}
           ${scrolled 
-            ? "bg-dark-900/80 backdrop-blur-xl border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)]" 
-            : "bg-transparent border-transparent"
+            ? "md:bg-dark-900/80 md:backdrop-blur-xl md:border-white/10 md:shadow-[0_4px_30px_rgba(0,0,0,0.1)]" 
+            : ""
           }
         `}>
           
