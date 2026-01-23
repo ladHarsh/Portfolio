@@ -41,6 +41,8 @@ export const submitContactForm = async (req, res) => {
           <p><strong>Message:</strong></p>
           <p>${message}</p>
         `,
+      }).then((info) => {
+        console.log(`> Email sent successfully: ${info.messageId}`);
       }).catch((emailError) => {
         console.error("> Email notification failed:", emailError.message);
       });
