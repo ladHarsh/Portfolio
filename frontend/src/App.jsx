@@ -18,6 +18,9 @@ function AppContent() {
     window.scrollTo(0, 0);
   }, [pathname]);
 
+  // Hide footer on project detail pages
+  const isProjectDetail = pathname.startsWith('/projects/') && pathname !== '/projects';
+
   return (
     <div className="min-h-screen flex flex-col bg-gray-900 text-white transition-colors duration-300">
       <Navbar />
@@ -31,7 +34,7 @@ function AppContent() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
-      <Footer />
+      {!isProjectDetail && <Footer />}
     </div>
   );
 }

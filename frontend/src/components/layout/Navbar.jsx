@@ -6,10 +6,10 @@ import { FaTerminal } from "react-icons/fa";
 
 const navLinks = [
   { name: "// HOME", path: "/", shortName: "HOME" },
-  { name: "// MISSION", path: "/about", shortName: "ABOUT" },
-  { name: "// MODULES", path: "/projects", shortName: "PROJECTS" },
-  { name: "// CORE", path: "/skills", shortName: "SKILLS" },
-  { name: "// SIGNAL", path: "/contact", shortName: "CONTACT" },
+  { name: "// MISSION", path: "/about", shortName: "MISSION" },
+  { name: "// MODULES", path: "/projects", shortName: "MODULES" },
+  { name: "// CORE", path: "/skills", shortName: "CORE" },
+  { name: "// SIGNAL", path: "/contact", shortName: "SIGNAL" },
 ];
 
 const Navbar = () => {

@@ -14,6 +14,8 @@ import {
   FaDatabase,
   FaNetworkWired,
   FaArrowRight,
+  FaLinux,
+  FaGitAlt,
 } from "react-icons/fa";
 import {
   SiReact,
@@ -24,6 +26,23 @@ import {
   SiMongodb,
   SiTailwindcss,
   SiPostgresql,
+  SiOpencv,
+  SiScikitlearn,
+  SiPandas,
+  SiNumpy,
+  SiGoogle,
+  SiOpenai,
+  SiKaggle,
+  SiStreamlit,
+  SiJupyter,
+  SiFastapi,
+  SiMysql,
+  SiPostman,
+  SiCplusplus,
+  SiPytorch,
+  SiMatplotlib,
+  SiVercel,
+  SiFigma,
 } from "react-icons/si";
 import ProjectCard from "../components/projects/ProjectCard";
 import LoadingSpinner from "../components/ui/LoadingSpinner";
@@ -165,8 +184,8 @@ const Home = () => {
                   aria-label="View all projects"
                 >
                   <span className="relative z-10 flex items-center gap-2">
-                    <span className="hidden sm:inline">Projects</span>
-                    <span className="sm:hidden">Projects</span>
+                    <span className="hidden sm:inline">INITIALIZE MODULES</span>
+                    <span className="sm:hidden">INITIALIZE MODULES</span>
                     <FaArrowRight aria-hidden="true" />
                   </span>
                   <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" aria-hidden="true"></div>
@@ -176,8 +195,8 @@ const Home = () => {
                   className="px-4 sm:px-6 py-4 bg-white/5 backdrop-blur-sm hover:bg-white/10 active:bg-white/15 transition-all font-mono text-xs sm:text-sm uppercase tracking-wider text-gray-300 min-h-[48px] flex items-center justify-center rounded-sm col-span-2 sm:col-span-1"
                   aria-label="Learn more about me"
                 >
-                  <span className="hidden sm:inline">About</span>
-                  <span className="sm:hidden">About</span>
+                  <span className="hidden sm:inline">ACCESS DOSSIER</span>
+                  <span className="sm:hidden">ACCESS DOSSIER</span>
                 </Link>
               </div>
             </motion.div>
@@ -490,50 +509,101 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 4. TECH STACK (Moved Down) - Infinite Marquee Footer Texture */}
-      <section className="py-8 sm:py-12 border-t border-white/5 relative z-10 overflow-hidden bg-black/40 backdrop-blur-sm" aria-labelledby="tech-stack-heading">
+      {/* 4. TECH STACK (Dual-Stream Command Center) */}
+      <section className="py-10 sm:py-16 border-t border-white/5 relative z-10 overflow-hidden bg-black/40 backdrop-blur-sm" aria-labelledby="tech-stack-heading">
         <h2 id="tech-stack-heading" className="sr-only">Technology Stack</h2>
         
-        {/* Infinite Scroll Wrapper */}
-        <div className="relative flex overflow-x-hidden group">
-          <div className="animate-marquee flex gap-12 sm:gap-24 items-center whitespace-nowrap opacity-30 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700 px-12">
-            {[
-               { Icon: SiPython, label: "Python" },
-               { Icon: SiTensorflow, label: "TensorFlow" },
-               { Icon: SiReact, label: "React" },
-               { Icon: SiNodedotjs, label: "Node.js" },
-               { Icon: SiDocker, label: "Docker" },
-               { Icon: SiMongodb, label: "MongoDB" },
-               { Icon: SiTailwindcss, label: "Tailwind" },
-               { Icon: SiPostgresql, label: "PostgreSQL" },
-               // Duplicates for seamless loop
-               { Icon: SiPython, label: "Python" },
-               { Icon: SiTensorflow, label: "TensorFlow" },
-               { Icon: SiReact, label: "React" },
-               { Icon: SiNodedotjs, label: "Node.js" },
-               { Icon: SiDocker, label: "Docker" },
-               { Icon: SiMongodb, label: "MongoDB" },
-               { Icon: SiTailwindcss, label: "Tailwind" },
-               { Icon: SiPostgresql, label: "PostgreSQL" },
-            ].map((tech, idx) => (
-              <tech.Icon key={idx} className="text-2xl sm:text-4xl" aria-label={tech.label} />
-            ))}
-          </div>
+        {/* Dual-Stream Layout with Mask Image Fade */}
+        <div className="relative flex flex-col gap-8 sm:gap-12 py-4 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
           
-          {/* Gradient Fade Masks */}
-          <div className="absolute inset-y-0 left-0 w-8 sm:w-20 bg-gradient-to-r from-black to-transparent z-10"></div>
-          <div className="absolute inset-y-0 right-0 w-8 sm:w-20 bg-gradient-to-l from-black to-transparent z-10"></div>
+          {/* ROW 1: AI & DATA (Moving Left - 40s) */}
+          <div className="flex w-max animate-scroll-left hover:[animation-play-state:paused] group">
+             {[
+               { Icon: SiPython, label: "Python" },
+               { Icon: SiTensorflow, label: "TensorFlow" },
+               { Icon: SiPytorch, label: "PyTorch" },
+               { Icon: SiOpencv, label: "OpenCV" },
+               { Icon: SiScikitlearn, label: "Scikit-Learn" },
+               { Icon: SiPandas, label: "Pandas" },
+               { Icon: SiNumpy, label: "NumPy" },
+               { Icon: SiGoogle, label: "Gemini" },
+               { Icon: SiOpenai, label: "OpenAI" },
+               { Icon: SiKaggle, label: "Kaggle" },
+               { Icon: SiJupyter, label: "Jupyter" },
+               { Icon: SiMatplotlib, label: "Matplotlib" },
+               // Duplicate for Loop
+               { Icon: SiPython, label: "Python" },
+               { Icon: SiTensorflow, label: "TensorFlow" },
+               { Icon: SiPytorch, label: "PyTorch" },
+               { Icon: SiOpencv, label: "OpenCV" },
+               { Icon: SiScikitlearn, label: "Scikit-Learn" },
+               { Icon: SiPandas, label: "Pandas" },
+               { Icon: SiNumpy, label: "NumPy" },
+               { Icon: SiGoogle, label: "Gemini" },
+               { Icon: SiOpenai, label: "OpenAI" },
+               { Icon: SiKaggle, label: "Kaggle" },
+               { Icon: SiJupyter, label: "Jupyter" },
+               { Icon: SiMatplotlib, label: "Matplotlib" },
+             ].map((tech, idx) => (
+               <div key={idx} className="flex items-center gap-2 mx-6 sm:mx-8 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500 transform hover:scale-110 cursor-pointer">
+                 <tech.Icon className="text-3xl sm:text-5xl" aria-label={tech.label} />
+               </div>
+             ))}
+          </div>
+
+          {/* ROW 2: ENGINEERING & TOOLS (Moving Right - 50s) */}
+          <div className="flex w-max animate-scroll-right hover:[animation-play-state:paused] group">
+             {[
+               { Icon: SiReact, label: "React" },
+               { Icon: SiNodedotjs, label: "Node.js" },
+               { Icon: SiMongodb, label: "MongoDB" },
+               { Icon: SiDocker, label: "Docker" },
+               { Icon: FaGitAlt, label: "Git" },
+               { Icon: FaLinux, label: "Linux" },
+               { Icon: SiCplusplus, label: "C++" },
+               { Icon: SiMysql, label: "SQL" },
+               { Icon: SiTailwindcss, label: "Tailwind" },
+               { Icon: SiPostman, label: "Postman" },
+               { Icon: SiVercel, label: "Vercel" },
+               { Icon: SiFigma, label: "Figma" },
+               // Duplicate for Loop
+               { Icon: SiReact, label: "React" },
+               { Icon: SiNodedotjs, label: "Node.js" },
+               { Icon: SiMongodb, label: "MongoDB" },
+               { Icon: SiDocker, label: "Docker" },
+               { Icon: FaGitAlt, label: "Git" },
+               { Icon: FaLinux, label: "Linux" },
+               { Icon: SiCplusplus, label: "C++" },
+               { Icon: SiMysql, label: "SQL" },
+               { Icon: SiTailwindcss, label: "Tailwind" },
+               { Icon: SiPostman, label: "Postman" },
+               { Icon: SiVercel, label: "Vercel" },
+               { Icon: SiFigma, label: "Figma" },
+             ].map((tech, idx) => (
+               <div key={idx} className="flex items-center gap-2 mx-6 sm:mx-8 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500 transform hover:scale-110 cursor-pointer">
+                 <tech.Icon className="text-3xl sm:text-5xl" aria-label={tech.label} />
+               </div>
+             ))}
+          </div>
+
         </div>
       </section>
 
       {/* GLOBAL KEYFRAMES */}
       <style>{`
-        @keyframes marquee {
+        @keyframes scroll {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
         }
-        .animate-marquee {
-          animation: marquee 30s linear infinite;
+        @keyframes scroll-reverse {
+          0% { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
+        .animate-scroll-left {
+          animation: scroll 40s linear infinite;
+        }
+        .animate-scroll-right {
+          animation: scroll-reverse 50s linear infinite;
         }
         
         /* Screen reader only class */

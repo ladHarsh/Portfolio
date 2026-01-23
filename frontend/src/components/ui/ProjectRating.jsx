@@ -55,8 +55,7 @@ const ProjectRating = ({ projectSlug }) => {
                    h-8 flex-1 rounded-sm border border-white/10 transition-all duration-300 relative overflow-hidden group/btn
                    ${score <= rating 
                      ? "bg-cyan-500/20 border-cyan-500/50" 
-                     : "bg-white/5 hover:bg-white/10 hover:border-white/30"
-                   }
+                     : "bg-white/5 hover:bg-white/10 hover:border-white/30"}
                 `}
               >
                  {score <= rating && (

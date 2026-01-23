@@ -269,75 +269,15 @@ const ProjectDetails = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white pt-20 sm:pt-24 md:pt-32 pb-24 sm:pb-16 md:pb-20 font-sans selection:bg-cyan-500 selection:text-black">
+    <div className="min-h-screen bg-black text-white pt-20 sm:pt-24 md:pt-32 pb-12 sm:pb-16 md:pb-20 font-sans selection:bg-cyan-500 selection:text-black">
        
        {/* Global Grid Overlay - Reduced on mobile */}
        <div className="fixed inset-0 z-0 bg-[url('/grid-pattern.svg')] opacity-5 sm:opacity-10 pointer-events-none" aria-hidden="true"></div>
 
-       <div className="section-container relative z-10 max-w-7xl mx-auto px-0 sm:px-4 md:px-6">
+       <div className="section-container relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
           
-          {/* MOBILE HOLODECK HEADER (< md) */}
-          <div className="block md:hidden">
-             {/* Back Navigation */}
-             <div className="px-4 mb-4">
-                <Link to="/projects" className="flex items-center gap-2 text-xs font-mono text-cyan-500 hover:text-white transition-colors hover:translate-x-1 duration-200 min-h-[44px] items-center" aria-label="Return to projects grid">
-                   <FaArrowLeft aria-hidden="true" /> RETURN_TO_GRID
-                </Link>
-             </div>
-
-             {/* 1. Control Deck - Title & Overview First */}
-             <div className="px-4 py-6 bg-black/80 backdrop-blur-sm border-y border-white/10 mb-6">
-                {/* Category Badge */}
-                <div className="flex items-center gap-2 mb-3">
-                   <span className="px-2 py-0.5 bg-white/10 text-white text-[9px] font-bold font-mono tracking-widest rounded border border-white/20">
-                      MOD::{project.category ? project.category.toUpperCase() : "APPS"}
-                   </span>
-                </div>
-                
-                {/* Title */}
-                <h1 className="text-3xl font-display font-bold text-white mb-2 leading-tight">{project.title}</h1>
-                
-                {/* Description */}
-                <p className="text-gray-400 text-sm font-light leading-relaxed">{project.shortDescription}</p>
-             </div>
-
-             {/* 2. HOLODECK - Video with Viewfinder Overlay */}
-             <div className="relative w-full aspect-video bg-gray-900 overflow-hidden border-y border-white/10">
-                {/* Video/Thumbnail */}
-                {project.videoUrl ? (
-                   <iframe 
-                      src={`https://www.youtube.com/embed/${project.videoUrl.split('/').pop().replace('watch?v=', '')}?autoplay=0&controls=1&showinfo=0&rel=0`}
-                      className="w-full h-full"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      title={`${project.title} demo video`}
-                   ></iframe>
-                ) : (
-                   <img src={project.thumbnail} alt={`${project.title} preview`} className="w-full h-full object-cover opacity-80" loading="lazy" />
-                )}
-                
-                {/* Viewfinder Overlay */}
-                <div className="absolute inset-0 pointer-events-none">
-                   {/* Corner Brackets */}
-                   <div className="absolute top-3 left-3 w-6 h-6 border-t-2 border-l-2 border-cyan-500/70"></div>
-                   <div className="absolute top-3 right-3 w-6 h-6 border-t-2 border-r-2 border-cyan-500/70"></div>
-                   <div className="absolute bottom-3 left-3 w-6 h-6 border-b-2 border-l-2 border-cyan-500/70"></div>
-                   <div className="absolute bottom-3 right-3 w-6 h-6 border-b-2 border-r-2 border-cyan-500/70"></div>
-                   
-                   {/* REC Indicator */}
-                   <div className="absolute top-3 left-1/2 -translate-x-1/2 flex items-center gap-2 px-3 py-1 bg-black/80 backdrop-blur-sm rounded-full border border-red-500/50">
-                      <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                      <span className="text-[9px] font-mono text-red-400 tracking-wider">LIVE_FEED</span>
-                   </div>
-                   
-                   {/* Scanline Effect */}
-                   <div className="absolute inset-0 bg-[linear-gradient(rgba(18,18,18,0)_50%,rgba(0,0,0,0.25)_50%)] bg-[length:100%_4px] opacity-10"></div>
-                </div>
-             </div>
-          </div>
-
-          {/* DESKTOP HEADER (>= md) - Preserved Original */}
-          <header className="hidden md:flex flex-col md:flex-row justify-between items-start md:items-end gap-4 sm:gap-6 mb-8 sm:mb-12 border-b border-white/10 pb-6 sm:pb-8 relative z-50">
+          {/* 1. HEADER - Mobile optimized */}
+          <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 sm:gap-6 mb-8 sm:mb-12 border-b border-white/10 pb-6 sm:pb-8 relative z-50">
              <div className="w-full md:w-auto">
                 <Link to="/projects" className="flex items-center gap-2 text-xs font-mono text-cyan-500 mb-3 sm:mb-4 hover:text-white transition-colors relative z-50 hover:translate-x-1 duration-200 cursor-pointer min-h-[44px] sm:min-h-0 items-center" aria-label="Return to projects grid">
                    <FaArrowLeft aria-hidden="true" /> RETURN_TO_GRID
@@ -368,42 +308,16 @@ const ProjectDetails = () => {
              </div>
           </header>
 
-          {/* Sticky Bottom Action Bar - Mobile Only */}
-          <div className="block md:hidden fixed bottom-0 left-0 right-0 z-50 px-4 py-3 bg-black/90 backdrop-blur-xl border-t border-white/10 shadow-[0_-4px_20px_rgba(0,0,0,0.5)]">
-             <div className="flex gap-3">
-                {project.liveUrl && (
-                   <a 
-                      href={project.liveUrl} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-cyan-600 to-cyan-500 text-white font-bold font-mono text-xs tracking-widest hover:from-cyan-500 hover:to-cyan-400 active:scale-95 transition-all shadow-[0_0_20px_rgba(6,182,212,0.4)] min-h-[48px] rounded-sm"
-                      aria-label="Launch live demo"
-                   >
-                      <FaExternalLinkAlt aria-hidden="true" /> LAUNCH
-                   </a>
-                )}
-                <a 
-                   href={project.githubUrl} 
-                   target="_blank" 
-                   rel="noopener noreferrer" 
-                   className="flex-1 flex items-center justify-center gap-2 px-4 py-3 border-2 border-white/20 bg-white/5 text-white font-mono text-xs tracking-widest hover:bg-white/10 active:bg-white/15 hover:border-white/40 transition-all min-h-[48px] rounded-sm"
-                   aria-label="View source code on GitHub"
-                >
-                   <FaGithub aria-hidden="true" /> CODE
-                </a>
-             </div>
-          </div>
-
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16">
              
              {/* LEFT: MAIN VISUAL & ARCHITECTURE - Mobile optimized */}
              <main className="lg:col-span-8 space-y-8 sm:space-y-12">
                 
-                {/* Visual Feed - DESKTOP ONLY (Hidden on mobile since video is now at top) */}
-                <div className="hidden md:block w-full aspect-video bg-gray-900 rounded-lg sm:rounded-xl overflow-hidden border border-white/10 relative group shadow-2xl">
-                   {/* Corner Accents */}
-                   <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-cyan-500/50 z-20" aria-hidden="true"></div>
-                   <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-cyan-500/50 z-20" aria-hidden="true"></div>
+                {/* Visual Feed - Mobile optimized */}
+                <div className="w-full aspect-video bg-gray-900 rounded-lg sm:rounded-xl overflow-hidden border border-white/10 relative group shadow-2xl">
+                   {/* Corner Accents - Hidden on mobile */}
+                   <div className="hidden sm:block absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-cyan-500/50 z-20" aria-hidden="true"></div>
+                   <div className="hidden sm:block absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-cyan-500/50 z-20" aria-hidden="true"></div>
                    
                    {project.videoUrl ? (
                       <iframe 
@@ -417,38 +331,12 @@ const ProjectDetails = () => {
                       <img src={project.thumbnail} alt={`${project.title} preview`} className="w-full h-full object-cover opacity-80" loading="lazy" />
                    )}
                    
-                   {/* Scanline Overlay */}
-                   <div className="absolute inset-0 bg-[linear-gradient(rgba(18,18,18,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] mix-blend-color-dodge bg-[length:100%_4px,6px_100%] pointer-events-none opacity-20" aria-hidden="true"></div>
+                   {/* Scanline Overlay - Reduced on mobile */}
+                   <div className="absolute inset-0 bg-[linear-gradient(rgba(18,18,18,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] mix-blend-color-dodge bg-[length:100%_4px,6px_100%] pointer-events-none opacity-10 sm:opacity-20" aria-hidden="true"></div>
                 </div>
 
-                {/* Challenge & Solution - MOBILE: Terminal Stream */}
-                <div className="block md:hidden px-4">
-                   {/* Terminal Stream Container */}
-                   <div className="bg-black border-l-2 border-gray-800 pl-4 my-6 space-y-6">
-                      {/* Error Log */}
-                      <div>
-                         <div className="font-mono text-xs text-red-500 mb-2 tracking-wider">
-                            &gt;&gt; [CRITICAL_GAP_DETECTED]
-                         </div>
-                         <p className="text-gray-400 text-sm font-sans leading-relaxed">
-                            {project.problemStatement || "System constraints identified during initial reconnaissance."}
-                         </p>
-                      </div>
-
-                      {/* Patch Log */}
-                      <div>
-                         <div className="font-mono text-xs text-emerald-500 mb-2 tracking-wider">
-                            &gt;&gt; [PROTOCOL_EXECUTED]
-                         </div>
-                         <p className="text-white text-sm font-sans leading-relaxed">
-                            {project.solution || "Optimization protocols deployed successfully."}
-                         </p>
-                      </div>
-                   </div>
-                </div>
-
-                {/* Challenge & Solution - DESKTOP: Original Cards */}
-                <div className="hidden md:grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                {/* Challenge & Solution - Mobile optimized */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                    {/* Challenge */}
                    <article className="bg-red-900/10 border border-red-500/20 p-4 sm:p-6 rounded-lg relative overflow-hidden">
                       <div className="absolute top-0 right-0 p-2 sm:p-3 opacity-20" aria-hidden="true">
@@ -478,49 +366,22 @@ const ProjectDetails = () => {
                    </article>
                 </div>
 
-                {/* Architecture Breakdown - MOBILE: Vertical Bus */}
-                <section className="block md:hidden px-4 my-8" aria-labelledby="architecture-heading-mobile">
-                   <h2 id="architecture-heading-mobile" className="flex items-center gap-2 text-xl font-bold text-white mb-6 font-display">
-                      <FaServer className="text-cyan-500 text-base" aria-hidden="true" /> SYSTEM_ARCHITECTURE
-                   </h2>
-                   
-                   {/* The Vertical Bus */}
-                   <div className="relative border-l border-dashed border-cyan-900 ml-2 pl-6 space-y-6">
-                      {architecture.map((item, i) => (
-                         <div key={i} className="relative">
-                            {/* Node Connector Dot */}
-                            <div className="absolute -left-[25px] top-2 w-2 h-2 bg-cyan-500 rounded-full"></div>
-                            
-                            {/* Content Block */}
-                            <div>
-                               <h3 className="font-mono text-[10px] text-cyan-500 mb-1 tracking-widest uppercase">
-                                  LAYER_0{i+1} :: {item.title.replace(/_/g, ' ')}
-                               </h3>
-                               <p className="text-white text-sm leading-relaxed font-sans">
-                                  {item.desc}
-                               </p>
-                            </div>
-                         </div>
-                      ))}
-                   </div>
-                </section>
-
-                {/* Architecture Breakdown - DESKTOP: Original */}
-                <section className="hidden md:block relative" aria-labelledby="architecture-heading">
-                    {/* Decorator Line */}
-                    <div className="absolute left-6 top-0 bottom-0 w-px bg-white/5" aria-hidden="true"></div>
+                {/* Architecture Breakdown - Mobile optimized */}
+                <section className="relative" aria-labelledby="architecture-heading">
+                    {/* Decorator Line - Hidden on mobile */}
+                    <div className="hidden sm:block absolute left-6 top-0 bottom-0 w-px bg-white/5" aria-hidden="true"></div>
                     
                     <h2 id="architecture-heading" className="flex items-center gap-2 sm:gap-3 text-xl sm:text-2xl font-bold text-white mb-6 sm:mb-8 font-display sm:pl-12 relative">
-                        <span className="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-px bg-cyan-500/50" aria-hidden="true"></span>
-                        <span className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-1 bg-cyan-500 rounded-full" aria-hidden="true"></span>
+                        <span className="hidden sm:block absolute left-0 top-1/2 -translate-y-1/2 w-12 h-px bg-cyan-500/50" aria-hidden="true"></span>
+                        <span className="hidden sm:block absolute left-0 top-1/2 -translate-y-1/2 w-1 h-1 bg-cyan-500 rounded-full" aria-hidden="true"></span>
                         <FaServer className="text-cyan-500 text-base sm:text-xl" aria-hidden="true" /> SYSTEM_ARCHITECTURE
                     </h2>
                     
                     <div className="grid gap-3 sm:gap-4 sm:pl-12">
                       {architecture.map((item, i) => (
                           <article key={i} className="bg-white/5 border border-white/10 p-4 sm:p-5 rounded-lg hover:border-cyan-500/30 active:border-cyan-500/50 transition-colors group relative">
-                              <div className="absolute -left-[53px] top-1/2 w-4 h-[1px] bg-white/20 group-hover:bg-cyan-500 transition-colors" aria-hidden="true"></div>
-                              <div className="absolute -left-[37px] top-1/2 w-2 h-2 rounded-full border border-white/20 bg-black group-hover:border-cyan-500 group-hover:bg-cyan-500/20 transition-all" aria-hidden="true"></div>
+                              <div className="hidden sm:block absolute -left-[53px] top-1/2 w-4 h-[1px] bg-white/20 group-hover:bg-cyan-500 transition-colors" aria-hidden="true"></div>
+                              <div className="hidden sm:block absolute -left-[37px] top-1/2 w-2 h-2 rounded-full border border-white/20 bg-black group-hover:border-cyan-500 group-hover:bg-cyan-500/20 transition-all" aria-hidden="true"></div>
                               
                               <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-2">
                                 <span className="font-mono text-[9px] sm:text-[10px] bg-cyan-900/30 text-cyan-400 px-2 py-0.5 rounded border border-cyan-500/20">LAYER_0{i+1}</span>
@@ -534,46 +395,14 @@ const ProjectDetails = () => {
                     </div>
                 </section>
 
-                {/* Core Capabilities - MOBILE: Neural Synapse */}
-                <section className="block md:hidden px-4 my-8" aria-labelledby="capabilities-heading-mobile">
-                   <h2 id="capabilities-heading-mobile" className="flex items-center gap-2 text-xl font-bold text-white mb-6 font-display">
-                      <FaMicrochip className="text-purple-500 text-base" aria-hidden="true" /> CORE_LOGIC_MODULES
-                   </h2>
-                   
-                   {/* The Synapse Line */}
-                   <div className="relative border-l-2 border-purple-500/30 ml-3 pl-8 space-y-8">
-                      {project.features?.map((feature, i) => (
-                         <div key={i} className="relative">
-                            {/* Glowing Node */}
-                            <div className="absolute -left-[38px] top-2 w-3 h-3 bg-purple-500 rounded-full shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
-                            
-                            {/* Icon Watermark */}
-                            <div className="absolute -right-4 top-0 opacity-5 pointer-events-none">
-                               <FaCode className="text-6xl text-purple-500" />
-                            </div>
-                            
-                            {/* Content */}
-                            <div className="relative z-10">
-                               <h3 className="text-purple-400 font-mono text-xs uppercase tracking-widest mb-2">
-                                  {feature.title || `MODULE_${i+1}`}
-                               </h3>
-                               <p className="text-gray-300 text-sm leading-relaxed">
-                                  {feature.description || feature}
-                               </p>
-                            </div>
-                         </div>
-                      ))}
-                   </div>
-                </section>
-
-                {/* Core Capabilities - DESKTOP: Original */}
-                <section className="hidden md:block relative" aria-labelledby="capabilities-heading">
-                    {/* Decorator Line */}
-                    <div className="absolute left-6 top-0 bottom-0 w-px bg-white/5" aria-hidden="true"></div>
+                {/* Core Capabilities - Mobile optimized */}
+                <section className="relative" aria-labelledby="capabilities-heading">
+                    {/* Decorator Line - Hidden on mobile */}
+                    <div className="hidden sm:block absolute left-6 top-0 bottom-0 w-px bg-white/5" aria-hidden="true"></div>
                     
                     <h2 id="capabilities-heading" className="flex items-center gap-2 sm:gap-3 text-xl sm:text-2xl font-bold text-white mb-6 sm:mb-8 font-display sm:pl-12 relative">
-                        <span className="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-px bg-purple-500/50" aria-hidden="true"></span>
-                        <span className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-1 bg-purple-500 rounded-full" aria-hidden="true"></span>
+                        <span className="hidden sm:block absolute left-0 top-1/2 -translate-y-1/2 w-12 h-px bg-purple-500/50" aria-hidden="true"></span>
+                        <span className="hidden sm:block absolute left-0 top-1/2 -translate-y-1/2 w-1 h-1 bg-purple-500 rounded-full" aria-hidden="true"></span>
                         <FaMicrochip className="text-purple-500 text-base sm:text-xl" aria-hidden="true" /> CORE_LOGIC_MODULES
                     </h2>
                     
@@ -636,32 +465,8 @@ const ProjectDetails = () => {
                    </div>
                 )}
                 
-                {/* Tech Stack - MOBILE: Module Grid (NO SCROLL) */}
-                <div className="block md:hidden bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl p-4 relative overflow-hidden">
-                   {/* Background Grid */}
-                   <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5 pointer-events-none" aria-hidden="true"></div>
-                   
-                   <h3 className="font-mono text-gray-500 mb-4 uppercase tracking-widest flex items-center gap-2 text-xs font-bold relative z-10">
-                      <FaMemory className="text-cyan-500" aria-hidden="true" /> DEPENDENCIES_INSTALLED
-                   </h3>
-                   
-                   {/* Compact Grid - Show ALL */}
-                   <div className="relative z-10 grid grid-cols-3 gap-2">
-                      {project.techStack?.map((tech, i) => (
-                         <div key={i} className="bg-gray-900/50 border border-gray-800 rounded px-2 py-2 flex flex-col items-center justify-center gap-1 hover:bg-gray-800 hover:border-cyan-500/50 transition-colors">
-                            <div className="text-xl">
-                               {getTechIcon(tech)}
-                            </div>
-                            <span className="text-[10px] font-mono text-gray-400 uppercase text-center leading-tight">
-                               {(typeof tech === 'string' ? tech : tech.name).substring(0, 10)}
-                            </span>
-                         </div>
-                      ))}
-                   </div>
-                </div>
-
-                {/* Tech Stack - DESKTOP: Original Grid */}
-                <div className="hidden md:block bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-5 relative overflow-hidden group hover:border-cyan-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] hover:-translate-y-1">
+                {/* Tech Stack - Mobile optimized */}
+                <div className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-5 relative overflow-hidden group hover:border-cyan-500/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] hover:-translate-y-1">
                    {/* Background Grid */}
                    <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5 pointer-events-none" aria-hidden="true"></div>
                    
@@ -680,68 +485,8 @@ const ProjectDetails = () => {
                 </div>
 
 
-
-                {/* Impact Analysis - MOBILE: HUD Telemetry Grid */}
-                <div className="block md:hidden">
-                   <h3 className="text-[10px] font-bold font-mono text-gray-500 uppercase tracking-widest mb-4 pl-4">IMPACT_ASSESSMENT</h3>
-                   
-                   <div className="grid grid-cols-2 gap-3">
-                      {impact.map((item, i) => {
-                        // Extract number/value from description if possible
-                        const valueMatch = item.desc?.match(/(\d+%|\d+x|AAA|AA|LOW|HIGH|MAX)/i);
-                        const value = valueMatch ? valueMatch[0] : (i === 0 ? "40%" : i === 1 ? "AAA" : "LOW");
-                        
-                        // Determine color scheme based on index
-                        const config = [
-                          { 
-                            border: "border-l-cyan-500", 
-                            shadow: "shadow-[inset_10px_0_20px_-10px_rgba(34,211,238,0.1)]",
-                            text: "text-cyan-400",
-                            glow: "drop-shadow-[0_0_15px_rgba(34,211,238,0.2)]"
-                          },
-                          { 
-                            border: "border-l-emerald-500", 
-                            shadow: "shadow-[inset_10px_0_20px_-10px_rgba(16,185,129,0.1)]",
-                            text: "text-emerald-400",
-                            glow: "drop-shadow-[0_0_15px_rgba(16,185,129,0.2)]"
-                          },
-                          { 
-                            border: "border-l-purple-500", 
-                            shadow: "shadow-[inset_10px_0_20px_-10px_rgba(168,85,247,0.1)]",
-                            text: "text-purple-400",
-                            glow: "drop-shadow-[0_0_15px_rgba(168,85,247,0.2)]"
-                          }
-                        ];
-                        const style = config[i % 3];
-                        
-                        return (
-                          <article 
-                            key={i} 
-                            className={`${i === 0 ? 'col-span-2' : 'col-span-1'} bg-gradient-to-br from-white/[0.07] to-transparent backdrop-blur-md border border-white/10 ${style.border} border-l-2 ${style.shadow} rounded-sm p-4 relative overflow-hidden`}
-                          >
-                             {/* Vertical Stack Layout - No Overlaps - No Icons */}
-                             {/* Label - Top */}
-                             <div className="text-[10px] text-gray-500 font-mono uppercase tracking-widest mb-1">
-                                // {item.title.replace(/ /g, '_').toUpperCase()}
-                             </div>
-                             
-                             {/* Value - Middle (Hero Element with Glow) */}
-                             <div className={`${i === 0 ? 'text-4xl' : 'text-2xl'} font-bold ${style.text} ${style.glow} tabular-nums`}>
-                                {value}
-                             </div>
-                             
-                             {/* Description - Bottom (with Divider) */}
-                             <p className={`${i === 0 ? 'text-xs' : 'text-[10px]'} text-gray-400 leading-relaxed font-sans mt-3 pt-3 border-t border-white/5`}>
-                                {item.desc}
-                             </p>
-                          </article>
-                        );
-                      })}
-                   </div>
-                </div>
-
-                {/* Impact Analysis - DESKTOP: Original */}
-                <div className="hidden md:block space-y-3 sm:space-y-4">
+                {/* Impact Analysis - Mobile optimized */}
+                <div className="space-y-3 sm:space-y-4">
                    <h3 className="text-[10px] sm:text-xs font-bold font-mono text-gray-500 uppercase tracking-widest">IMPACT_ASSESSMENT</h3>
                    {impact.map((item, i) => (
                       <article key={i} className="bg-white/5 p-3 sm:p-4 rounded-lg border-l-2 border-white/10 hover:border-cyan-500 active:border-cyan-500 transition-colors group">
