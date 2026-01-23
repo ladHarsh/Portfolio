@@ -1,5 +1,5 @@
 import ContactMessage from "../models/ContactMessage.js";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 
 // @desc    Submit contact form
 // @route   POST /api/contact
@@ -14,26 +14,15 @@ export const submitContactForm = async (req, res) => {
       message,
     });
 
-    // Send email notification (Background)
-    if (
-      process.env.EMAIL_HOST &&
-      process.env.EMAIL_USER &&
-      process.env.EMAIL_PASS
-    ) {
-      const transporter = nodemailer.createTransport({
-        host: process.env.EMAIL_HOST,
-        port: 465, // Use SSL
-        secure: true, // Use SSL
-        auth: {
-          user: process.env.EMAIL_USER,
-          pass: process.env.EMAIL_PASS,
-        },
-        connectionTimeout: 30000,
-      });
-
-      transporter.sendMail({
-        from: process.env.EMAIL_USER,
-        to: process.env.EMAIL_TO || process.env.EMAIL_USER,
+    // Send email notification (Background) using Resend
+    if (process.env.RESEND_API_KEY) {
+      const resend = new Resend(process.env.RESEND_API_KEY);
+      
+      // NOTE: 'from' email must be 'onboarding@resend.dev' unless you have a verified domain.
+      // 'to' should be your verified email address during testing phase.
+      resend.emails.send({
+        from: 'onboarding@resend.dev',
+        to: process.env.EMAIL_TO || 'harshlad.dev@gmail.com',  // Ensure this is your verified email
         subject: `Portfolio Contact: ${name}`,
         html: `
           <h2>New Contact Form Submission</h2>
@@ -42,11 +31,15 @@ export const submitContactForm = async (req, res) => {
           <p><strong>Message:</strong></p>
           <p>${message}</p>
         `,
-      }).then((info) => {
-        console.log(`> Email sent successfully: ${info.messageId}`);
+        reply_to: email, // Set reply-to as the submitter's email
+      }).then((data) => {
+        console.log(`> Email sent successfully (Resend): ${data.id}`);
       }).catch((emailError) => {
-        console.error("> Email notification failed:", emailError.message);
+        console.error("> Email notification failed (Resend):", emailError.message);
       });
+    } else if (process.env.EMAIL_HOST) {
+        // Fallback or keep Nodemailer if preferred, but replacing entirely is cleaner.
+        console.log("No RESEND_API_KEY found, skipping Resend.");
     }
 
     res.status(201).json({
