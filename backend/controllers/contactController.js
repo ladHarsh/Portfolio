@@ -33,13 +33,10 @@ export const submitContactForm = async (req, res) => {
         `,
         reply_to: email, // Set reply-to as the submitter's email
       }).then((data) => {
-        console.log(`> Email sent successfully (Resend): ${data.id}`);
+        // Email sent successfully
       }).catch((emailError) => {
-        console.error("> Email notification failed (Resend):", emailError.message);
+        console.error("Email notification failed");
       });
-    } else if (process.env.EMAIL_HOST) {
-        // Fallback or keep Nodemailer if preferred, but replacing entirely is cleaner.
-        console.log("No RESEND_API_KEY found, skipping Resend.");
     }
 
     res.status(201).json({
