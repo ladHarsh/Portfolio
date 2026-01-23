@@ -40,7 +40,6 @@ import {
   SiPostman,
   SiCplusplus,
   SiPytorch,
-  SiMatplotlib,
   SiVercel,
   SiFigma,
 } from "react-icons/si";
@@ -530,7 +529,7 @@ const Home = () => {
                { Icon: SiOpenai, label: "OpenAI" },
                { Icon: SiKaggle, label: "Kaggle" },
                { Icon: SiJupyter, label: "Jupyter" },
-               { Icon: SiMatplotlib, label: "Matplotlib" },
+               { Icon: SiStreamlit, label: "Streamlit" },
                // Duplicate for Loop
                { Icon: SiPython, label: "Python" },
                { Icon: SiTensorflow, label: "TensorFlow" },
@@ -543,7 +542,7 @@ const Home = () => {
                { Icon: SiOpenai, label: "OpenAI" },
                { Icon: SiKaggle, label: "Kaggle" },
                { Icon: SiJupyter, label: "Jupyter" },
-               { Icon: SiMatplotlib, label: "Matplotlib" },
+               { Icon: SiStreamlit, label: "Streamlit" },
              ].map((tech, idx) => (
                <div key={idx} className="flex items-center gap-2 mx-6 sm:mx-8 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500 transform hover:scale-110 cursor-pointer">
                  <tech.Icon className="text-3xl sm:text-5xl" aria-label={tech.label} />
