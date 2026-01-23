@@ -14,38 +14,36 @@ export const submitContactForm = async (req, res) => {
       message,
     });
 
-    // Send email notification (optional)
+    // Send email notification (Background)
     if (
       process.env.EMAIL_HOST &&
       process.env.EMAIL_USER &&
       process.env.EMAIL_PASS
     ) {
-      try {
-        const transporter = nodemailer.createTransport({
-          host: process.env.EMAIL_HOST,
-          port: process.env.EMAIL_PORT || 587,
-          secure: false,
-          auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASS,
-          },
-        });
+      const transporter = nodemailer.createTransport({
+        host: process.env.EMAIL_HOST,
+        port: process.env.EMAIL_PORT || 587,
+        secure: false,
+        auth: {
+          user: process.env.EMAIL_USER,
+          pass: process.env.EMAIL_PASS,
+        },
+      });
 
-        await transporter.sendMail({
-          from: process.env.EMAIL_USER,
-          to: process.env.EMAIL_TO || process.env.EMAIL_USER,
-          subject: `Portfolio Contact: ${name}`,
-          html: `
-            <h2>New Contact Form Submission</h2>
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Message:</strong></p>
-            <p>${message}</p>
-          `,
-        });
-      } catch (emailError) {
-        console.error("Email notification failed:", emailError.message);
-      }
+      transporter.sendMail({
+        from: process.env.EMAIL_USER,
+        to: process.env.EMAIL_TO || process.env.EMAIL_USER,
+        subject: `Portfolio Contact: ${name}`,
+        html: `
+          <h2>New Contact Form Submission</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Message:</strong></p>
+          <p>${message}</p>
+        `,
+      }).catch((emailError) => {
+        console.error("> Email notification failed:", emailError.message);
+      });
     }
 
     res.status(201).json({

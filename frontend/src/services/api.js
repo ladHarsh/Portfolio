@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || "https://portfolio-besy.onrender.com";
+const API_BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.MODE === "development" ? "" : "https://portfolio-besy.onrender.com");
 
 
 const api = axios.create({

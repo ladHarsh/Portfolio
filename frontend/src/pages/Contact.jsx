@@ -24,15 +24,21 @@ const Contact = () => {
     addToLog(`> UPLOADING PACKET FROM [${formData.email}]...`);
 
     try {
-      await contactApi.submit(formData);
+      const response = await contactApi.submit(formData);
+      
+      setStatus("SUCCESS");
+      addToLog("> TRANSMISSION COMPLETE. ACKNOWLEDGEMENT RECEIVED.");
+      setFormData({ name: "", email: "", message: "" });
+      
+      // Auto-reset form state after 3 seconds
       setTimeout(() => {
-         setStatus("SUCCESS");
-         addToLog("> TRANSMISSION COMPLETE. ACKNOWLEDGEMENT RECEIVED.");
-         setFormData({ name: "", email: "", message: "" });
-      }, 1500);
+        setStatus("IDLE");
+        addToLog("> READY FOR NEW TRANSMISSION.");
+      }, 3000);
     } catch (error) {
-       setStatus("ERROR");
-       addToLog("> FATAL ERROR: CONNECTION INTERRUPTED.");
+      setStatus("ERROR");
+      const errorMessage = error.response?.data?.message || "CONNECTION INTERRUPTED";
+      addToLog(`> FATAL ERROR: ${errorMessage.toUpperCase()}`);
     }
   };
 
