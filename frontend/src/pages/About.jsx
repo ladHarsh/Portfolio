@@ -287,26 +287,26 @@ const About = () => {
                   { title: "SYNTHESIZE", func: "INT_02", desc: "Selecting optimal model topologies and prompt chains." },
                   { title: "EXECUTE", func: "INT_03", desc: "Deployment of optimized graphs to production." }
                ].map((step, i) => (
-                  <div key={i} className="relative pl-10 pr-2">
-                      {/* Connection Trace - Aligned to fluid text center */}
-                      <div className="absolute left-4 top-9 w-6 h-px bg-cyan-500/50"></div>
-                      <div className="absolute left-10 top-9 w-1 h-1 bg-cyan-400 rounded-full shadow-[0_0_5px_cyan]"></div>
+                  <div key={i} className="relative pl-8 border-l-2 border-cyan-500/30 ml-4">
+                      {/* Connection Trace - Adjusted for new vertical rhythm */}
+                      <div className="absolute -left-[2px] top-6 w-4 h-[2px] bg-cyan-500"></div>
 
-                      {/* 3. Ghost Number - Polished Opacity & Position */}
-                      <div className="absolute -top-12 -right-4 text-[8rem] sm:text-[10rem] font-black text-white/[0.03] leading-none select-none -z-10 font-display">
+                      {/* 3. Ghost Number */}
+                      <div className="absolute -top-10 -right-2 text-[6rem] opacity-5 font-black font-display text-white select-none pointer-events-none">
                           0{i+1}
                       </div>
 
                       {/* 2. Data Nodes */}
-                      <div className="relative z-10">
-                          <p className="font-mono text-[10px] text-gray-500 mb-0 tracking-widest">
-                              &gt;&gt; {step.func}
+                      <div className="relative z-10 pt-2">
+                          <p className="font-mono text-[10px] text-cyan-500 mb-1 tracking-widest uppercase">
+                              // {step.func}
                           </p>
-                          {/* 1. Fluid Typography (11vw) to prevent clipping */}
-                          <h3 className={`text-[11vw] font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-gray-800 mb-3 leading-[0.9] tracking-tighter break-words ${step.title === 'EXECUTE' ? 'animate-pulse duration-75' : ''}`}>
+                          {/* 1. Fluid Typography (9vw) - Adjusted for single line */}
+                          <h3 className={`text-[9vw] md:text-6xl font-black text-white leading-[0.85] tracking-tighter uppercase whitespace-nowrap ${step.title === 'EXECUTE' ? 'animate-pulse duration-75' : ''}`}>
                               {step.title}
                           </h3>
-                          <p className="text-sm text-gray-400 font-mono leading-relaxed border-l border-white/10 pl-4 py-1">
+                          
+                          <p className="mt-4 text-sm text-gray-400 font-mono leading-relaxed max-w-[95%]">
                               {step.desc}
                           </p>
                       </div>

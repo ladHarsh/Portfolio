@@ -330,13 +330,25 @@ const Skills = () => {
                {mobileOrderedCategories.map((category) => {
                   const isAICore = category.id.includes('NEURAL') || category.id.includes('GENERATIVE');
                   
+                  const HEADER_MAP = {
+                     NEURAL_CORE: "NEURAL // NETWORK_ARCH",
+                     GENERATIVE_NEXUS: "GENERATIVE // LLM_CORE",
+                     SYSTEM_ARCH: "SYSTEM // BACKEND_OPS",
+                     INTERFACE_MATRIX: "INTERFACE // PROTOCOL",
+                     INFRA_GRID: "INFRA // DEVOPS_GRID",
+                     COGNITIVE_FOUNDATION: "COGNITIVE // ALGO_BASE"
+                  };
+
+                  const headerText = HEADER_MAP[category.id] || category.title;
+                  const [mainTitle, subTitle] = headerText.split(' // ');
+                  
                   return (
                      <div key={category.id} id={category.id} className="scroll-mt-32">
                         {/* Category Header - Diagnostic Vibe */}
                         <div className="flex items-center gap-3 mb-4 pl-2 border-l-2 border-emerald-500/50">
                            <h2 className="text-emerald-400 font-mono text-xs font-bold tracking-widest uppercase">
-                              {category.title.split(' ')[0]}
-                              <span className="text-gray-600 ml-1">// MODULE_V{category.skills.length}.0</span>
+                              {mainTitle}
+                              <span className="text-gray-600 ml-1">// {subTitle || `MODULE_V${category.skills.length}.0`}</span>
                            </h2>
                         </div>
 

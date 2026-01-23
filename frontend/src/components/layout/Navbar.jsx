@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
-import { FaTerminal } from "react-icons/fa";
+import { FaTerminal, FaHome, FaCrosshairs, FaLayerGroup, FaMicrochip, FaEnvelope, FaArrowRight, FaCircle } from "react-icons/fa";
 
 const navLinks = [
-  { name: "// HOME", path: "/", shortName: "HOME" },
-  { name: "// MISSION", path: "/about", shortName: "MISSION" },
-  { name: "// MODULES", path: "/projects", shortName: "MODULES" },
-  { name: "// CORE", path: "/skills", shortName: "CORE" },
-  { name: "// SIGNAL", path: "/contact", shortName: "SIGNAL" },
+  { name: "// HOME", path: "/", shortName: "HOME", icon: FaHome },
+  { name: "// MISSION", path: "/about", shortName: "MISSION", icon: FaCrosshairs },
+  { name: "// MODULES", path: "/projects", shortName: "MODULES", icon: FaLayerGroup },
+  { name: "// CORE", path: "/skills", shortName: "CORE", icon: FaMicrochip },
+  { name: "// SIGNAL", path: "/contact", shortName: "SIGNAL", icon: FaEnvelope },
 ];
 
 const Navbar = () => {
@@ -133,65 +134,81 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu Overlay - Improved */}
-      <AnimatePresence>
-        {isOpen && (
-          <>
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm md:hidden"
-              aria-hidden="true"
-            />
-            
-            {/* Menu */}
-            <motion.nav
-              id="mobile-menu"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.2 }}
-              className="absolute top-full left-0 right-0 p-4 md:hidden"
-              aria-label="Mobile navigation"
-            >
-              <div className="bg-dark-900/95 backdrop-blur-2xl border border-white/10 rounded-2xl overflow-hidden shadow-2xl">
-                <div className="p-4 space-y-2">
-                  {navLinks.map((link, index) => (
+      {/* Mobile Menu Overlay - Bottom Sheet Redesign */}
+      {typeof document !== 'undefined' && createPortal(
+        <AnimatePresence>
+          {isOpen && (
+            <>
+              {/* Backdrop - Tap to close */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setIsOpen(false)}
+                className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] md:hidden"
+                aria-hidden="true"
+              />
+              
+              {/* Bottom Sheet Container */}
+              <motion.nav
+                id="mobile-menu"
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                exit={{ y: "100%" }}
+                transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                className="fixed bottom-0 left-0 right-0 z-[70] bg-black/90 backdrop-blur-xl border-t border-cyan-500/30 rounded-t-2xl shadow-[0_-10px_40px_-15px_rgba(34,211,238,0.2)] md:hidden flex flex-col max-h-[85vh] overflow-y-auto"
+                aria-label="Mobile navigation"
+              >
+                
+                {/* Drag Handle */}
+                <div className="w-12 h-1.5 bg-gray-700 rounded-full mx-auto mt-4 mb-2 flex-shrink-0" />
+
+                {/* Header inside sheet */}
+                <div className="flex items-center justify-between px-6 py-4 border-b border-white/5 mb-0">
+                   <span className="text-[10px] font-mono text-gray-600 mb-0">// SYSTEM_NAV</span>
+                   <button 
+                     onClick={() => setIsOpen(false)}
+                     className="text-xs font-mono text-red-400 hover:text-red-300 transition-colors uppercase"
+                   >
+                      [ CLOSE ]
+                   </button>
+                </div>
+
+                {/* Link List - Terminal Style */}
+                <div className="flex flex-col w-full">
+                  {navLinks.map((link) => (
                     <NavLink
                       key={link.path}
                       to={link.path}
                       onClick={() => setIsOpen(false)}
                       className={({ isActive }) =>
-                        `block px-4 py-3.5 text-sm font-mono tracking-wider rounded-xl transition-all min-h-[52px] flex items-center ${
+                        `w-full flex items-center gap-4 py-4 px-6 border-b border-white/5 font-mono text-lg tracking-widest uppercase transition-all duration-300 ${
                           isActive
-                            ? "bg-primary-500 text-black font-bold shadow-lg"
-                            : "text-gray-400 hover:bg-white/5 active:bg-white/10 hover:text-white"
+                            ? "text-cyan-400 pl-10 border-l-2 border-l-cyan-500 bg-white/5" // Added minimal bg for active touch feedback
+                            : "text-gray-400 hover:text-white active:bg-white/5"
                         }`
                       }
-                      aria-current={({ isActive }) => isActive ? 'page' : undefined}
                     >
-                     <span className="opacity-50 mr-2" aria-hidden="true">{">"}</span> 
-                     <span className="hidden xs:inline">{link.name}</span>
-                     <span className="xs:hidden">{link.shortName}</span>
+                        {link.shortName}
                     </NavLink>
                   ))}
                 </div>
                 
-                {/* Mobile Status Indicator */}
-                <div className="px-4 pb-4 pt-2 border-t border-white/10">
-                  <div className="flex items-center justify-center gap-2 px-3 py-2 rounded-full bg-green-500/10 border border-green-500/20">
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" aria-hidden="true"></span>
-                    <span className="text-[10px] font-mono text-green-500 font-bold tracking-wider">SYSTEM_ONLINE</span>
-                  </div>
+                {/* System Status Footer */}
+                <div className="mt-auto py-8 text-center border-t border-white/5 bg-black/20">
+                   <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/5 border border-emerald-500/10" aria-label="System status">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_#10b981]"></span>
+                      <span className="text-[10px] text-emerald-500 font-mono tracking-[0.2em] font-bold">
+                         SYSTEM_ONLINE :: V2.6.0
+                      </span>
+                   </div>
                 </div>
-              </div>
-            </motion.nav>
-          </>
-        )}
-      </AnimatePresence>
+              </motion.nav>
+            </>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </motion.header>
   );
 };
