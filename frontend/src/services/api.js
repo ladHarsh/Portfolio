@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || "https://portfolio-besy.onrender.com/api";
+const API_BASE_URL = import.meta.env.VITE_API_URL || "https://portfolio-besy.onrender.com";
 
 
 const api = axios.create({
@@ -13,22 +13,22 @@ const api = axios.create({
 // Projects API
 export const projectsApi = {
   getAll: async (params = {}) => {
-    const response = await api.get("/projects", { params });
+    const response = await api.get("/api/projects", { params });
     return response.data;
   },
 
   getBySlug: async (slug) => {
-    const response = await api.get(`/projects/${slug}`);
+    const response = await api.get(`/api/projects/${slug}`);
     return response.data;
   },
 
   getFeatured: async () => {
-    const response = await api.get("/projects", { params: { featured: true } });
+    const response = await api.get("/api/projects", { params: { featured: true } });
     return response.data;
   },
 
   getByCategory: async (category) => {
-    const response = await api.get("/projects", { params: { category } });
+    const response = await api.get("/api/projects", { params: { category } });
     return response.data;
   },
 };
@@ -36,9 +36,10 @@ export const projectsApi = {
 // Contact API
 export const contactApi = {
   submit: async (data) => {
-    const response = await api.post("/contact", data);
+    const response = await api.post("/api/contact", data);
     return response.data;
   },
 };
+
 
 export default api;
