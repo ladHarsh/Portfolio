@@ -103,11 +103,8 @@ const ProjectCard = ({ project, index, variant }) => {
                      </div>
                    )}
                    
-                   {/* Live Status Badge on Screen */}
-                   <div className="absolute top-3 right-3 bg-black/80 border border-green-500/50 px-2 py-0.5 text-[9px] font-mono text-green-400 flex items-center gap-1.5 backdrop-blur-sm z-20 shadow-lg">
-                      <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
-                      LIVE_FEED
-                   </div>
+                   {/* Live Status Badge removed */}
+
               </div>
 
               {/* 2. Visual Connector */}
@@ -230,11 +227,9 @@ const ProjectCard = ({ project, index, variant }) => {
              <div className="flex-1 p-6 flex flex-col">
                 <div className="mb-4">
                    <Link to={`/projects/${project.slug}`} className="block group-hover:text-primary-400 transition-colors">
-                      <h3 className="text-xl font-bold font-display text-white mb-2 leading-tight flex items-center gap-2">
-                         {project.title}
-                         {/* Live Status Dot */}
-                         <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.8)]" aria-hidden="true"></span>
-                      </h3>
+                       <h3 className="text-xl font-bold font-display text-white mb-2 leading-tight flex items-center gap-2">
+                          {project.title}
+                       </h3>
                    </Link>
                    <div className="h-0.5 w-12 bg-primary-500/50 rounded-full mb-3 group-hover:w-full transition-all duration-500" aria-hidden="true"></div>
                    

@@ -30,7 +30,7 @@ const About = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white pt-16 sm:pt-20 md:pt-24 pb-12 sm:pb-16 md:pb-20 relative overflow-hidden font-sans selection:bg-cyan-500 selection:text-black">
+    <div className="min-h-screen bg-black text-white pt-24 sm:pt-32 md:pt-40 pb-12 sm:pb-16 md:pb-20 relative overflow-hidden font-sans selection:bg-cyan-500 selection:text-black">
       
       {/* 0. Circuit Background - Optimized for mobile */}
       <div className="fixed inset-0 z-0 bg-[url('/grid-pattern.svg')] opacity-5 sm:opacity-10 pointer-events-none" aria-hidden="true"></div>
@@ -46,59 +46,61 @@ const About = () => {
                initial={{ opacity: 0, y: 20 }}
                animate={{ opacity: 1, y: 0 }}
                transition={{ duration: 0.6 }}
-               className="lg:col-span-5 relative order-1"
+               className="lg:col-span-5 order-1"
             >
-               {/* Holographic Container with Gradient Border */}
-               <div className="relative z-10 bg-transparent rounded-xl sm:rounded-2xl overflow-hidden p-[1px] bg-gradient-to-b from-cyan-500/50 to-transparent">
-                  
-                  <div className="relative h-[320px] sm:h-[400px] lg:h-[500px] w-full bg-black rounded-xl overflow-hidden group">
+               <div className="relative h-fit w-full max-w-[500px] mx-auto lg:mx-0">
+                  {/* Holographic Container with Gradient Border */}
+                  <div className="relative z-10 bg-transparent rounded-xl sm:rounded-2xl overflow-hidden p-[1px] bg-gradient-to-b from-cyan-500/50 to-transparent">
                      
-                     {/* 1. Scanner Overlay (Scanlines) */}
-                     <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,_rgba(0,0,0,0.5)_50%)] bg-[length:4px_4px] opacity-20 pointer-events-none z-30 mix-blend-overlay"></div>
-                     <div className="absolute top-0 left-0 w-full h-1 bg-cyan-500/50 animate-[scan_3s_linear_infinite] z-30 shadow-[0_0_15px_rgba(6,182,212,0.8)] opacity-50" aria-hidden="true"></div>
-
-                     {/* Profile Image */}
-                     <img 
-                        src="/I_need_to_2k_202601172105.jpeg" 
-                        alt="Harsh Lad - Digital Twin" 
-                        loading="lazy"
-                        className="absolute inset-0 w-full h-full object-cover opacity-90 grayscale contrast-[1.2] brightness-90 lg:group-hover:grayscale-0 lg:group-hover:contrast-100 lg:group-hover:brightness-100 transition-all duration-700 ease-in-out" 
-                     />
-                     
-                     {/* Holographic Tints */}
-                     <div className="absolute inset-0 bg-cyan-500/10 mix-blend-overlay pointer-events-none z-10" aria-hidden="true"></div>
-                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,rgba(0,0,0,0.8)_100%)] pointer-events-none z-10" aria-hidden="true"></div>
-                     
-                     {/* HUD Interaction Layer */}
-                     <div className="absolute inset-0 flex flex-col justify-between z-40 pointer-events-none">
+                     <div className="relative h-[320px] sm:h-[400px] lg:h-[500px] w-full bg-black rounded-xl overflow-hidden group">
                         
-                        {/* Top HUD */}
-                        <div className="p-4 sm:p-6 flex justify-between items-start">
-                           <FaMicrochip className="text-2xl text-cyan-500/50 animate-pulse drop-shadow-[0_0_5px_rgba(6,182,212,0.5)]" aria-hidden="true" />
-                           <div className="flex flex-col items-end gap-1">
-                              <div className="text-[10px] sm:text-xs font-mono text-cyan-400 bg-black/60 backdrop-blur-sm px-2 py-1 rounded-full border border-cyan-500/20 shadow-[0_0_10px_rgba(6,182,212,0.2)]">
-                                 ID: HARSH_LAD
+                        {/* 1. Scanner Overlay (Scanlines) */}
+                        <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,_rgba(0,0,0,0.5)_50%)] bg-[length:4px_4px] opacity-20 pointer-events-none z-30 mix-blend-overlay"></div>
+                        <div className="absolute top-0 left-0 w-full h-1 bg-cyan-500/50 animate-[scan_3s_linear_infinite] z-30 shadow-[0_0_15px_rgba(6,182,212,0.8)] opacity-50" aria-hidden="true"></div>
+
+                        {/* Profile Image */}
+                        <img 
+                           src="/I_need_to_2k_202601172105.jpeg" 
+                           alt="Harsh Lad - Digital Twin" 
+                           loading="lazy"
+                           className="absolute inset-0 w-full h-full object-cover opacity-90 grayscale contrast-[1.2] brightness-90 lg:group-hover:grayscale-0 lg:group-hover:contrast-100 lg:group-hover:brightness-100 transition-all duration-700 ease-in-out" 
+                        />
+                        
+                        {/* Holographic Tints */}
+                        <div className="absolute inset-0 bg-cyan-500/10 mix-blend-overlay pointer-events-none z-10" aria-hidden="true"></div>
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,rgba(0,0,0,0.8)_100%)] pointer-events-none z-10" aria-hidden="true"></div>
+                        
+                        {/* HUD Interaction Layer */}
+                        <div className="absolute inset-0 flex flex-col justify-between z-40 pointer-events-none">
+                           
+                           {/* Top HUD */}
+                           <div className="p-4 sm:p-6 flex justify-between items-start">
+                              <FaMicrochip className="text-2xl text-cyan-500/50 animate-pulse drop-shadow-[0_0_5px_rgba(6,182,212,0.5)]" aria-hidden="true" />
+                              <div className="flex flex-col items-end gap-1">
+                                 <div className="text-[10px] sm:text-xs font-mono text-cyan-400 bg-black/60 backdrop-blur-sm px-2 py-1 rounded-full border border-cyan-500/20 shadow-[0_0_10px_rgba(6,182,212,0.2)]">
+                                    ID: HARSH_LAD
+                                 </div>
                               </div>
                            </div>
-                        </div>
 
-                        {/* 2. Frosted Glass Badge (Bottom Anchored) */}
-                        <div className="w-full bg-black/40 backdrop-blur-md border-t border-white/10 p-4 sm:p-5">
-                           <div className="flex items-center gap-2 mb-1.5">
-                              <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_5px_#22c55e]"></div>
-                              <span className="text-[10px] sm:text-xs font-mono text-white/90 font-bold tracking-widest">SYSTEM_OPTIMIZED</span>
+                           {/* 2. Frosted Glass Badge (Bottom Anchored) */}
+                           <div className="w-full bg-black/40 backdrop-blur-md border-t border-white/10 p-4 sm:p-5">
+                              <div className="flex items-center gap-2 mb-1.5">
+                                 <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_5px_#22c55e]"></div>
+                                 <span className="text-[10px] sm:text-xs font-mono text-white/90 font-bold tracking-widest">SYSTEM_OPTIMIZED</span>
+                              </div>
+                              <p className="text-[10px] sm:text-xs text-gray-300 font-mono leading-relaxed opacity-90 max-w-[90%]">
+                                 "Engineering is not just code; it is the architecture of intelligence."
+                              </p>
                            </div>
-                           <p className="text-[10px] sm:text-xs text-gray-300 font-mono leading-relaxed opacity-90 max-w-[90%]">
-                              "Engineering is not just code; it is the architecture of intelligence."
-                           </p>
                         </div>
                      </div>
                   </div>
-               </div>
 
-               {/* Decorative Edges */}
-               <div className="hidden sm:block absolute -top-2 -left-2 w-8 h-8 border-t border-l border-cyan-500/50 rounded-tl-lg pointer-events-none"></div>
-               <div className="hidden sm:block absolute -bottom-2 -right-2 w-8 h-8 border-b border-r border-cyan-500/50 rounded-br-lg pointer-events-none"></div>
+                  {/* Decorative Edges - Now pinned to this wrapper */}
+                  <div className="hidden sm:block absolute -top-2 -left-2 w-8 h-8 border-t border-l border-cyan-500/50 rounded-tl-lg pointer-events-none z-0"></div>
+                  <div className="hidden sm:block absolute -bottom-2 -right-2 w-8 h-8 border-b border-r border-cyan-500/50 rounded-br-lg pointer-events-none z-0"></div>
+               </div>
             </motion.div>
 
             {/* Content Section - Strict Mobile/Desktop Split */}

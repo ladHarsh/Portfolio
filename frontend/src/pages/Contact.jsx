@@ -41,7 +41,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white pt-16 sm:pt-20 md:pt-24 pb-12 sm:pb-16 md:pb-20 relative overflow-hidden font-sans selection:bg-cyan-500 selection:text-black">
+    <div className="min-h-screen bg-black text-white pt-24 sm:pt-32 md:pt-40 pb-12 sm:pb-16 md:pb-20 relative overflow-hidden font-sans selection:bg-cyan-500 selection:text-black">
       
       {/* 0. Data Mesh Background - Very subtle */}
       <div className="fixed inset-0 z-0 opacity-5 pointer-events-none" aria-hidden="true">

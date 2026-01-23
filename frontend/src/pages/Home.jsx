@@ -132,7 +132,7 @@ const Home = () => {
       <NeuralBackground />
 
       {/* 1. HERO: THE SYSTEM CORE - Final Mobile Polish */}
-      <section className="min-h-screen flex items-center justify-center relative z-10 pt-20 sm:pt-24 px-4 sm:px-6">
+      <section className="min-h-screen flex items-center justify-center relative z-10 pt-32 sm:pt-40 pb-32 px-4 sm:px-6">
         <div className="section-container w-full">
           
           {/* Mobile-First Layout: Title → Profile */}
@@ -328,7 +328,7 @@ const Home = () => {
         </div>
 
         {/* Scroll Hint - Hidden on mobile */}
-        <div className="hidden sm:flex absolute bottom-10 left-1/2 -translate-x-1/2 flex-col items-center gap-2 opacity-50" aria-hidden="true">
+        <div className="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 opacity-30" aria-hidden="true">
           <span className="text-[10px] font-mono tracking-widest text-primary-400">
             SCROLL TO DECRYPT
           </span>

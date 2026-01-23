@@ -46,7 +46,7 @@ const Projects = () => {
        });
 
   return (
-    <div className="min-h-screen bg-black text-white pt-16 sm:pt-20 md:pt-24 pb-12 sm:pb-16 md:pb-20 font-sans selection:bg-primary-500 selection:text-white">
+    <div className="min-h-screen bg-black text-white pt-24 sm:pt-32 md:pt-40 pb-12 sm:pb-16 md:pb-20 font-sans selection:bg-primary-500 selection:text-white">
       
       {/* 0. Background Grid - Reduced on mobile */}
       <div className="fixed inset-0 z-0 bg-[linear-gradient(to_right,#80808005_1px,transparent_1px),linear-gradient(to_bottom,#80808005_1px,transparent_1px)] sm:bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:32px_32px]" aria-hidden="true"></div>
