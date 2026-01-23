@@ -2,6 +2,7 @@ import axios from "axios";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.MODE === "development" ? "" : "https://portfolio-ldan.onrender.com");
 
+console.log("🚀 API CONFIG:", { mode: import.meta.env.MODE, baseUrl: API_BASE_URL });
 
 const api = axios.create({
   baseURL: API_BASE_URL,
