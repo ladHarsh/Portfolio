@@ -13,13 +13,22 @@ const app = express();
 connectDB();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: "*",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // API Routes
 app.use("/api/projects", projectRoutes);
 app.use("/api/contact", contactRoutes);
+
+// Root route for easy checking
+app.get("/", (req, res) => {
+  res.send("API is running...");
+});
 
 // Health check
 app.get("/api/health", (req, res) => {
