@@ -123,7 +123,7 @@ const ProjectCard = ({ project, index, variant }) => {
                          </h3>
                      </Link>
                      <span className="px-1.5 py-0.5 border border-primary-500/30 text-[9px] font-mono text-primary-400 bg-primary-500/10 rounded-sm">
-                        STATUS: DEPLOYED
+                        STATUS: LIVE
                      </span>
                    </div>
                    
@@ -250,7 +250,7 @@ const ProjectCard = ({ project, index, variant }) => {
                 {/* Footer Actions */}
                 <div className="mt-auto pt-6 border-t border-white/5 flex items-center justify-between">
                    <Link to={`/projects/${project.slug}`} className="text-primary-400 text-xs font-bold font-mono tracking-widest uppercase hover:text-white transition-colors flex items-center gap-2">
-                      Initialize <span className="text-lg">→</span>
+                      View Details <span className="text-lg">→</span>
                    </Link>
 
                    <div className="flex gap-3">

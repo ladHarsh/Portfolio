@@ -17,16 +17,16 @@ const About = () => {
   }, []);
 
   const timeline = [
-    { year: "2026", event: "SYSTEM_OPTIMIZED: B.Tech Degree", desc: "Specialization in Generative AI & High-Dimensional Logic.", loc: "KPGU, Vadodara" },
-    { year: "2024", event: "PROTOCOL_MERGED: Full Stack", desc: "Integrated MERN Stack dependencies for scalable web architecture.", loc: "Remote / Hybrid" },
-    { year: "2022", event: "INITIALIZED_KERNEL: CS Start", desc: "Boot sequence initiated. Exploring foundational algorithms.", loc: "Vadodara" }
+    { year: "2026", event: "B.Tech in Computer Science", desc: "Graduated with specialization in Generative AI and Machine Learning.", loc: "KPGU, Vadodara" },
+    { year: "2024", event: "Full-Stack Development", desc: "Mastered MERN stack and built production applications with real users.", loc: "Self-Taught" },
+    { year: "2022", event: "Started CS Journey", desc: "Began Computer Science degree, focusing on algorithms and data structures.", loc: "KPGU, Vadodara" }
   ];
 
   const specs = [
-    { label: "ARCH_TYPE", val: "Neural_Hybrid", detail: "Hybrid architecture combining biological reasoning with computational efficiency" },
-    { label: "CORE_LANG", val: "Python / JS", detail: "Primary languages: Python for AI/ML, JavaScript for full-stack development" },
-    { label: "UPTIME", val: "99.9%", detail: "Continuous learning and system optimization" },
-    { label: "VERSION", val: "2.0.4 (Stable)", detail: "Current stable release with ongoing improvements" }
+    { label: "ROLE", val: "AI Engineer", detail: "Specializing in Machine Learning and Full-Stack Development" },
+    { label: "LANGUAGES", val: "Python / JavaScript", detail: "Python for AI/ML, JavaScript for web development" },
+    { label: "EDUCATION", val: "B.Tech CS (2026)", detail: "Computer Science with AI/ML specialization from KPGU" },
+    { label: "LOCATION", val: "Vadodara, India", detail: "Open to remote opportunities" }
   ];
 
   return (
@@ -118,8 +118,8 @@ const About = () => {
                   <div className="flex justify-between items-end mb-6 relative">
                      <div>
                         <h1 className="font-display uppercase leading-[0.9]">
-                           <span className="text-3xl font-light text-gray-400 block tracking-widest">DIGITAL</span>
-                           <span className="text-6xl font-black text-white block tracking-tighter">TWIN</span>
+                           <span className="text-3xl font-light text-gray-400 block tracking-widest">AI ENGINEER</span>
+                           <span className="text-6xl font-black text-white block tracking-tighter">& DEV</span>
                         </h1>
                         <div className="h-1.5 w-16 bg-cyan-500 shadow-[0_0_15px_#06b6d4] rounded-full mt-4"></div>
                      </div>
@@ -140,8 +140,9 @@ const About = () => {
                      onClick={() => setShowFullBio(!showFullBio)}
                   >
                      <p className={`text-base text-gray-300 leading-relaxed font-light border-l-2 border-cyan-500/30 pl-4 ${!showFullBio ? 'line-clamp-3' : ''}`} style={!showFullBio ? {maskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)'} : {}}>
-                        I operate at the intersection of <span className="text-white font-bold">biological cognition</span> and <span className="text-white font-bold">silicon efficiency</span>. 
-                        My function is to translate abstract human intent into deterministic machine logic, architecting scalable systems that solve complexity with algorithmic elegance.
+                        <span className="text-white font-bold">B.Tech in Computer Science</span> (2026) from KPGU, Vadodara, specializing in <span className="text-white font-bold">Generative AI and Machine Learning</span>. 
+                        I build production-ready AI systems using modern ML frameworks (TensorFlow, PyTorch, LangChain) and full-stack technologies (MERN, FastAPI). 
+                        My work focuses on <span className="text-white font-bold">NLP, Computer Vision, and deploying intelligent applications</span> that solve real-world problems at scale.
                      </p>
                      {!showFullBio && (
                         <div className="text-cyan-500 text-[10px] font-mono mt-2 flex items-center gap-1 opacity-80">
@@ -191,14 +192,15 @@ const About = () => {
                <div className="hidden lg:block space-y-8">
                   <div>
                      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-500 mb-3 sm:mb-4 tracking-tighter leading-tight">
-                        DIGITAL<br/>TWIN
+                        AI ENGINEER<br/>& DEVELOPER
                      </h1>
                      <div className="h-1 w-20 sm:w-32 bg-cyan-500 rounded-full mb-4 sm:mb-6"></div>
                      
                      <div className="relative">
                         <p className={`text-base sm:text-lg lg:text-xl text-gray-400 leading-relaxed max-w-2xl font-light border-l-2 border-cyan-500/30 pl-4 sm:pl-6`}>
-                           I operate at the intersection of <span className="text-white font-bold">biological cognition</span> and <span className="text-white font-bold">silicon efficiency</span>. 
-                           My function is to translate abstract human intent into deterministic machine logic, architecting scalable systems that solve complexity with algorithmic elegance.
+                           <span className="text-white font-bold">B.Tech in Computer Science</span> (2026) from KPGU, Vadodara, specializing in <span className="text-white font-bold">Generative AI and Machine Learning</span>. 
+                           I build production-ready AI systems using modern ML frameworks (TensorFlow, PyTorch, LangChain) and full-stack technologies (MERN, FastAPI). 
+                           My work focuses on <span className="text-white font-bold">NLP, Computer Vision, and deploying intelligent applications</span> that solve real-world problems at scale.
                         </p>
                      </div>
                   </div>
@@ -238,8 +240,7 @@ const About = () => {
                         className="px-6 sm:px-8 py-4 bg-cyan-500 hover:bg-cyan-400 active:bg-cyan-600 text-black font-bold font-mono tracking-widest text-xs sm:text-sm flex items-center justify-center gap-2 transition-all hover:scale-105 active:scale-95 rounded-lg min-h-[48px] sm:min-h-[52px]"
                      >
                         <FaDownload aria-hidden="true" /> 
-                        <span className="hidden sm:inline">EXPORT_BLUEPRINT</span>
-                        <span className="sm:hidden">RESUME</span>
+                        <span>DOWNLOAD RESUME</span>
                      </a>
                      <a 
                         href="https://linkedin.com/in/harsh-lad-dev" 
@@ -248,8 +249,7 @@ const About = () => {
                         className="px-6 sm:px-8 py-4 border-2 border-white/20 hover:border-cyan-500 active:border-cyan-400 text-white font-mono tracking-widest text-xs sm:text-sm flex items-center justify-center gap-2 transition-all rounded-lg min-h-[48px] sm:min-h-[52px]"
                      >
                         <FaLinkedin aria-hidden="true" /> 
-                        <span className="hidden sm:inline">LINK_NETWORK</span>
-                        <span className="sm:hidden">LINKEDIN</span>
+                        <span>CONNECT ON LINKEDIN</span>
                      </a>
                   </div>
                </div>
@@ -261,13 +261,13 @@ const About = () => {
             
             {/* MOBILE HEADER (< lg) */}
             <div className="block lg:hidden mb-12 pl-4">
-               <h2 id="processing-logic-heading" className="text-4xl font-black font-display text-white tracking-tighter uppercase italic opacity-20 transform scale-y-150 origin-left">NEURAL_SPINE</h2>
+               <h2 id="processing-logic-heading" className="text-4xl font-black font-display text-white tracking-tighter uppercase italic opacity-20 transform scale-y-150 origin-left">MY APPROACH</h2>
             </div>
 
             {/* DESKTOP HEADER (>= lg) */}
             <div className="hidden lg:flex items-center gap-3 sm:gap-4 mb-8 sm:mb-12">
                <span className="h-px bg-white/20 flex-1" aria-hidden="true"></span>
-               <h2 className="text-lg sm:text-xl md:text-2xl font-bold font-mono text-cyan-500 tracking-[0.15em] sm:tracking-[0.2em]">PROCESSING_LOGIC</h2>
+               <h2 className="text-lg sm:text-xl md:text-2xl font-bold font-mono text-cyan-500 tracking-[0.15em] sm:tracking-[0.2em]">MY APPROACH</h2>
                <span className="h-px bg-white/20 flex-1" aria-hidden="true"></span>
             </div>
 

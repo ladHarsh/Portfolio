@@ -28,7 +28,7 @@ const Footer = () => {
                  <span className="font-display font-bold text-xl sm:text-2xl tracking-tight">HARSH LAD</span>
               </Link>
               <p className="text-gray-400 max-w-md text-sm sm:text-base lg:text-lg leading-relaxed">
-                 Moving beyond static software. I engineer <span className="text-white">Adaptive Systems</span> that bridge the gap between human intent and machine intelligence.
+                 <span className="text-white font-bold">B.Tech Computer Science</span> (2026) | AI Engineer specializing in <span className="text-white">Generative AI, Machine Learning</span>, and Full-Stack Development. Building intelligent systems with TensorFlow, PyTorch, and modern web technologies.
               </p>
               
               {/* Social Links - Touch optimized */}
@@ -54,10 +54,10 @@ const Footer = () => {
               <nav aria-label="Footer navigation">
                 <ul className="grid grid-cols-2 gap-y-4 gap-x-8 md:block md:space-y-4">
                    {[
-                      {name: "// HOME", shortName: "HOME", path: "/"},
-                      {name: "// MISSION", shortName: "MISSION", path: "/about"},
-                      {name: "// MODULES", shortName: "MODULES", path: "/projects"},
-                      {name: "// CORE", shortName: "CORE", path: "/skills"}
+                      {name: "HOME", shortName: "HOME", path: "/"},
+                      {name: "ABOUT", shortName: "ABOUT", path: "/about"},
+                      {name: "PROJECTS", shortName: "PROJECTS", path: "/projects"},
+                      {name: "SKILLS", shortName: "SKILLS", path: "/skills"}
                    ].map((link) => (
                       <li key={link.path}>
                          <Link to={link.path} className="font-mono transition-colors tracking-wide inline-block min-h-[44px] md:min-h-0 flex items-center">
@@ -84,22 +84,22 @@ const Footer = () => {
                     <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="group font-mono transition-colors inline-block w-full md:w-auto min-h-[44px] md:min-h-0 flex items-center">
                         {/* Mobile: Button Style */}
                         <span className="md:hidden w-full flex items-center justify-between border border-gray-800 bg-gray-900/50 px-4 py-3 text-xs tracking-widest text-white hover:bg-gray-800 rounded-sm">
-                           <span>DOWNLOAD_SPECS</span>
+                           <span>DOWNLOAD RESUME</span>
                            <FaArrowDown className="text-gray-500 group-hover:text-white transition-colors" size={10} />
                         </span>
                         {/* Desktop: Text Style */}
-                        <span className="hidden md:inline text-xs sm:text-sm text-gray-400 hover:text-white active:text-white">DOWNLOAD_SPECS</span>
+                        <span className="hidden md:inline text-xs sm:text-sm text-gray-400 hover:text-white active:text-white">DOWNLOAD RESUME</span>
                     </a>
                  </li>
                  <li>
                      <Link to="/contact" className="group font-mono transition-colors inline-block w-full md:w-auto min-h-[44px] md:min-h-0 flex items-center">
                         {/* Mobile: Button Style */}
                         <span className="md:hidden w-full flex items-center justify-between border border-gray-800 bg-gray-900/50 px-4 py-3 text-xs tracking-widest text-white hover:bg-gray-800 rounded-sm">
-                           <span>INITIATE_CONTACT</span>
+                           <span>CONTACT ME</span>
                            <span className="text-cyan-500 animate-pulse">_</span>
                         </span>
                         {/* Desktop: Text Style */}
-                        <span className="hidden md:inline text-xs sm:text-sm text-gray-400 hover:text-white active:text-white">INITIATE_CONTACT</span>
+                        <span className="hidden md:inline text-xs sm:text-sm text-gray-400 hover:text-white active:text-white">CONTACT ME</span>
                      </Link>
                  </li>
                  <li className="hidden md:block"><span className="text-gray-600 font-mono text-xs sm:text-sm">V.2.0.4 [LATEST]</span></li>

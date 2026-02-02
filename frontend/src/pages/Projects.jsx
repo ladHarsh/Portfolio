@@ -30,10 +30,10 @@ const Projects = () => {
   };
 
   const categories = [
-    { id: "all", label: "ALL_MODULES", shortLabel: "ALL", icon: FaDatabase },
-    { id: "web", label: "FULL_STACK", shortLabel: "WEB", icon: FaServer },
-    { id: "ai", label: "NEURAL_NETS", shortLabel: "AI", icon: FaBrain },
-    { id: "edtech", label: "PLATFORMS", shortLabel: "EDU", icon: FaLaptopCode },
+    { id: "all", label: "ALL PROJECTS", shortLabel: "ALL", icon: FaDatabase },
+    { id: "web", label: "FULL STACK", shortLabel: "WEB", icon: FaServer },
+    { id: "ai", label: "AI / ML", shortLabel: "AI", icon: FaBrain },
+    { id: "edtech", label: "EDTECH", shortLabel: "EDU", icon: FaLaptopCode },
   ];
 
   // Filter Logic
@@ -57,15 +57,14 @@ const Projects = () => {
         <header className="mb-8 md:mb-16 border-b border-white/10 pb-4 md:pb-8">
            {/* MOBILE HEADER (< md) */}
            <div className="block md:hidden">
-              <h1 className="text-2xl font-display font-bold text-white mb-3 leading-tight">DEPLOYED ARCHITECTURES</h1>
+              <h1 className="text-2xl font-display font-bold text-white mb-3 leading-tight">Projects</h1>
               
               {/* Terminal Block with Context */}
               <div className="bg-black border-l-2 border-cyan-500 pl-4 py-2 my-4">
                  <div className="font-mono text-xs text-cyan-400/80 leading-relaxed space-y-1">
-                    <div>// INITIALIZING ARCHIVE...</div>
-                    <div>// LOADING: COGNITIVE_SYSTEMS & DISTRIBUTED_NETWORKS</div>
-                    <div>// PRODUCTION_GRADE_INTERFACES</div>
-                    <div className="text-emerald-400 mt-2">[ {filteredData.length} RECORDS FOUND ]</div>
+                    <div>Browse my portfolio of AI/ML and full-stack applications.</div>
+                    <div>All projects include live demos and source code.</div>
+                    <div className="text-emerald-400 mt-2">[ {filteredData.length} PROJECTS FOUND ]</div>
                  </div>
               </div>
            </div>
@@ -78,13 +77,13 @@ const Projects = () => {
                     <span>DATABASE_ACCESS_GRANTED</span>
                  </div>
                  <h1 className="text-6xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500 leading-tight">
-                    DEPLOYED ARCHITECTURES
+                    Projects
                  </h1>
               </div>
               
               <div className="max-w-md text-gray-400 text-sm leading-relaxed border-l-2 border-white/20 pl-4">
-                 Exploration of <span className="text-white font-bold">cognitive systems</span>, <span className="text-white font-bold">distributed networks</span>, and <span className="text-white font-bold">production-grade interfaces</span>. 
-                 Select a protocol below to inspect the codebase.
+                 Collection of <span className="text-white font-bold">production-ready AI/ML</span> and <span className="text-white font-bold">full-stack applications</span>. 
+                 Each project includes live demos, source code, and detailed documentation.
               </div>
            </div>
         </header>

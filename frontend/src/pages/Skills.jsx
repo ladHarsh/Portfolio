@@ -58,7 +58,7 @@ const SkillNode = ({ category, index }) => {
                   </div>
                   <div className="text-left">
                      <h3 className="font-display font-bold text-sm sm:text-base lg:text-lg text-white tracking-wide leading-none mb-1">{category.title}</h3>
-                     <p className="text-[9px] sm:text-[10px] font-mono text-gray-500 uppercase tracking-widest leading-none">{category.id}_MODULE::V1.0</p>
+                     <p className="text-[9px] sm:text-[10px] font-mono text-gray-500 uppercase tracking-widest leading-none">{category.id.toUpperCase()}</p>
                   </div>
                </div>
                <div className="hidden sm:block text-[9px] sm:text-[10px] font-mono text-gray-600 px-2 py-1 border border-white/5 rounded">
@@ -154,20 +154,6 @@ const NeuralProcessor = () => {
 const Skills = () => {
   const skillCategories = [
     {
-      id: "COGNITIVE_FOUNDATION",
-      title: "Computer Science & Math",
-      icon: <FaCalculator className="text-2xl" />,
-      skills: [
-        { name: "DSA", icon: <FaCode />, level: 3 },
-        { name: "DBMS", icon: <FaDatabase />, level: 3 },
-        { name: "OS / Linux", icon: <SiLinux />, level: 2 },
-        { name: "Computer Networks", icon: <FaNetworkWired />, level: 3 },
-        { name: "Software Eng", icon: <FaCogs />, level: 3 },
-        { name: "Linear Algebra", icon: <FaCalculator />, level: 3 },
-        { name: "Probability/Stats", icon: <FaChartLine />, level: 3 }
-      ]
-    },
-    {
       id: "NEURAL_CORE",
       title: "AI / ML / Data Science",
       icon: <FaBrain className="text-2xl" />,
@@ -238,18 +224,25 @@ const Skills = () => {
         { name: "Vercel / Render", icon: <SiVercel />, level: 3 },
         { name: "MS Word", icon: <FaFileWord />, level: 3 }
       ]
+    },
+    {
+      id: "COGNITIVE_FOUNDATION",
+      title: "Computer Science & Math",
+      icon: <FaCalculator className="text-2xl" />,
+      skills: [
+        { name: "DSA", icon: <FaCode />, level: 3 },
+        { name: "DBMS", icon: <FaDatabase />, level: 3 },
+        { name: "OS / Linux", icon: <SiLinux />, level: 2 },
+        { name: "Computer Networks", icon: <FaNetworkWired />, level: 3 },
+        { name: "Software Eng", icon: <FaCogs />, level: 3 },
+        { name: "Linear Algebra", icon: <FaCalculator />, level: 3 },
+        { name: "Probability/Stats", icon: <FaChartLine />, level: 3 }
+      ]
     }
   ];
 
-  // Reorder for mobile: AI/ML first
-  const mobileOrderedCategories = [
-    skillCategories[1], // NEURAL_CORE
-    skillCategories[2], // GENERATIVE_NEXUS
-    skillCategories[3], // SYSTEM_ARCH
-    skillCategories[4], // INTERFACE_MATRIX
-    skillCategories[5], // INFRA_GRID
-    skillCategories[0]  // COGNITIVE_FOUNDATION
-  ];
+  // Reorder for mobile: AI/ML first (now matches desktop order)
+  const mobileOrderedCategories = skillCategories; // No need to reorder anymore
 
   // Count total skills
   const totalSkills = skillCategories.reduce((acc, cat) => acc + cat.skills.length, 0);
@@ -266,14 +259,14 @@ const Skills = () => {
         <div className="flex flex-col md:flex-row items-center justify-between mb-8 md:mb-16 gap-6 md:gap-8">
            {/* MOBILE HEADER (< md) */}
            <div className="block md:hidden w-full">
-              <h1 className="text-2xl font-display font-bold mb-3 leading-tight">SYSTEM CAPABILITIES</h1>
+              <h1 className="text-2xl font-display font-bold mb-3 leading-tight">Technical Skills</h1>
               
               {/* Diagnostic Terminal Block */}
               <div className="bg-black border-l-2 border-emerald-500 pl-4 py-2 my-4">
                  <div className="font-mono text-xs text-emerald-400 leading-relaxed space-y-1">
-                    <div>&gt;&gt; RUNNING HEURISTIC ANALYSIS...</div>
-                    <div>&gt;&gt; DETECTED: {totalSkills} ACTIVE NEURAL MODULES</div>
-                    <div className="text-cyan-400 mt-2">[ STATUS: ALL_SYSTEMS_OPERATIONAL ]</div>
+                    <div>My technical expertise across AI/ML and full-stack development</div>
+                    <div>{totalSkills} technologies and frameworks</div>
+                    <div className="text-cyan-400 mt-2">[ PROFICIENCY: PRODUCTION-READY ]</div>
                  </div>
               </div>
            </div>

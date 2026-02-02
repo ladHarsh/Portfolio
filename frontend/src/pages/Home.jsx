@@ -149,29 +149,28 @@ const Home = () => {
               <div>
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-[1.15] sm:leading-[1.1]">
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-purple-400">
-                    NEURAL
+                    AI ENGINEER
                   </span>
                   <br />
-                  ARCHITECT
+                  HARSH LAD
                 </h1>
-                {/* System Identity - Now a Subtitle */}
+                {/* Role Identity - Clear and Searchable */}
                 <p className="text-xs sm:text-sm font-mono text-cyan-400/80 tracking-widest mt-2 sm:mt-3 uppercase">
-                  System Identity :: Architect
+                  Machine Learning Engineer | Applied AI
                 </p>
               </div>
 
-              {/* Mission Profile - Lighter Text */}
+              {/* Mission Profile - Concrete Technical Details */}
               <div className="p-3 sm:p-4 lg:p-6 border-l-2 border-primary-500 bg-white/5 backdrop-blur-sm rounded-r-xl max-w-xl">
                 <p className="font-mono text-[10px] sm:text-xs text-gray-500 mb-1 sm:mb-2">
-                  // MISSION_PROFILE
+                  // TECHNICAL_PROFILE
                 </p>
                 <p className="text-xs sm:text-sm lg:text-base xl:text-lg text-gray-400 leading-relaxed">
-                  I engineer{" "}
-                  <span className="text-primary-400 font-bold">Intelligence</span>
-                  , not just interfaces. My focus is absolute: advancing as an AI
-                  Engineer to build the autonomous systems of tomorrow. I fuse
-                  robust Software Architecture with Machine Learning to create
-                  intelligent, adaptive solutions.
+                  <span className="text-white font-bold">B.Tech in Computer Science</span> (2026) specializing in{" "}
+                  <span className="text-primary-400 font-bold">Generative AI and Machine Learning</span>.
+                  Building production-ready AI systems with{" "}
+                  <span className="text-white font-bold">TensorFlow, PyTorch, LangChain</span>, and modern full-stack technologies.
+                  Experienced in <span className="text-primary-400 font-bold">NLP, Computer Vision</span>, and deploying intelligent applications at scale.
                 </p>
               </div>
 
@@ -183,8 +182,8 @@ const Home = () => {
                   aria-label="View all projects"
                 >
                   <span className="relative z-10 flex items-center gap-2">
-                    <span className="hidden sm:inline">INITIALIZE MODULES</span>
-                    <span className="sm:hidden">INITIALIZE MODULES</span>
+                    <span className="hidden sm:inline">VIEW PROJECTS</span>
+                    <span className="sm:hidden">VIEW PROJECTS</span>
                     <FaArrowRight aria-hidden="true" />
                   </span>
                   <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" aria-hidden="true"></div>
@@ -194,8 +193,8 @@ const Home = () => {
                   className="px-4 sm:px-6 py-4 bg-white/5 backdrop-blur-sm hover:bg-white/10 active:bg-white/15 transition-all font-mono text-xs sm:text-sm uppercase tracking-wider text-gray-300 min-h-[48px] flex items-center justify-center rounded-sm col-span-2 sm:col-span-1"
                   aria-label="Learn more about me"
                 >
-                  <span className="hidden sm:inline">ACCESS DOSSIER</span>
-                  <span className="sm:hidden">ACCESS DOSSIER</span>
+                  <span className="hidden sm:inline">ABOUT ME</span>
+                  <span className="sm:hidden">ABOUT ME</span>
                 </Link>
               </div>
             </motion.div>
@@ -256,7 +255,7 @@ const Home = () => {
                       Harsh Lad
                     </h2>
                     <p className="text-xs font-mono text-gray-400">
-                      AI_ENGINEER :: V.2.0
+                      AI Engineer | ML Developer
                     </p>
                   </div>
                 </div>
@@ -301,7 +300,7 @@ const Home = () => {
                           Harsh Lad
                         </h2>
                         <p className="text-[9px] sm:text-[10px] font-mono text-gray-400 mb-2">
-                          AI_ENGINEER :: V.2.0
+                          AI Engineer | ML Developer
                         </p>
                         
                         {/* Status Indicator - Compact */}
@@ -356,23 +355,23 @@ const Home = () => {
             {[
               {
                 icon: FaBrain,
-                title: "Neural Networks",
-                desc: "Architecting Deep Learning models (CNN/RNN/Transformers) that predict and adapt.",
+                title: "AI & Machine Learning",
+                desc: "Building Deep Learning models (CNN/RNN/Transformers) with TensorFlow and PyTorch for NLP and Computer Vision.",
               },
               {
                 icon: FaServer,
-                title: "Backend Ops",
-                desc: "Building fault-tolerant Node.js/Python microservices capable of massive scale.",
+                title: "Backend Development",
+                desc: "Scalable Node.js/FastAPI microservices with MongoDB/PostgreSQL. RESTful APIs with JWT authentication.",
               },
               {
                 icon: FaDatabase,
                 title: "Data Engineering",
-                desc: "Designing pipelines that transform raw chaos into structured, queryable insight.",
+                desc: "ETL pipelines with Pandas/NumPy. Feature engineering and data visualization for ML workflows.",
               },
               {
                 icon: FaTerminal,
-                title: "System Sec",
-                desc: "End-to-end proprietary software design with security and efficiency at the core.",
+                title: "Full-Stack Development",
+                desc: "React applications with Tailwind CSS. Real-time features using Socket.io and WebRTC.",
               },
             ].map((item, idx) => (
               <motion.article
@@ -420,10 +419,10 @@ const Home = () => {
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 sm:gap-0 mb-12 sm:mb-16">
             <div>
               <h2 id="projects-heading" className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white mb-3 sm:mb-4">
-                Deployed Modules
+                Featured Projects
               </h2>
               <p className="text-gray-400 max-w-xl font-mono text-xs sm:text-sm border-l-2 border-primary-500 pl-3 sm:pl-4 py-1">
-                // ACCESSING LIVE PROJECT DATABASES...
+                Production-ready AI and full-stack applications with live demos
               </p>
             </div>
             <Link
@@ -431,7 +430,7 @@ const Home = () => {
               className="flex items-center gap-2 text-primary-400 hover:text-white active:text-white transition-colors font-bold tracking-wider text-xs sm:text-sm border-b border-primary-400/30 pb-1 min-h-[44px]"
               aria-label="View all projects"
             >
-              VIEW ALL LOGS <FaArrowRight aria-hidden="true" />
+              VIEW ALL PROJECTS <FaArrowRight aria-hidden="true" />
             </Link>
           </div>
 
@@ -474,9 +473,9 @@ const Home = () => {
           </div>
 
           <h2 id="cta-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-display font-bold text-white mb-6 sm:mb-8 px-4 leading-[0.9] sm:leading-tight flex flex-col items-center">
-            <span>INITIATE</span>
+            <span>LET'S BUILD</span>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-purple-400 flex items-center gap-1">
-              COLLABORATION<span className="text-primary-400 animate-pulse">_</span>
+              TOGETHER<span className="text-primary-400 animate-pulse">_</span>
             </span>
           </h2>
 
@@ -502,7 +501,7 @@ const Home = () => {
               aria-label="Connect on LinkedIn"
             >
               <FaLinkedin className="text-lg" /> 
-              <span>ESTABLISH LINK :: LN</span>
+              <span>CONNECT ON LINKEDIN</span>
             </a>
           </div>
         </div>

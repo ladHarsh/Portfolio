@@ -65,8 +65,8 @@ const Contact = () => {
                   SIGNAL_STRENGTH: 100%
                </div>
                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-display font-bold mb-4 sm:mb-6 leading-tight">
-                  ESTABLISH <br/> 
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-500">UPLINK</span>
+                  LET'S <br/> 
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-500">CONNECT</span>
                </h1>
                <p className="text-gray-400 text-sm sm:text-base lg:text-lg max-w-md leading-relaxed">
                   Open frequency for collaboration, recruitment, or technical consultation. All transmissions are encrypted and prioritized.
@@ -87,9 +87,9 @@ const Contact = () => {
             {/* OLD Social Buttons - DESKTOP ONLY (Hidden on mobile, shown on desktop) */}
             <div className="hidden lg:flex flex-col sm:flex-row gap-3 sm:gap-4">
                {[
-                  { icon: FaGithub, href: "https://github.com/ladHarsh", label: "GITHUB_REPO", shortLabel: "GITHUB" },
-                  { icon: FaLinkedin, href: "https://linkedin.com/in/harsh-lad-dev", label: "LINKED_NET", shortLabel: "LINKEDIN" },
-                  { icon: FaEnvelope, href: "mailto:harshlad.dev@gmail.com", label: "MAIL_Relay", shortLabel: "EMAIL" }
+                  { icon: FaGithub, href: "https://github.com/ladHarsh", label: "GITHUB", shortLabel: "GITHUB" },
+                  { icon: FaLinkedin, href: "https://linkedin.com/in/harsh-lad-dev", label: "LINKEDIN", shortLabel: "LINKEDIN" },
+                  { icon: FaEnvelope, href: "mailto:harshlad.dev@gmail.com", label: "EMAIL", shortLabel: "EMAIL" }
                ].map((social, i) => (
                   <a 
                      key={i}
@@ -128,7 +128,7 @@ const Contact = () => {
                >
                   <div className="flex items-center gap-3">
                      <FaGithub className="text-white text-lg" />
-                     <span className="font-mono text-xs text-gray-400 uppercase tracking-wider group-hover:text-white transition-colors">:: REPOSITORY</span>
+                     <span className="font-mono text-xs text-gray-400 uppercase tracking-wider group-hover:text-white transition-colors">:: GITHUB</span>
                   </div>
                   <div className="flex items-center gap-2">
                      <span className="text-[9px] font-mono text-gray-600">[ ONLINE ]</span>
@@ -146,7 +146,7 @@ const Contact = () => {
                >
                   <div className="flex items-center gap-3">
                      <FaLinkedin className="text-white text-lg" />
-                     <span className="font-mono text-xs text-gray-400 uppercase tracking-wider group-hover:text-white transition-colors">:: PROFESSIONAL_NET</span>
+                     <span className="font-mono text-xs text-gray-400 uppercase tracking-wider group-hover:text-white transition-colors">:: LINKEDIN</span>
                   </div>
                   <div className="flex items-center gap-2">
                      <span className="text-[9px] font-mono text-gray-600">[ ONLINE ]</span>
@@ -162,7 +162,7 @@ const Contact = () => {
                >
                   <div className="flex items-center gap-3">
                      <FaEnvelope className="text-white text-lg" />
-                     <span className="font-mono text-xs text-gray-400 uppercase tracking-wider group-hover:text-white transition-colors">:: DIRECT_FEED</span>
+                     <span className="font-mono text-xs text-gray-400 uppercase tracking-wider group-hover:text-white transition-colors">:: EMAIL</span>
                   </div>
                   <div className="flex items-center gap-2">
                      <span className="text-[9px] font-mono text-gray-600">[ ONLINE ]</span>
@@ -201,7 +201,7 @@ const Contact = () => {
                         
                         {/* Label - Top Right */}
                         <div className="flex justify-end mb-2">
-                           <span className="text-[10px] font-mono text-cyan-500/80 tracking-widest">// IDENTITY</span>
+                           <span className="text-[10px] font-mono text-cyan-500/80 tracking-widest">// YOUR NAME</span>
                         </div>
                         
                         {/* Input Container with Bottom Border + Corner Bracket */}
@@ -230,7 +230,7 @@ const Contact = () => {
                         
                         {/* Label - Top Right */}
                         <div className="flex justify-end mb-2">
-                           <span className="text-[10px] font-mono text-cyan-500/80 tracking-widest">// RETURN_ADDRESS</span>
+                           <span className="text-[10px] font-mono text-cyan-500/80 tracking-widest">// YOUR EMAIL</span>
                         </div>
                         
                         {/* Input Container with Bottom Border + Corner Bracket */}
@@ -259,7 +259,7 @@ const Contact = () => {
                         
                         {/* Label - Top Right */}
                         <div className="flex justify-end mb-2">
-                           <span className="text-[10px] font-mono text-cyan-500/80 tracking-widest">// PAYLOAD</span>
+                           <span className="text-[10px] font-mono text-cyan-500/80 tracking-widest">// YOUR MESSAGE</span>
                         </div>
                         
                         {/* Textarea Container with Bottom Border + Corner Bracket */}
@@ -305,7 +305,7 @@ const Contact = () => {
                            ) : status === "SUCCESS" ? (
                               <span>TRANSMISSION_COMPLETE</span>
                            ) : (
-                              "INITIATE_HANDSHAKE"
+                              "SEND MESSAGE"
                            )}
                         </span>
                      </button>
@@ -342,7 +342,7 @@ const Contact = () => {
                      {/* Name Input */}
                      <div className="group">
                         <label htmlFor="contact-name-desktop" className="block font-mono text-xs text-green-500 mb-2 group-focus-within:text-white transition-colors">
-                           &gt; ENTER_IDENTITY
+                           &gt; YOUR NAME
                         </label>
                         <input 
                            type="text" 
@@ -361,7 +361,7 @@ const Contact = () => {
                      {/* Email Input */}
                      <div className="group">
                         <label htmlFor="contact-email-desktop" className="block font-mono text-xs text-green-500 mb-2 group-focus-within:text-white transition-colors">
-                           &gt; TARGET_RETURN_ADDRESS
+                           &gt; YOUR EMAIL
                         </label>
                         <input 
                            type="email" 
@@ -380,7 +380,7 @@ const Contact = () => {
                      {/* Message Textarea */}
                      <div className="group">
                         <label htmlFor="contact-message-desktop" className="block font-mono text-xs text-green-500 mb-2 group-focus-within:text-white transition-colors">
-                           &gt; DATA_PAYLOAD
+                           &gt; YOUR MESSAGE
                         </label>
                         <textarea 
                            id="contact-message-desktop"
@@ -408,7 +408,7 @@ const Contact = () => {
                            <span>TRANSMISSION SENT</span>
                         ) : (
                            <>
-                              <span>INITIATE_TRANSFER</span>
+                              <span>SEND MESSAGE</span>
                               <FaPaperPlane className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" aria-hidden="true" />
                            </>
                         )}

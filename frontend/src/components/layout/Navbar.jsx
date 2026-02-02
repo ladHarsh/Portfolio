@@ -6,11 +6,11 @@ import { HiMenuAlt3, HiX } from "react-icons/hi";
 import { FaTerminal, FaHome, FaCrosshairs, FaLayerGroup, FaMicrochip, FaEnvelope, FaArrowRight, FaCircle } from "react-icons/fa";
 
 const navLinks = [
-  { name: "// HOME", path: "/", shortName: "HOME", icon: FaHome },
-  { name: "// MISSION", path: "/about", shortName: "MISSION", icon: FaCrosshairs },
-  { name: "// MODULES", path: "/projects", shortName: "MODULES", icon: FaLayerGroup },
-  { name: "// CORE", path: "/skills", shortName: "CORE", icon: FaMicrochip },
-  { name: "// SIGNAL", path: "/contact", shortName: "SIGNAL", icon: FaEnvelope },
+  { name: "HOME", path: "/", shortName: "HOME", icon: FaHome },
+  { name: "ABOUT", path: "/about", shortName: "ABOUT", icon: FaCrosshairs },
+  { name: "PROJECTS", path: "/projects", shortName: "PROJECTS", icon: FaLayerGroup },
+  { name: "SKILLS", path: "/skills", shortName: "SKILLS", icon: FaMicrochip },
+  { name: "CONTACT", path: "/contact", shortName: "CONTACT", icon: FaEnvelope },
 ];
 
 const Navbar = () => {
@@ -85,7 +85,7 @@ const Navbar = () => {
                    HARSH<span className="text-primary-500">.AI</span>
                 </span>
                 <span className="hidden sm:block text-[0.6rem] font-mono text-gray-400 tracking-[0.2em] -mt-1 group-hover:text-primary-400 transition-colors">
-                   SYSTEM_ARCHITECT
+                   AI_ENGINEER
                 </span>
              </div>
           </Link>
@@ -110,6 +110,18 @@ const Navbar = () => {
                   </NavLink>
                 ))}
              </div>
+             
+             {/* Resume Download Button - Desktop Only */}
+             <a
+               href="/resume.pdf"
+               target="_blank"
+               rel="noopener noreferrer"
+               className="px-4 py-2 bg-primary-600 hover:bg-primary-500 text-white text-xs font-mono font-bold tracking-wider rounded-full transition-all hover:shadow-[0_0_20px_rgba(99,102,241,0.4)] flex items-center gap-2"
+               aria-label="Download Resume"
+             >
+               <FaArrowRight className="rotate-90" size={10} />
+               RESUME
+             </a>
           </nav>
 
           {/* Right Controls */}

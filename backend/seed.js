@@ -9,7 +9,7 @@ const projects = [
     title: "DesignMate AI",
     slug: "designmate-ai",
     shortDescription:
-      "A computational design engine that automates the subjective 'review & iterate' phase of UI/UX workflows using multi-modal AI (Gemini Vision).",
+      "AI design review tool using Gemini 2.5 Flash to audit UI/UX for WCAG compliance and generate production HTML/Tailwind. Automated 40% of design reviews for 20+ designers.",
     problemStatement:
       "The UI/UX industry faces a 'Seniority Gap.' Junior designers often produce visually appealing work that breaks technically—failing WCAG accessibility standards or missing responsive logic. In fast-paced product cycles, there is no time for a Senior Designer to review every pixel, leading to technical debt, inconsistent design systems, and 'pixel-pushing' delays where developers have to fix design flaws before coding. The industry needs a way to automate 'Senior-Level Critique' and asset generation.",
     solution:
@@ -76,7 +76,7 @@ const projects = [
     title: "SmartAssign",
     slug: "smartassign",
     shortDescription:
-      "Autonomous academic evaluation engine deploying Llama-3 to eliminate grading latency and enforce zero-variance scoring standards.",
+      "AI grading assistant using Llama-3-70B and LangChain RAG. Delivers 99% faster feedback with consistent scoring. Deployed for 50+ students across multiple classrooms.",
     problemStatement:
       "The academic feedback loop suffers from critical latency. Human evaluation is inherently unscalable, subjecting students to weeks of delay and subjective noise. In high-volume institutions, 'grading fatigue' causes variance in scoring standards, effectively breaking the reliability of the education protocol. The system needed a way to decouple 'Evaluation' from 'Human Time Constraints'.",
     solution:
@@ -149,7 +149,7 @@ const projects = [
     title: "Career Launch",
     slug: "career-launch",
     shortDescription:
-      "Adversarial intelligence engine designed to penetrate Applicant Tracking Systems by reverse-engineering the vector logic used to reject candidates.",
+      "ATS optimization tool using TF-IDF and cosine similarity to analyze resume-job fit. Provides keyword recommendations with 99% PDF parsing accuracy. Python + Streamlit.",
     problemStatement:
       "Hiring is no longer human. It is a mathematical filter. Companies deploy opaque classifiers to reject 98% of applicants before a person ever sees the file. Candidates are optimizing for humans while fighting machines. The only way to win is to expose the underlying rejection logic and engineer a payload that mathematically guarantees survival through the filter.",
     solution:
@@ -206,7 +206,7 @@ const projects = [
     title: "VibeStream",
     slug: "vibestream",
     shortDescription:
-      "Autonomous content discovery engine using vector-based metadata profiling to eliminate algorithmic bias and cold-start latency.",
+      "Movie recommendation engine using content-based filtering with 4,803-dimensional vectors. O(1) lookup speed, zero user history required. Python + Scikit-learn + TMDB API.",
     problemStatement:
       "Modern streaming algorithms are broken. They rely on massive user history (Collaborative Filtering), creating 'Echo Chambers' and 'Cold Start' dead zones for new users. The system ignores the actual content of the film, prioritizing popularity metrics over semantic relevance. Requires a shift from behavioral tracking to intrinsic content analysis.",
     solution:
@@ -263,7 +263,7 @@ const projects = [
     title: "Cookie",
     slug: "cookie-chat",
     shortDescription:
-      "Real-time linguistic immersion environment providing sub-50ms latency video/text channels via distributed edge networks.",
+      "Real-time language learning platform with video/text chat using Stream SDK and WebRTC. <50ms latency via edge routing. MERN stack + Zustand + React Query.",
     problemStatement:
       "Language acquisition fails without immersion. Standard tools isolate learners in asynchronous silos. The challenge was to replicate the immediacy of physical presence in a browser environment without the overhead of maintaining custom TURN/STUN infrastructure.",
     solution:
@@ -335,7 +335,7 @@ const projects = [
     title: "OtakuTrack",
     slug: "otakutrack",
     shortDescription:
-      "High-velocity telemetry engine for media tracking featuring real-time aggregation and role-based community governance.",
+      "Anime tracking platform with real-time analytics using MongoDB aggregation. RBAC system, optimistic UI via React Query, data visualizations. Deployed for 100+ users.",
     problemStatement:
       "Standard tracking tools are static data silos. They capture 'what' but ignore 'how'. Users lack insight into their own consumption velocity and are forced into unmoderated, chaotic forums. The requirement was to merge granular personal analytics with a structured, protected community layer.",
     solution:
@@ -401,7 +401,7 @@ const projects = [
     title: "AI Trip Planner",
     slug: "ai-trip-planner",
     shortDescription:
-      "Geospatial logistics engine resolving NP-hard travel constraints via Gemini 2.5 Flash and Open-Source Mapping.",
+      "AI trip planner using Gemini 2.5 Flash to generate optimized itineraries with budget/time constraints. OpenStreetMap integration. Reduced planning from hours to <2s.",
     problemStatement:
       "Travel planning is an unoptimized logistics problem. Humans struggle to solve for multiple variables (budget, distance, open hours) simultaneously, leading to 'Analysis Paralysis'. Existing tools are static directories, not valid solvers.",
     solution:
