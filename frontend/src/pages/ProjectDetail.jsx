@@ -279,9 +279,9 @@ const ProjectDetails = () => {
           {/* MOBILE HOLODECK HEADER (< md) */}
           <div className="block md:hidden">
              {/* Back Navigation */}
-             <div className="px-4 mb-4">
+             <div className="px-4 mb-4 relative z-50">
                 <Link to="/projects" className="flex items-center gap-2 text-xs font-mono text-cyan-500 hover:text-white transition-colors hover:translate-x-1 duration-200 min-h-[44px] items-center" aria-label="Return to projects grid">
-                   <FaArrowLeft aria-hidden="true" /> ALL_PROJECTS
+                   <FaArrowLeft aria-hidden="true" /> Back to Projects
                  </Link>
               </div>
 
@@ -340,7 +340,7 @@ const ProjectDetails = () => {
           <header className="hidden md:flex flex-col md:flex-row justify-between items-start md:items-end gap-4 sm:gap-6 mb-8 sm:mb-12 border-b border-white/10 pb-6 sm:pb-8 relative z-50">
              <div className="w-full md:w-auto">
                 <Link to="/projects" className="flex items-center gap-2 text-xs font-mono text-cyan-500 mb-3 sm:mb-4 hover:text-white transition-colors relative z-50 hover:translate-x-1 duration-200 cursor-pointer min-h-[44px] sm:min-h-0 items-center" aria-label="Return to projects grid">
-                   <FaArrowLeft aria-hidden="true" /> ALL_PROJECTS
+                   <FaArrowLeft aria-hidden="true" /> Back to Projects
                 </Link>
                 <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-2">
                    <span className="px-2 py-0.5 bg-white/10 text-white text-[9px] sm:text-[10px] font-bold font-mono tracking-widest rounded border border-white/20">
