@@ -176,7 +176,7 @@ const Navbar = () => {
                 <div className="w-12 h-1.5 bg-gray-700 rounded-full mx-auto mt-4 mb-2 flex-shrink-0" />
 
                 {/* Header inside sheet */}
-                <div className="flex items-center justify-between px-6 py-4 border-b border-white/5 mb-0">
+                <div className="flex items-center justify-between px-6 py-3 border-b border-white/5 mb-0">
                    <span className="text-[10px] font-mono text-gray-600 mb-0">// MENU</span>
                    <button 
                      onClick={() => setIsOpen(false)}
@@ -194,7 +194,7 @@ const Navbar = () => {
                       to={link.path}
                       onClick={() => setIsOpen(false)}
                       className={({ isActive }) =>
-                        `w-full flex items-center gap-4 py-4 px-6 border-b border-white/5 font-mono text-lg tracking-widest uppercase transition-all duration-300 ${
+                        `w-full flex items-center gap-4 py-3 px-6 border-b border-white/5 font-mono text-base tracking-widest uppercase transition-all duration-300 ${
                           isActive
                             ? "text-cyan-400 pl-10 border-l-2 border-l-cyan-500 bg-white/5" // Added minimal bg for active touch feedback
                             : "text-gray-400 hover:text-white active:bg-white/5"
@@ -207,7 +207,7 @@ const Navbar = () => {
                 </div>
                 
                 {/* System Status Footer */}
-                <div className="mt-auto py-8 text-center border-t border-white/5 bg-black/20">
+                <div className="mt-auto py-6 text-center border-t border-white/5 bg-black/20">
                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/5 border border-emerald-500/10" aria-label="System status">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_#10b981]"></span>
                       <span className="text-[10px] text-emerald-500 font-mono tracking-[0.2em] font-bold">

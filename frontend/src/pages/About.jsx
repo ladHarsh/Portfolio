@@ -173,13 +173,13 @@ const About = () => {
                         aria-label="Download Logs"
                      >
                         <FaDownload className="group-hover:translate-y-1 transition-transform" />
-                        EXTRACT_SOURCE_DATA
+                        DOWNLOAD RESUME
                         <span className="text-[10px] text-gray-500 opacity-70">[.PDF]</span>
                      </a>
                      
                      <div className="flex justify-center">
                         <a href="https://linkedin.com/in/harsh-lad-dev" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors text-xs font-mono flex items-center gap-2">
-                           <FaLinkedin /> ESTABLISH_LINK :: LINKEDIN
+                           <FaLinkedin /> CONNECT ON LINKEDIN
                         </a>
                      </div>
                   </div>

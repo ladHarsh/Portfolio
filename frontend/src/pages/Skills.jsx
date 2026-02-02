@@ -211,8 +211,8 @@ const Skills = () => {
       ]
     },
     {
-      id: "INFRA_GRID",
-      title: "DevOps, Tools & Cloud",
+      id: "DEVOPS_STACK",
+      title: "DevOps & Tools",
       icon: <FaCloud className="text-2xl" />,
       skills: [
         { name: "Git / GitHub", icon: <FaGithub />, level: 3 },
@@ -226,8 +226,8 @@ const Skills = () => {
       ]
     },
     {
-      id: "COGNITIVE_FOUNDATION",
-      title: "Computer Science & Math",
+      id: "CS_CORE",
+      title: "Computer Science",
       icon: <FaCalculator className="text-2xl" />,
       skills: [
         { name: "DSA", icon: <FaCode />, level: 3 },
@@ -324,12 +324,12 @@ const Skills = () => {
                   const isAICore = category.id.includes('NEURAL') || category.id.includes('GENERATIVE');
                   
                   const HEADER_MAP = {
-                     NEURAL_CORE: "NEURAL // NETWORK_ARCH",
-                     GENERATIVE_NEXUS: "GENERATIVE // LLM_CORE",
-                     SYSTEM_ARCH: "SYSTEM // BACKEND_OPS",
-                     INTERFACE_MATRIX: "INTERFACE // PROTOCOL",
-                     INFRA_GRID: "INFRA // DEVOPS_GRID",
-                     COGNITIVE_FOUNDATION: "COGNITIVE // ALGO_BASE"
+                     AI_ML: "AI / ML // DATA_SCIENCE",
+                     GEN_AI: "GENERATIVE // LLM_AGENTS",
+                     BACKEND: "BACKEND // SYSTEM_ARCH",
+                     FRONTEND: "FRONTEND // INTERFACE_L2",
+                     DEVOPS_STACK: "DEVOPS // INFRA_GRID",
+                     CS_CORE: "CS_CORE // FOUNDATION"
                   };
 
                   const headerText = HEADER_MAP[category.id] || category.title;
