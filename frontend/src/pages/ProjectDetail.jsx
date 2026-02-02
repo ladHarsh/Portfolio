@@ -281,17 +281,17 @@ const ProjectDetails = () => {
              {/* Back Navigation */}
              <div className="px-4 mb-4">
                 <Link to="/projects" className="flex items-center gap-2 text-xs font-mono text-cyan-500 hover:text-white transition-colors hover:translate-x-1 duration-200 min-h-[44px] items-center" aria-label="Return to projects grid">
-                   <FaArrowLeft aria-hidden="true" /> RETURN_TO_GRID
-                </Link>
-             </div>
+                   <FaArrowLeft aria-hidden="true" /> ALL_PROJECTS
+                 </Link>
+              </div>
 
-             {/* 1. Control Deck - Title & Overview First */}
-             <div className="px-4 py-6 bg-black/80 backdrop-blur-sm border-y border-white/10 mb-6">
-                {/* Category Badge */}
-                <div className="flex items-center gap-2 mb-3">
-                   <span className="px-2 py-0.5 bg-white/10 text-white text-[9px] font-bold font-mono tracking-widest rounded border border-white/20">
-                      MOD::{project.category ? project.category.toUpperCase() : "APPS"}
-                   </span>
+              {/* 1. Control Deck - Title & Overview First */}
+              <div className="px-4 py-6 bg-black/80 backdrop-blur-sm border-y border-white/10 mb-6">
+                 {/* Category Badge */}
+                 <div className="flex items-center gap-2 mb-3">
+                    <span className="px-2 py-0.5 bg-white/10 text-white text-[9px] font-bold font-mono tracking-widest rounded border border-white/20">
+                       DOMAIN::{project.category ? project.category.toUpperCase() : "APPS"}
+                    </span>
                 </div>
                 
                 {/* Title */}
@@ -327,7 +327,7 @@ const ProjectDetails = () => {
                    {/* REC Indicator */}
                    <div className="absolute top-3 left-1/2 -translate-x-1/2 flex items-center gap-2 px-3 py-1 bg-black/80 backdrop-blur-sm rounded-full border border-red-500/50">
                       <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                      <span className="text-[9px] font-mono text-red-400 tracking-wider">LIVE_FEED</span>
+                      <span className="text-[9px] font-mono text-red-400 tracking-wider">SYSTEM_DEMO</span>
                    </div>
                    
                    {/* Scanline Effect */}
@@ -340,15 +340,15 @@ const ProjectDetails = () => {
           <header className="hidden md:flex flex-col md:flex-row justify-between items-start md:items-end gap-4 sm:gap-6 mb-8 sm:mb-12 border-b border-white/10 pb-6 sm:pb-8 relative z-50">
              <div className="w-full md:w-auto">
                 <Link to="/projects" className="flex items-center gap-2 text-xs font-mono text-cyan-500 mb-3 sm:mb-4 hover:text-white transition-colors relative z-50 hover:translate-x-1 duration-200 cursor-pointer min-h-[44px] sm:min-h-0 items-center" aria-label="Return to projects grid">
-                   <FaArrowLeft aria-hidden="true" /> RETURN_TO_GRID
+                   <FaArrowLeft aria-hidden="true" /> ALL_PROJECTS
                 </Link>
                 <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-2">
                    <span className="px-2 py-0.5 bg-white/10 text-white text-[9px] sm:text-[10px] font-bold font-mono tracking-widest rounded border border-white/20">
-                      MOD::{project.category ? project.category.toUpperCase() : "APPS"}
+                      DOMAIN::{project.category ? project.category.toUpperCase() : "APPS"}
                    </span>
                    {project.videoUrl && (
                       <span className="flex items-center gap-1.5 px-2 py-0.5 bg-red-900/30 text-red-400 text-[9px] sm:text-[10px] font-bold font-mono tracking-widest rounded border border-red-500/30">
-                         <span className="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse" aria-hidden="true"></span> LIVE_FEED
+                         <span className="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse" aria-hidden="true"></span> SYSTEM_DEMO
                       </span>
                    )}
                 </div>
@@ -359,12 +359,12 @@ const ProjectDetails = () => {
              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full md:w-auto">
                 {project.liveUrl && (
                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-cyan-500 text-black font-bold font-mono text-xs tracking-widest hover:bg-cyan-400 active:bg-cyan-600 transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(6,182,212,0.4)] min-h-[48px] rounded-sm" aria-label="Launch live demo">
-                      <FaExternalLinkAlt aria-hidden="true" /> <span className="hidden sm:inline">LAUNCH_SYS</span><span className="sm:hidden">DEMO</span>
+                      <FaExternalLinkAlt aria-hidden="true" /> <span className="hidden sm:inline">LAUNCH_DEMO</span><span className="sm:hidden">DEMO</span>
                    </a>
                 )}
                 <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 px-4 sm:px-6 py-3 border-2 border-white/20 bg-white/5 text-white font-mono text-xs tracking-widest hover:bg-white/10 active:bg-white/15 hover:border-white/40 transition-all min-h-[48px] rounded-sm" aria-label="View source code on GitHub">
-                   <FaGithub aria-hidden="true" /> <span className="hidden sm:inline">SOURCE_CODE</span><span className="sm:hidden">CODE</span>
-                </a>
+                   <FaGithub aria-hidden="true" /> <span className="hidden sm:inline">VIEW_SOURCE</span><span className="sm:hidden">CODE</span>
+                   </a>
              </div>
           </header>
 
@@ -428,7 +428,7 @@ const ProjectDetails = () => {
                       {/* Error Log */}
                       <div>
                          <div className="font-mono text-xs text-red-500 mb-2 tracking-wider">
-                            &gt;&gt; [CRITICAL_GAP_DETECTED]
+                            &gt;&gt; [PROBLEM_IDENTIFIED]
                          </div>
                          <p className="text-gray-400 text-sm font-sans leading-relaxed">
                             {project.problemStatement || "System constraints identified during initial reconnaissance."}
@@ -438,7 +438,7 @@ const ProjectDetails = () => {
                       {/* Patch Log */}
                       <div>
                          <div className="font-mono text-xs text-emerald-500 mb-2 tracking-wider">
-                            &gt;&gt; [PROTOCOL_EXECUTED]
+                            &gt;&gt; [ENGINEERING_SOLUTION]
                          </div>
                          <p className="text-white text-sm font-sans leading-relaxed">
                             {project.solution || "Optimization protocols deployed successfully."}
@@ -454,10 +454,10 @@ const ProjectDetails = () => {
                       <div className="absolute top-0 right-0 p-2 sm:p-3 opacity-20" aria-hidden="true">
                          <FaExclamationTriangle className="text-3xl sm:text-4xl text-red-500" />
                       </div>
-                      <h3 className="text-[10px] sm:text-xs font-bold font-mono text-red-500 mb-2 sm:mb-3 tracking-widest flex items-center gap-2">
-                         <span className="w-1.5 h-1.5 bg-red-500 rounded-sm animate-pulse" aria-hidden="true"></span>
-                         CONFLICT_DETECTED
-                      </h3>
+                         <h3 className="text-[10px] sm:text-xs font-bold font-mono text-red-500 mb-2 sm:mb-3 tracking-widest flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 bg-red-500 rounded-sm animate-pulse" aria-hidden="true"></span>
+                          PROBLEM_IDENTIFIED
+                       </h3>
                       <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
                          {project.problemStatement || "System constraints identified during initial reconnaissance."}
                       </p>
@@ -468,10 +468,10 @@ const ProjectDetails = () => {
                       <div className="absolute top-0 right-0 p-2 sm:p-3 opacity-20" aria-hidden="true">
                          <FaLightbulb className="text-3xl sm:text-4xl text-green-500" />
                       </div>
-                      <h3 className="text-[10px] sm:text-xs font-bold font-mono text-green-500 mb-2 sm:mb-3 tracking-widest flex items-center gap-2">
-                         <span className="w-1.5 h-1.5 bg-green-500 rounded-sm" aria-hidden="true"></span>
-                         PROTOCOL_EXECUTED
-                      </h3>
+                       <h3 className="text-[10px] sm:text-xs font-bold font-mono text-green-500 mb-2 sm:mb-3 tracking-widest flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 bg-green-500 rounded-sm" aria-hidden="true"></span>
+                          ENGINEERING_SOLUTION
+                       </h3>
                       <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
                          {project.solution || "Optimization protocols deployed successfully."}
                       </p>
@@ -537,7 +537,7 @@ const ProjectDetails = () => {
                 {/* Core Capabilities - MOBILE: Neural Synapse */}
                 <section className="block md:hidden px-4 my-8" aria-labelledby="capabilities-heading-mobile">
                    <h2 id="capabilities-heading-mobile" className="flex items-center gap-2 text-xl font-bold text-white mb-6 font-display">
-                      <FaMicrochip className="text-purple-500 text-base" aria-hidden="true" /> CORE_LOGIC_MODULES
+                      <FaMicrochip className="text-purple-500 text-base" aria-hidden="true" /> KEY_FEATURES
                    </h2>
                    
                    {/* The Synapse Line */}
@@ -574,7 +574,7 @@ const ProjectDetails = () => {
                     <h2 id="capabilities-heading" className="flex items-center gap-2 sm:gap-3 text-xl sm:text-2xl font-bold text-white mb-6 sm:mb-8 font-display sm:pl-12 relative">
                         <span className="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-px bg-purple-500/50" aria-hidden="true"></span>
                         <span className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-1 bg-purple-500 rounded-full" aria-hidden="true"></span>
-                        <FaMicrochip className="text-purple-500 text-base sm:text-xl" aria-hidden="true" /> CORE_LOGIC_MODULES
+                        <FaMicrochip className="text-purple-500 text-base sm:text-xl" aria-hidden="true" /> KEY_FEATURES
                     </h2>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 sm:pl-12">
@@ -617,7 +617,7 @@ const ProjectDetails = () => {
                       <div className="absolute top-0 right-0 p-2">
                          <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(6,182,212,0.8)]" aria-hidden="true"></div>
                       </div>
-                      <h3 className="text-[10px] sm:text-xs font-bold font-mono text-cyan-500 mb-4 sm:mb-6 tracking-widest">REALTIME_METRICS</h3>
+                      <h3 className="text-[10px] sm:text-xs font-bold font-mono text-cyan-500 mb-4 sm:mb-6 tracking-widest">SYSTEM_METRICS</h3>
                       
                       <div className="space-y-3 sm:space-y-4">
                          <div className="flex justify-between items-center text-xs sm:text-sm border-b border-white/10 pb-2">
@@ -642,7 +642,7 @@ const ProjectDetails = () => {
                    <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5 pointer-events-none" aria-hidden="true"></div>
                    
                    <h3 className="font-mono text-gray-500 mb-4 uppercase tracking-widest flex items-center gap-2 text-xs font-bold relative z-10">
-                      <FaMemory className="text-cyan-500" aria-hidden="true" /> DEPENDENCIES_INSTALLED
+                      <FaMemory className="text-cyan-500" aria-hidden="true" /> TECHNOLOGIES_USED
                    </h3>
                    
                    {/* Compact Grid - Show ALL */}
@@ -666,7 +666,7 @@ const ProjectDetails = () => {
                    <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5 pointer-events-none" aria-hidden="true"></div>
                    
                    <h3 className="font-mono text-gray-500 mb-4 sm:mb-6 uppercase tracking-widest flex items-center gap-2 text-xs sm:text-sm font-bold relative z-10">
-                      <FaMemory className="text-cyan-500" aria-hidden="true" /> DEPENDENCIES_INSTALLED
+                      <FaMemory className="text-cyan-500" aria-hidden="true" /> TECHNOLOGIES_USED
                    </h3>
                    <div className="flex flex-wrap gap-2 relative z-10">
                       {project.techStack?.map((tech, i) => (
@@ -683,7 +683,7 @@ const ProjectDetails = () => {
 
                 {/* Impact Analysis - MOBILE: HUD Telemetry Grid */}
                 <div className="block md:hidden">
-                   <h3 className="text-[10px] font-bold font-mono text-gray-500 uppercase tracking-widest mb-4 pl-4">IMPACT_ASSESSMENT</h3>
+                   <h3 className="text-[10px] font-bold font-mono text-gray-500 uppercase tracking-widest mb-4 pl-4">BUSINESS_IMPACT</h3>
                    
                    <div className="grid grid-cols-2 gap-3">
                       {impact.map((item, i) => {
@@ -742,7 +742,7 @@ const ProjectDetails = () => {
 
                 {/* Impact Analysis - DESKTOP: Original */}
                 <div className="hidden md:block space-y-3 sm:space-y-4">
-                   <h3 className="text-[10px] sm:text-xs font-bold font-mono text-gray-500 uppercase tracking-widest">IMPACT_ASSESSMENT</h3>
+                   <h3 className="text-[10px] sm:text-xs font-bold font-mono text-gray-500 uppercase tracking-widest">BUSINESS_IMPACT</h3>
                    {impact.map((item, i) => (
                       <article key={i} className="bg-white/5 p-3 sm:p-4 rounded-lg border-l-2 border-white/10 hover:border-cyan-500 active:border-cyan-500 transition-colors group">
                          <h4 className="text-xs sm:text-sm font-bold text-white mb-1 group-hover:text-cyan-400 transition-colors">{item.title}</h4>

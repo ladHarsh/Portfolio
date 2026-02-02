@@ -19,7 +19,7 @@ const AIEngineStatus = ({ model, provider, latency }) => {
               {/* Core Icon */}
               <FaMicrochip className="text-6xl text-indigo-500 animate-pulse relative z-10" />
             </div>
-            <h4 className="font-mono font-bold text-indigo-400 text-xs tracking-widest uppercase">AI_ENGINE_CORE</h4>
+            <h4 className="font-mono font-bold text-indigo-400 text-xs tracking-widest uppercase">AI PERFORMANCE METRICS</h4>
           </div>
 
           {/* Orbit Stats - 3 Column Grid */}
@@ -49,7 +49,7 @@ const AIEngineStatus = ({ model, provider, latency }) => {
            <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-2">
                  <FaServer className="text-indigo-500" />
-                 <h4 className="font-mono font-bold text-indigo-400 text-xs tracking-widest uppercase">AI_ENGINE_CORE</h4>
+                 <h4 className="font-mono font-bold text-indigo-400 text-xs tracking-widest uppercase">AI PERFORMANCE METRICS</h4>
               </div>
               <div className="flex items-center gap-1.5 px-2 py-0.5 bg-indigo-500/10 border border-indigo-500/20 rounded">
                  <span className="relative flex h-2 w-2">
@@ -62,19 +62,19 @@ const AIEngineStatus = ({ model, provider, latency }) => {
 
            <div className="space-y-4 font-mono text-xs">
               <div className="flex justify-between items-center border-b border-indigo-500/20 pb-2">
-                 <span className="text-gray-500">MODEL_TYPE</span>
+                 <span className="text-gray-500">MODEL</span>
                  <span className="text-white font-bold flex items-center gap-2">
                     <FaMicrochip className="text-indigo-500" /> {model || 'LLAMA-3 (70B)'}
                  </span>
               </div>
               <div className="flex justify-between items-center border-b border-indigo-500/20 pb-2">
-                 <span className="text-gray-500">PROVIDER_NET</span>
+                 <span className="text-gray-500">PROVIDER</span>
                  <span className="text-white font-bold flex items-center gap-2">
                     <FaCloud className="text-indigo-500" /> {provider || 'GROQ_CLOUD'}
                  </span>
               </div>
               <div className="flex justify-between items-center">
-                 <span className="text-gray-500">INFERENCE_LATENCY</span>
+                 <span className="text-gray-500">LATENCY</span>
                  <span className="text-indigo-400 font-bold flex items-center gap-2 animate-pulse">
                     <FaBolt /> {latency || '< 600ms'}
                  </span>
