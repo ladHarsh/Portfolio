@@ -87,7 +87,7 @@ const About = () => {
                            <div className="w-full bg-black/40 backdrop-blur-md border-t border-white/10 p-4 sm:p-5">
                               <div className="flex items-center gap-2 mb-1.5">
                                  <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_5px_#22c55e]"></div>
-                                 <span className="text-[10px] sm:text-xs font-mono text-white/90 font-bold tracking-widest">SYSTEM_OPTIMIZED</span>
+                                 <span className="text-[10px] sm:text-xs font-mono text-white/90 font-bold tracking-widest">AVAILABLE</span>
                               </div>
                               <p className="text-[10px] sm:text-xs text-gray-300 font-mono leading-relaxed opacity-90 max-w-[90%]">
                                  "Engineering is not just code; it is the architecture of intelligence."
@@ -386,7 +386,7 @@ const About = () => {
                           {/* 1. Header (Hash Key) */}
                           <div className="flex items-center gap-2 mb-3">
                               <span className="text-emerald-400 bg-emerald-950/20 px-2 py-1 rounded-sm border border-emerald-900/50 text-[10px] font-bold tracking-wider">
-                                  [ SHA-256 :: {item.year}_PATCH ]
+                                  [ {item.year} ]
                               </span>
                           </div>
                           
@@ -400,7 +400,7 @@ const About = () => {
                                <div className="flex items-start">
                                    <span className="text-gray-600 mr-2">&gt;</span>
                                    <span className="text-gray-400 w-12">SOURCE:</span>
-                                   <span className="text-cyan-400 ml-1">{item.loc.replace(/ /g, '_').replace(/,/g, '').toUpperCase()}_NODE</span>
+                                   <span className="text-cyan-400 ml-1">{item.loc.replace(/ /g, '_').replace(/,/g, '').toUpperCase()}</span>
                                </div>
                                <div className="flex items-start mt-1">
                                    <span className="text-gray-600 mr-2">&gt;</span>

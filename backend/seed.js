@@ -9,23 +9,22 @@ const projects = [
     title: "DesignMate AI",
     slug: "designmate-ai",
     shortDescription:
-      "AI design review tool using Gemini 2.5 Flash to audit UI/UX for WCAG compliance and generate production HTML/Tailwind. Automated 40% of design reviews for 20+ designers.",
+      "AI-powered design review tool using Gemini Vision API to audit UI/UX for WCAG compliance and generate production-ready HTML/Tailwind code.",
     problemStatement:
-      "The UI/UX industry faces a 'Seniority Gap.' Junior designers often produce visually appealing work that breaks technically—failing WCAG accessibility standards or missing responsive logic. In fast-paced product cycles, there is no time for a Senior Designer to review every pixel, leading to technical debt, inconsistent design systems, and 'pixel-pushing' delays where developers have to fix design flaws before coding. The industry needs a way to automate 'Senior-Level Critique' and asset generation.",
+      "Junior designers create visually appealing work that fails accessibility standards and responsive design requirements, requiring manual senior review.",
     solution:
-      "DesignMate AI operates not as a tool, but as an autonomous 'Design Motor.' It deconstructs the creative process into engineered pipelines. By leveraging Google's Gemini Vision (Multi-modal) and sophisticated Prompt Engineering, I built a system that 'looks' at designs to audit them for usability flaws and 'thinks' in code to generate production-ready layouts. It enforces mathematical harmony in color palettes and typography, effectively ensuring that every output is not just creative, but mathematically and structurally sound.",
+      "Built a multi-modal AI system using Gemini 2.5 Flash Vision API to analyze design screenshots and generate structured feedback on usability, accessibility, and visual hierarchy. Implements prompt engineering with Zod schema validation to ensure deterministic JSON/CSS output.",
     architecture:
-      "I architected a multi-modal inference pipeline using the Gemini 1.5 Flash model. The core engineering challenge was 'Structured Determinism'—forcing a Large Language Model (LLM) to output strict, compile-ready JSON/CSS instead of conversational text. I achieved this via 'Chain-of-Thought' prompting and Zod schema validation. The UX Audit feature uses Computer Vision to interpret uploaded wireframes, comparing them against a knowledge base of Heuristic Principles (Nielsen's heuristics) to generate actionable scores.",
+      "Multi-modal inference pipeline using Gemini 2.5 Flash. Implements chain-of-thought prompting with Zod schema validation for structured output. Frontend uses React with Socket.io for real-time feedback. Backend handles image uploads via Multer and manages user sessions with JWT authentication.",
     techStack: [
+      "Gemini 2.5 Flash",
+      "Zod",
       "React",
       "Node.js",
       "Express.js",
       "MongoDB",
-      "Gemini 2.5 Flash",
-      "Framer Motion",
       "Tailwind CSS",
       "Socket.io",
-      "Zod",
       "JWT",
       "Multer"
     ],
@@ -35,28 +34,28 @@ const projects = [
     },
     features: [
       {
-        title: "HEURISTIC_VISION_AUDIT",
+        title: "Vision-Based UI/UX Audit",
         description:
-          "Uses Vision models to 'see' uploaded designs and generate a Senior-level critique based on Usability, Accessibility, and Visual Hierarchy.",
+          "Uses Gemini Vision API to analyze uploaded designs and generate senior-level critique based on usability, accessibility, and visual hierarchy.",
       },
       {
-        title: "DETERMINISTIC_LAYOUT_SYNTHESIS",
+        title: "Production Code Generation",
         description:
-          "Transforms abstract text requirements into strictly typed, responsive HTML/Tailwind components relative to industry best practices.",
+          "Transforms text requirements into responsive HTML/Tailwind components with industry best practices.",
       },
       {
-        title: "ACCESSIBILITY_ENFORCER",
+        title: "WCAG Compliance Checker",
         description:
-          "Auto-generates color palettes and typestyles that mathematically pass WCAG AA/AAA contrast ratios.",
+          "Auto-generates color palettes and typography that pass WCAG AA/AAA contrast ratios.",
       },
       {
-        title: "TREND_ANALYSIS_ENGINE",
+        title: "Design Trend Analysis",
         description:
-          "Aggregates current design patterns to ensure output styles match modern market standards (Glassmorphism, Bento Grids, etc.).",
+          "Analyzes current design patterns to ensure output matches modern standards (Glassmorphism, Bento Grids).",
       },
     ],
     outcome:
-      "Bridged the gap between 'Creative Intent' and 'Engineering Constraints.' The system successfully automates 40% of the standard design review cycle. By enforcing WCAG compliance at the generation step, it eliminates accessibility refactors downstream. It proves that AI can do more than generate assets—it can act as a Quality Assurance layer for subjective fields like Design.",
+      "Reduced design review time by providing instant WCAG compliance checks and production-ready code generation. Used by 20+ designers in testing phase. Eliminates accessibility refactors by enforcing compliance at generation step.",
     demoCredentials: [
       {
         role: "Designer",
@@ -76,21 +75,20 @@ const projects = [
     title: "SmartAssign",
     slug: "smartassign",
     shortDescription:
-      "AI grading assistant using Llama-3-70B and LangChain RAG. Delivers 99% faster feedback with consistent scoring. Deployed for 50+ students across multiple classrooms.",
+      "AI grading assistant using Llama-3-70B and LangChain RAG to automatically evaluate student assignments with consistent scoring and detailed feedback.",
     problemStatement:
-      "The academic feedback loop suffers from critical latency. Human evaluation is inherently unscalable, subjecting students to weeks of delay and subjective noise. In high-volume institutions, 'grading fatigue' causes variance in scoring standards, effectively breaking the reliability of the education protocol. The system needed a way to decouple 'Evaluation' from 'Human Time Constraints'.",
+      "Manual grading creates week-long delays and inconsistent scoring standards, especially in high-volume classrooms.",
     solution:
-      "SmartAssign operates as a 'Cognitive Supervisor Node' for educational workflows. Instead of manually parsing papers, it treats submissions as unstructured data streams. By pipelining Groq's Llama-3-70B through LangChain, it performs 'Semantic Audits' on student PDFs—generating ground-truth answer keys, executing vector-based comparisons, and synthesizing granular feedback with sub-second latency. It transforms grading from a manual chore into a deterministic, automated pipeline.",
+      "Built an automated grading system using Groq's Llama-3-70B with LangChain RAG pipeline. Processes PDF submissions, compares against answer keys using vector similarity, and generates detailed feedback with rubric-based scoring.",
     architecture:
-      "I architected a Three-Tier Cognitive Pipeline. Ingestion: Multer/PDF-Parse buffers raw document streams. Inference Core: LangChain orchestrates a RAG (Retrieval-Augmented Generation) workflow, feeding context windows to the Llama-3 model running on Groq's LPUs for ultra-low latency. State Layer: MongoDB indexes assignments with relational pointers to classroom schemas, enabling O(log n) retrieval for analytics dashboards.",
+      "Three-tier pipeline: PDF ingestion via Multer and pdf-parse, LangChain RAG workflow with Llama-3-70B on Groq's LPUs for low-latency inference, MongoDB for assignment storage with aggregation pipelines for analytics. React frontend with Chart.js for grade visualization.",
     techStack: [
+      "Groq AI (Llama-3-70B)",
+      "LangChain",
       "React 19",
       "Node.js",
       "Express.js",
       "MongoDB",
-      "Groq AI (Llama-3)",
-      "LangChain",
-      "Bootstrap 5",
       "Chart.js",
       "JWT",
       "Multer",
@@ -98,32 +96,32 @@ const projects = [
     ],
     engineStatus: {
       algorithm: "LLAMA-3-70B",
-      metric: "75ms/TOKEN SPEED"
+      metric: "75ms/TOKEN"
     },
     features: [
       {
-        title: "ZERO_SHOT_AUDIT",
+        title: "Automated LLM Grading",
         description:
-          "Deploys LLMs to audit student reasoning against ground truth schemas without prior fine-tuning.",
+          "Uses Llama-3-70B to evaluate student reasoning against ground truth without fine-tuning.",
       },
       {
-        title: "RECURSIVE_CHAINING",
+        title: "RAG-Based Evaluation",
         description:
-          "Deconstructs complex prompts into atomic logic gates using Chain-of-Thought reasoning for granular scoring.",
+          "Implements retrieval-augmented generation for context-aware grading with granular scoring.",
       },
       {
-        title: "VELOCITY_DASHBOARD",
+        title: "Real-Time Analytics",
         description:
-          "Live telemetry visualization of learning curves and grade distribution via Chart.js.",
+          "Live dashboard showing learning curves and grade distribution using Chart.js.",
       },
       {
-        title: "ASYNC_EVENT_BUS",
+        title: "Email Notifications",
         description:
-          "Non-blocking notification queues triggering instant alerts upon evaluation completion.",
+          "Automated alerts sent to students upon evaluation completion via Nodemailer.",
       },
     ],
     outcome:
-      "Eliminated the 'Grading Bottleneck' entirely. Reduced feedback latency by 99% (from weeks to seconds) while achieving absolute consistency in scoring criteria. The system proves that High-Level Cognitive Tasks (like evaluation) can be successfully offloaded to specialized AI agents.",
+      "Reduced grading time from days to seconds while maintaining consistent evaluation criteria. Deployed for 50+ students across multiple classrooms. Provides detailed feedback that helps students understand mistakes.",
     videoUrl: "https://youtu.be/cqtb4iDCn2M",
     demoCredentials: [
       {
@@ -141,7 +139,73 @@ const projects = [
     githubUrl: "https://github.com/ladHarsh/SmartAssign",
     thumbnail: "/A_sleek_darkthemed_2k_202601132254-800.webp",
     thumbnailLight: "/A_sleek_lightthemed_2k_202601140004-800.webp",
-    category: "edtech",
+    category: "ai",
+    featured: true,
+    order: 2,
+  },
+  {
+    title: "AI Trip Planner",
+    slug: "ai-trip-planner",
+    shortDescription:
+      "AI-powered trip planning tool using Gemini 2.5 Flash to generate optimized itineraries based on budget, time, and preferences with OpenStreetMap integration.",
+    problemStatement:
+      "Travel planning requires manually researching destinations, calculating routes, and balancing multiple constraints (budget, time, interests).",
+    solution:
+      "Built an AI trip planner that takes user preferences and generates day-by-day itineraries using Gemini 2.5 Flash. Integrates OpenStreetMap data for real-time location information and route visualization using Leaflet.js.",
+    architecture:
+      "React frontend with Leaflet.js for interactive maps. Node.js backend handles Gemini API calls for itinerary generation. OpenStreetMap Overpass API provides real-time POI data. MongoDB stores user trips and preferences. Socket.io enables real-time itinerary updates.",
+    techStack: [
+      "Gemini 2.5 Flash",
+      "OpenStreetMap",
+      "Leaflet.js",
+      "React",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Socket.io",
+      "Tailwind CSS",
+      "JWT"
+    ],
+    engineStatus: {
+      algorithm: "GEMINI 2.5 FLASH",
+      metric: "2s GENERATION"
+    },
+    features: [
+      {
+        title: "AI Itinerary Generation",
+        description:
+          "Generates complete day-by-day schedules based on budget, time, and interest constraints.",
+      },
+      {
+        title: "OpenStreetMap Integration",
+        description:
+          "Real-time location data and POI information via OSM Overpass API.",
+      },
+      {
+        title: "Interactive Map Visualization",
+        description:
+          "Leaflet.js-powered maps showing routes and destinations with custom markers.",
+      },
+      {
+        title: "Budget Optimization",
+        description:
+          "Calculates estimated costs and optimizes itinerary to fit user budget.",
+      },
+    ],
+    outcome:
+      "Reduced trip planning time from hours to under 2 seconds. Generates complete itineraries with budget breakdowns and optimized routes. Provides visual map representation for easy understanding.",
+    demoCredentials: [
+      {
+        role: "Traveler",
+        email: "demo@tripplanner.com",
+        password: "demo123"
+      }
+    ],
+    liveUrl: "https://trips-planner-blue.vercel.app/",
+    githubUrl: "https://github.com/ladHarsh/AI-TripPlanner",
+    thumbnail: "/A_sleek_darkthemed_2k_202601132323-800.webp",
+    thumbnailLight: "/A_sleek_darkthemed_2k_202601140015-800.webp",
+    category: "ai",
     featured: true,
     order: 3,
   },
@@ -149,51 +213,50 @@ const projects = [
     title: "Career Launch",
     slug: "career-launch",
     shortDescription:
-      "ATS optimization tool using TF-IDF and cosine similarity to analyze resume-job fit. Provides keyword recommendations with 99% PDF parsing accuracy. Python + Streamlit.",
+      "ATS optimization tool using TF-IDF and cosine similarity to analyze resume-job description match and provide keyword recommendations.",
     problemStatement:
-      "Hiring is no longer human. It is a mathematical filter. Companies deploy opaque classifiers to reject 98% of applicants before a person ever sees the file. Candidates are optimizing for humans while fighting machines. The only way to win is to expose the underlying rejection logic and engineer a payload that mathematically guarantees survival through the filter.",
+      "Job applicants struggle to optimize resumes for Applicant Tracking Systems (ATS), leading to automatic rejections despite qualifications.",
     solution:
-      "Career Launch is an ATS decompiler. It ingests job descriptions and resumes, projecting them into high-dimensional vector space to measure semantic distance. Instead of vague advice, it calculates the exact cosine similarity score used by hiring algorithms. It identifies the precise keywords missing from your feature vector and generates a patch strategy to maximize your acceptance probability.",
+      "Built a resume analyzer using scikit-learn TF-IDF vectorization and cosine similarity to calculate match scores between resumes and job descriptions. Identifies missing keywords and provides actionable recommendations.",
     architecture:
-      "Built on a scikit-learn pipeline focusing on TF-IDF vectorization. The core logic handles multi-column PDF extraction via pdfplumber to prevent parsing errors common in standard tools. It constructs a sparse matrix of n-gram features from the target job description and computes the dot product against the candidate profile to derive a deterministic match score. Visualization handled by Plotly for granular metric breakdown.",
+      "Python-based NLP pipeline using scikit-learn for TF-IDF vectorization. pdfplumber handles multi-column PDF extraction. Cosine similarity calculation on sparse matrices for match scoring. Streamlit provides interactive UI with Plotly visualizations for keyword analysis.",
     techStack: [
+      "Scikit-learn",
+      "TF-IDF",
       "Python",
       "Streamlit",
-      "Scikit-learn",
       "Pandas",
-      "NumPy",
       "pdfplumber",
-      "PyPDF2",
       "Plotly"
     ],
     engineStatus: {
-      algorithm: "MULTI-DIM VECTOR",
+      algorithm: "TF-IDF COSINE",
       metric: "99% PARSE RATE"
     },
     features: [
       {
-        title: "COSINE_SCORING_KERNEL",
+        title: "Resume-Job Similarity Scoring",
         description:
-          "Replaces confidence intervals with hardness 0-100% similarity metrics derived from vector dot products.",
+          "Calculates 0-100% match score using TF-IDF vectorization and cosine similarity.",
       },
       {
-        title: "VECTOR_SPACE_PROJECTION",
+        title: "Keyword Gap Analysis",
         description:
-          "Maps candidate profiles into n-dimensional feature space to identify semantic proximity to job requirements.",
+          "Identifies missing keywords from job description and categorizes by importance.",
       },
       {
-        title: "SEMANTIC_GAP_DETECTOR",
+        title: "PDF Text Extraction",
         description:
-          "Categorizes missing keywords as 'False Negatives' or 'Hard Gaps' for actionable injection strategies.",
+          "Robust PDF parsing with multi-column support using pdfplumber.",
       },
       {
-        title: "PRIVACY_ENCLAVE",
+        title: "Interactive Visualizations",
         description:
-          "Executes all NLP operations in local memory or stateless sessions to ensure zero data retention.",
+          "Plotly charts showing keyword frequency and match score breakdown.",
       },
     ],
     outcome:
-      "Turns the job search into an engineering problem. Users stop guessing and start optimizing. By treating a resume as a data payload, candidates can force their application through the digital gatekeepers. It shifts the power dynamic from the system back to the applicant.",
+      "Provides quantitative match scores and specific keyword gaps to help candidates optimize resumes for ATS systems. Helps users understand exactly what's missing from their resume.",
     liveUrl: "https://career-launch.streamlit.app/",
     githubUrl: "https://github.com/ladHarsh/Career-Launch",
     thumbnail: "/A_sleek_darkthemed_2k_202601132317-800.webp",
@@ -206,51 +269,49 @@ const projects = [
     title: "VibeStream",
     slug: "vibestream",
     shortDescription:
-      "Movie recommendation engine using content-based filtering with 4,803-dimensional vectors. O(1) lookup speed, zero user history required. Python + Scikit-learn + TMDB API.",
+      "Content-based movie recommendation system using scikit-learn to analyze movie metadata and provide instant recommendations without user history.",
     problemStatement:
-      "Modern streaming algorithms are broken. They rely on massive user history (Collaborative Filtering), creating 'Echo Chambers' and 'Cold Start' dead zones for new users. The system ignores the actual content of the film, prioritizing popularity metrics over semantic relevance. Requires a shift from behavioral tracking to intrinsic content analysis.",
+      "Traditional recommendation systems require extensive user history and create filter bubbles. New users face cold-start problems.",
     solution:
-      "VibeStream operates as a 'Content DNA' analyzer. It bypasses user tracking entirely. By vectorizing 5,000+ metadata points (plot, cast, genre) into a high-dimensional feature space, it calculates the 'Semantic Velocity' between films. It treats movies as data nodes, using Cosine Similarity to identify mathematical neighbors in 4,803-dimensional space.",
+      "Built a content-based filtering system that analyzes movie metadata (plot, cast, genre, director) using CountVectorizer and cosine similarity. Pre-computes similarity matrix for instant recommendations.",
     architecture:
-      "Architected for O(1) inference speed. The NLP pipeline (CountVectorizer) pre-computes a 23M+ entry Similarity Matrix, caching it in memory for instant lookups. The Streamlit frontend acts as a stateless render layer, fetching real-time assets via TMDB API while the core logic remains purely mathematical and server-side.",
+      "NLP pipeline using CountVectorizer to create feature vectors from 5000+ movie metadata points. Pre-computed similarity matrix cached in memory for O(1) lookups. Streamlit frontend fetches real-time movie data via TMDB API. Purely stateless architecture with no user tracking.",
     techStack: [
+      "Scikit-learn",
+      "Content-Based Filtering",
       "Python",
       "Streamlit",
-      "Scikit-learn",
       "Pandas",
-      "NumPy",
-      "TMDB API",
-      "CountVectorizer",
-      "Cosine Similarity"
+      "TMDB API"
     ],
     engineStatus: {
-      algorithm: "VECTOR COSINE",
+      algorithm: "CONTENT FILTERING",
       metric: "O(1) LOOKUP"
     },
     features: [
       {
-        title: "SEMANTIC_DNA_PROFILING",
+        title: "Content-Based Filtering",
         description:
-          "Deconstructs films into 5,000+ vector features to map narrative and tonal fingerprints.",
+          "Analyzes movie metadata (plot, cast, genre) to find similar films without user history.",
       },
       {
-        title: "ZERO_HISTORY_INFERENCE",
+        title: "Instant Recommendations",
         description:
-          "Delivers highly relevant recommendations instantly without requiring a single byte of user history.",
+          "Pre-computed similarity matrix enables immediate recommendations without computation delay.",
       },
       {
-        title: "VECTOR_SPACE_CACHING",
+        title: "TMDB Integration",
         description:
-          "Pre-computed 4803x4803 similarity matrix enables constant-time O(1) query performance.",
+          "Real-time movie posters, ratings, and details via TMDB API.",
       },
       {
-        title: "HYBRID_METADATA_FUSION",
+        title: "Zero User Tracking",
         description:
-          "Synthesizes plot keywords, cast nodes, and directorial style into a unified similarity index.",
+          "Completely stateless system that preserves user privacy.",
       },
     ],
     outcome:
-      "Eliminated the 'Cold Start' problem. Proved that mathematically pure content analysis outperforms behavioral tracking for discovery. Delivers sub-100ms recommendations while preserving absolute user privacy. A stateless, high-velocity engine for cinematic exploration.",
+      "Provides relevant recommendations instantly without requiring user history or login. Solves the cold-start problem for new users. Demonstrates that content analysis can work without behavioral tracking.",
     liveUrl: "https://vibestream.streamlit.app/",
     githubUrl: "https://github.com/ladHarsh/VibeStream",
     thumbnail: "/A_sleek_darkthemed_2k_202601132319-800.webp",
@@ -263,13 +324,13 @@ const projects = [
     title: "Cookie",
     slug: "cookie-chat",
     shortDescription:
-      "Real-time language learning platform with video/text chat using Stream SDK and WebRTC. <50ms latency via edge routing. MERN stack + Zustand + React Query.",
+      "Real-time language learning platform with video/text chat using Stream SDK and WebRTC for low-latency communication.",
     problemStatement:
-      "Language acquisition fails without immersion. Standard tools isolate learners in asynchronous silos. The challenge was to replicate the immediacy of physical presence in a browser environment without the overhead of maintaining custom TURN/STUN infrastructure.",
+      "Language learners lack immersive practice opportunities with native speakers in real-time.",
     solution:
-      "Cookie is a unified communication fabric. It orchestrates real-time data streams by offloading media transport to Stream's global edge network. This ensures high-fidelity, low-latency transmission for video and text. The system intelligently routes users based on linguistic compatibility, creating an instant 'Immersion Protocol' that bridges the gap between study and fluency.",
+      "Built a real-time chat platform using Stream SDK for video/text communication. Implements language-based user matching to connect learners with native speakers for conversation practice.",
     architecture:
-      "Built on an Event-Driven MERN Core. The React frontend maintains optimistic state via React Query, while the Node.js backend acts as a secure token authority. Media streams are handled by Stream SDK's distributed infrastructure, ensuring reliability. Authentication uses stateless HTTP-Only JWTs with bcrypt hashing for session integrity.",
+      "MERN stack with Stream SDK handling WebRTC media transport. React frontend with Zustand for state management and React Query for server state. Node.js backend provides JWT authentication and user matching logic. MongoDB stores user profiles with language preferences.",
     techStack: [
       "React",
       "Vite",
@@ -285,32 +346,32 @@ const projects = [
     ],
     engineStatus: {
       algorithm: "WEBRTC STREAM",
-      metric: "< 50ms LATENCY"
+      metric: "<50ms LATENCY"
     },
     features: [
       {
-        title: "EDGE_NETWORK_ROUTING",
+        title: "Real-Time Video/Text Chat",
         description:
-          "Offloads heavy media transport to distributed edge nodes for sub-50ms global latency.",
+          "Stream SDK integration for high-quality video and text communication with sub-50ms latency.",
       },
       {
-        title: "LINGUISTIC_MATCHING_KERNEL",
+        title: "Language-Based Matching",
         description:
-          "Indexed MongoDB queries map native-to-target language pairs for optimal user pairing.",
+          "MongoDB queries match users based on native and target language preferences.",
       },
       {
-        title: "STATELESS_JWT_AUTH",
+        title: "JWT Authentication",
         description:
-          "Secure, scalable session management using short-lived tokens and HTTP-only cookies.",
+          "Secure session management using HTTP-only cookies and bcrypt password hashing.",
       },
       {
-        title: "REACTIVE_UI_SYNCHRONIZATION",
+        title: "Responsive UI",
         description:
-          "Zustand state manager handles real-time socket events for instant UI updates.",
+          "Tailwind CSS and DaisyUI components with real-time state updates via Zustand.",
       },
     ],
     outcome:
-      "Eliminated infrastructure bottlenecks. Delivered enterprise-grade communication reliability with zero maintenance overhead. Proved that complex real-time systems can be architected by leveraging specialized, managed infrastructure layers.",
+      "Enables real-time language practice with sub-50ms latency. Deployed with user authentication and language preference matching. Leverages managed infrastructure for reliable communication.",
     demoCredentials: [
       {
         role: "User 1",
@@ -327,21 +388,21 @@ const projects = [
     githubUrl: "https://github.com/ladHarsh/Cookie",
     thumbnail: "/A_sleek_darkthemed_2k_202601132321-800.webp",
     thumbnailLight: "/A_sleek_lightthemed_2k_202601140011-800.webp",
-    category: "fullstack",
-    featured: true,
+    category: "web",
+    featured: false,
     order: 6,
   },
   {
     title: "OtakuTrack",
     slug: "otakutrack",
     shortDescription:
-      "Anime tracking platform with real-time analytics using MongoDB aggregation. RBAC system, optimistic UI via React Query, data visualizations. Deployed for 100+ users.",
+      "Anime tracking platform with real-time analytics dashboard using MongoDB aggregation pipelines and role-based access control.",
     problemStatement:
-      "Standard tracking tools are static data silos. They capture 'what' but ignore 'how'. Users lack insight into their own consumption velocity and are forced into unmoderated, chaotic forums. The requirement was to merge granular personal analytics with a structured, protected community layer.",
+      "Anime fans lack tools to track viewing progress and analyze their watching patterns with meaningful insights.",
     solution:
-      "OtakuTrack functions as a personal telemetry platform. It replaces static lists with dynamic data visualizations. The backend leverages MongoDB's Aggregation Framework to crunch millions of data points on-the-fly, serving real-time statistics about genre saturation and watch velocity. It wraps this data layer in a strict RBAC (Role-Based Access Control) shell, ensuring high-quality community interaction.",
+      "Built a full-stack tracking platform with MongoDB aggregation pipelines for real-time statistics. Implements RBAC for community features and optimistic UI updates with React Query.",
     architecture:
-      "Integrated MERN Monolith optimized for read-heavy operations. The Data Layer utilizes complex MongoDB Aggregation Pipelines ($project, $group, $lookup) to offload calculation from the node event loop. The Frontend implements Optimistic UI patterns via React Query for perceived zero-latency interactions. Security is enforced via custom JWT middleware handling granular permission scopes.",
+      "MERN stack optimized for read-heavy operations. MongoDB aggregation pipelines ($project, $group, $lookup) for on-the-fly analytics. React Query for optimistic UI updates and cache management. Custom JWT middleware for role-based permissions (Admin/Moderator/User). Recharts for data visualization.",
     techStack: [
       "MongoDB",
       "Express.js",
@@ -360,28 +421,28 @@ const projects = [
     },
     features: [
       {
-        title: "REAL_TIME_AGGREGATION_PIPELINE",
+        title: "Real-Time Analytics",
         description:
-          "Executes complex MongoDB $lookup and $group stages to compute user statistics in under 60ms.",
+          "MongoDB aggregation pipelines compute user statistics (genre distribution, watch velocity) in under 60ms.",
       },
       {
-        title: "RBAC_GOVERNANCE_LAYER",
+        title: "Role-Based Access Control",
         description:
-          "Cryptographic role enforcement (Admin/Mod/User) protecting community integrity via custom middleware.",
+          "Custom JWT middleware enforces Admin/Moderator/User permissions for community features.",
       },
       {
-        title: "OPTIMISTIC_STATE_SYNC",
+        title: "Optimistic UI Updates",
         description:
-          "React Query implementation providing zero-latency UI feedback before server confirmation.",
+          "React Query provides instant UI feedback before server confirmation.",
       },
       {
-        title: "DATA_VISUALIZATION_KERNEL",
+        title: "Data Visualizations",
         description:
-          "Transforms raw watch history logs into interactive velocity charts and heatmaps via Recharts.",
+          "Interactive charts and heatmaps showing viewing patterns via Recharts.",
       },
     ],
     outcome:
-      "Transforms passive consumption into active data science. Users gain verifiable insights into their viewing habits. The RBAC system successfully successfully mitigated spam, creating a self-sustaining, high-quality community ecosystem.",
+      "Deployed for 100+ users with real-time analytics, community discussions, and personalized viewing statistics. RBAC system maintains high-quality community interaction.",
     demoCredentials: [
       {
         role: "User",
@@ -393,76 +454,9 @@ const projects = [
     githubUrl: "https://github.com/ladHarsh/OtakuTrack",
     thumbnail: "/IMG_20260115_232801-800.webp",
     thumbnailLight: "/IMG_20260115_232743-800.webp",
-    category: "fullstack",
-    featured: true,
+    category: "web",
+    featured: false,
     order: 7,
-  },
-  {
-    title: "AI Trip Planner",
-    slug: "ai-trip-planner",
-    shortDescription:
-      "AI trip planner using Gemini 2.5 Flash to generate optimized itineraries with budget/time constraints. OpenStreetMap integration. Reduced planning from hours to <2s.",
-    problemStatement:
-      "Travel planning is an unoptimized logistics problem. Humans struggle to solve for multiple variables (budget, distance, open hours) simultaneously, leading to 'Analysis Paralysis'. Existing tools are static directories, not valid solvers.",
-    solution:
-      "The system functions as a deterministic constraint solver. It ingests abstract user intent (budget, days, interests) and projects it against real-time OpenStreetMap geospatial data. A Gemini 2.5 Flash reasoning core optimizes requirements into a coherent, routed schedule, effectively solving the Traveling Salesman Problem for leisure logistics.",
-    architecture:
-      "Hybrid Neuro-Symbolic Architecture. The 'Symbolic' layer (Leaflet.js + OSM) provides ground-truth vector tiles. The 'Neural' layer (Gemini 2.5 Flash) performs the logical reasoning to sequence these points. State is managed via React functional closures to ensure zero-drift updates.",
-    techStack: [
-      "React",
-      "Node.js",
-      "Express.js",
-      "MongoDB",
-      "Gemini 2.5 Flash",
-      "Leaflet.js",
-      "OpenStreetMap",
-      "Socket.io",
-      "Tailwind CSS",
-      "Framer Motion",
-      "JWT"
-    ],
-    engineStatus: {
-      algorithm: "GEMINI 2.5 FLASH",
-      metric: "2s GENERATION"
-    },
-    features: [
-      {
-        title: "GEOSPATIAL_REASONING_CORE",
-        description:
-          "Merges abstract user intent with rigid latitude/longitude constraints to generate viable routes.",
-      },
-      {
-        title: "CONSTRAINT_SATISFACTION_ENGINE",
-        description:
-          "Solving for budget, time, and rating thresholds simultaneously in < 2 seconds.",
-      },
-      {
-        title: "OPEN_METADATA_FUSION",
-        description:
-          "Aggregates live point-of-interest data via OpenStreetMap Overpass API.",
-      },
-      {
-        title: "DYNAMIC_ITINERARY_GENERATION",
-        description:
-          "Constructs day-by-day schedules optimized for proximity and 'flow'.",
-      },
-    ],
-    outcome:
-      "Reduced planning time from hours to minutes. By wrapping a simple conversational AI in a structured UI, it makes Generative AI immediately useful for complex logistics. The integration of Maps and AI text generation creates a 'Spatial Intelligence' experience for travelers.",
-    demoCredentials: [
-      {
-        role: "Traveler",
-        email: "demo@tripplanner.com",
-        password: "demo123"
-      }
-    ],
-    liveUrl: "https://trips-planner-blue.vercel.app/",
-    githubUrl: "https://github.com/ladHarsh/AI-TripPlanner",
-    thumbnail: "/A_sleek_darkthemed_2k_202601132323-800.webp",
-    thumbnailLight: "/A_sleek_lightthemed_2k_202601140015-800.webp",
-    category: "ai",
-    featured: true,
-    order: 2,
   },
 ];
 

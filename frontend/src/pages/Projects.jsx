@@ -10,7 +10,7 @@ import LoadingSpinner from "../components/ui/LoadingSpinner";
 import ProjectCard from "../components/projects/ProjectCard";
 
 const Projects = () => {
-  const [activeTab, setActiveTab] = useState("all");
+  const [activeTab, setActiveTab] = useState("ai");
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -30,9 +30,9 @@ const Projects = () => {
   };
 
   const categories = [
+    { id: "ai", label: "AI / MACHINE LEARNING", shortLabel: "AI", icon: FaBrain },
     { id: "all", label: "ALL PROJECTS", shortLabel: "ALL", icon: FaDatabase },
-    { id: "web", label: "FULL STACK", shortLabel: "WEB", icon: FaServer },
-    { id: "ai", label: "AI / ML", shortLabel: "AI", icon: FaBrain },
+    { id: "web", label: "WEB APPLICATIONS", shortLabel: "WEB", icon: FaServer },
     { id: "edtech", label: "EDTECH", shortLabel: "EDU", icon: FaLaptopCode },
   ];
 

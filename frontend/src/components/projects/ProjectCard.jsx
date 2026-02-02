@@ -146,7 +146,7 @@ const ProjectCard = ({ project, index, variant }) => {
                           to={`/projects/${project.slug}`} 
                           className="bg-primary-600/20 border border-primary-500/50 text-primary-400 text-[10px] font-bold font-mono tracking-widest uppercase flex items-center justify-center h-9 hover:bg-primary-600 hover:text-white transition-all active:scale-[0.98] rounded-sm group relative overflow-hidden"
                        >
-                           <span className="relative z-10">INITIATE_LINK -&gt;</span>
+                           <span className="relative z-10">VIEW DETAILS -&gt;</span>
                            <div className="absolute inset-0 bg-primary-500/20 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300"></div>
                        </Link>
                        <a 

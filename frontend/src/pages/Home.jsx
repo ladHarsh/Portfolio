@@ -344,7 +344,7 @@ const Home = () => {
             <div className="flex items-center gap-2 px-3 sm:px-4 py-2 border border-primary-500/30 bg-primary-500/10 rounded-full">
               <FaNetworkWired className="text-primary-400 text-sm sm:text-base" aria-hidden="true" />
               <h2 id="capabilities-heading" className="font-mono text-xs sm:text-sm text-primary-400 tracking-[0.15em] sm:tracking-[0.2em] uppercase">
-                System Architecture
+                My Expertise
               </h2>
             </div>
             <span className="h-px flex-1 bg-gradient-to-l from-transparent to-white/20" aria-hidden="true"></span>
@@ -480,7 +480,7 @@ const Home = () => {
           </h2>
 
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-400 mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed px-4 font-mono">
-            // Awaiting encrypted transmission protocol...
+            Open to new opportunities and collaborations
           </p>
 
           {/* Holographic Keys */}
@@ -491,7 +491,7 @@ const Home = () => {
               aria-label="Send email"
             >
               <FaEnvelope className="text-lg group-hover:animate-pulse" /> 
-              <span>TRANSMIT SIGNAL -&gt;</span>
+              <span>SEND EMAIL {'->'}</span>
             </a>
             <a
               href="https://linkedin.com/in/harsh-lad-dev"

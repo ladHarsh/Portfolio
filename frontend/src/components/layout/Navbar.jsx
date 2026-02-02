@@ -177,7 +177,7 @@ const Navbar = () => {
 
                 {/* Header inside sheet */}
                 <div className="flex items-center justify-between px-6 py-4 border-b border-white/5 mb-0">
-                   <span className="text-[10px] font-mono text-gray-600 mb-0">// SYSTEM_NAV</span>
+                   <span className="text-[10px] font-mono text-gray-600 mb-0">// MENU</span>
                    <button 
                      onClick={() => setIsOpen(false)}
                      className="text-xs font-mono text-red-400 hover:text-red-300 transition-colors uppercase"
@@ -211,7 +211,7 @@ const Navbar = () => {
                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/5 border border-emerald-500/10" aria-label="System status">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_#10b981]"></span>
                       <span className="text-[10px] text-emerald-500 font-mono tracking-[0.2em] font-bold">
-                         SYSTEM_ONLINE :: V2.6.0
+                         ONLINE
                       </span>
                    </div>
                 </div>

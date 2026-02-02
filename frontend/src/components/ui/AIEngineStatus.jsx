@@ -26,7 +26,7 @@ const AIEngineStatus = ({ model, provider, latency }) => {
           <div className="grid grid-cols-3 gap-3 text-center">
             <div className="bg-indigo-500/5 border border-indigo-500/20 rounded p-2">
               <div className="text-[9px] text-indigo-400 font-mono mb-1">MODEL</div>
-              <div className="text-[10px] text-white font-bold font-mono">{model?.split(' ')[0] || 'LLAMA-3'}</div>
+              <div className="text-[10px] text-white font-bold font-mono">{model || 'LLAMA-3'}</div>
             </div>
             <div className="bg-indigo-500/5 border border-indigo-500/20 rounded p-2">
               <div className="text-[9px] text-indigo-400 font-mono mb-1">LATENCY</div>
@@ -34,7 +34,7 @@ const AIEngineStatus = ({ model, provider, latency }) => {
             </div>
             <div className="bg-indigo-500/5 border border-indigo-500/20 rounded p-2">
               <div className="text-[9px] text-indigo-400 font-mono mb-1">PROVIDER</div>
-              <div className="text-[10px] text-white font-bold font-mono">{provider?.split(' ')[0] || 'GROQ'}</div>
+              <div className="text-[10px] text-white font-bold font-mono">{provider || 'GROQ'}</div>
             </div>
           </div>
         </div>

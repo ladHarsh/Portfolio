@@ -62,14 +62,14 @@ const Contact = () => {
             <div>
                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-emerald-900/20 border border-emerald-500/30 rounded text-emerald-400 font-mono text-[10px] sm:text-xs tracking-widest mb-4 sm:mb-6 animate-pulse">
                   <span className="w-2 h-2 bg-emerald-500 rounded-full" aria-hidden="true"></span>
-                  SIGNAL_STRENGTH: 100%
+                  ONLINE
                </div>
                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-display font-bold mb-4 sm:mb-6 leading-tight">
                   LET'S <br/> 
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-500">CONNECT</span>
                </h1>
                <p className="text-gray-400 text-sm sm:text-base lg:text-lg max-w-md leading-relaxed">
-                  Open frequency for collaboration, recruitment, or technical consultation. All transmissions are encrypted and prioritized.
+                  Open to collaboration, recruitment, and technical consultation. Let's discuss your next project.
                </p>
             </div>
 
@@ -112,7 +112,7 @@ const Contact = () => {
             {/* Divider & Label */}
             <div className="flex items-center gap-4 mb-6">
                <div className="flex-1 h-px bg-gray-800"></div>
-               <span className="text-[10px] text-gray-600 font-mono tracking-widest">// ALTERNATIVE_FREQUENCIES</span>
+               <span className="text-[10px] text-gray-600 font-mono tracking-widest">// OTHER WAYS TO CONNECT</span>
                <div className="flex-1 h-px bg-gray-800"></div>
             </div>
 
@@ -181,9 +181,9 @@ const Contact = () => {
                <div className="bg-black/80 backdrop-blur-xl border border-white/10 rounded-t-lg p-4 flex items-center justify-between">
                   <div className="flex items-center gap-2">
                      <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-                     <span className="font-mono text-xs text-emerald-400 tracking-wider">LINK_ESTABLISHED</span>
+                     <span className="font-mono text-xs text-emerald-400 tracking-wider">READY TO SEND</span>
                   </div>
-                  <span className="font-mono text-[9px] text-gray-500">LATENCY: 12ms</span>
+
                </div>
 
                {/* Form Container */}

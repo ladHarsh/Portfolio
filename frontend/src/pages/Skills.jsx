@@ -154,7 +154,7 @@ const NeuralProcessor = () => {
 const Skills = () => {
   const skillCategories = [
     {
-      id: "NEURAL_CORE",
+      id: "AI_ML",
       title: "AI / ML / Data Science",
       icon: <FaBrain className="text-2xl" />,
       skills: [
@@ -170,7 +170,7 @@ const Skills = () => {
       ]
     },
      {
-      id: "GENERATIVE_NEXUS",
+      id: "GEN_AI",
       title: "Generative AI & LLMs",
       icon: <FaRobot className="text-2xl" />,
       skills: [
@@ -182,7 +182,7 @@ const Skills = () => {
       ]
     },
     {
-      id: "SYSTEM_ARCH",
+      id: "BACKEND",
       title: "Backend & Languages",
       icon: <FaServer className="text-2xl" />,
       skills: [
@@ -197,7 +197,7 @@ const Skills = () => {
       ]
     },
     {
-      id: "INTERFACE_MATRIX",
+      id: "FRONTEND",
       title: "Frontend & UI",
       icon: <FaLaptopCode className="text-2xl" />,
       skills: [

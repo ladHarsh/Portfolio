@@ -7,7 +7,7 @@ const Footer = () => {
   const socialLinks = [
     { name: "GITHUB", icon: FaGithub, url: "https://github.com/ladHarsh" },
     { name: "LINKEDIN", icon: FaLinkedin, url: "https://linkedin.com/in/harsh-lad-dev" },
-    { name: "MAIL_DROPOFF", icon: FaEnvelope, url: "mailto:harshlad.dev@gmail.com" },
+    { name: "EMAIL", icon: FaEnvelope, url: "mailto:harshlad.dev@gmail.com" },
   ];
 
   return (
@@ -111,11 +111,11 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-4 md:pt-0 mt-8 md:mt-0">
            <div className="flex items-center gap-2 text-[10px] sm:text-xs font-mono text-gray-500" aria-label="System status">
               <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-500 rounded-full animate-pulse" aria-hidden="true"></div>
-              <span>ALL SYSTEMS NOMINAL</span>
+              <span>ONLINE</span>
            </div>
 
            <div className="text-gray-600 text-[10px] sm:text-sm font-mono text-center md:text-left">
-              © {currentYear} HARSH_LAD_DEV. EXECUTION COMPLETE.
+              © {currentYear} Harsh Lad. All rights reserved.
            </div>
         </div>
       </div>
