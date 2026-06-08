@@ -113,7 +113,7 @@ const Navbar = () => {
              
              {/* Resume Download Button - Desktop Only */}
              <a
-               href="/resume.pdf"
+               href="https://drive.google.com/file/d/1QD9VH1wqpZXa6xSoSnjHMWyfRk4dDSG_/view?usp=drive_link"
                target="_blank"
                rel="noopener noreferrer"
                className="px-4 py-2 bg-primary-600 hover:bg-primary-500 text-white text-xs font-mono font-bold tracking-wider rounded-full transition-all hover:shadow-[0_0_20px_rgba(99,102,241,0.4)] flex items-center gap-2"

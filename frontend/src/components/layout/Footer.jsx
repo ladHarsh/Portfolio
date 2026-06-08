@@ -81,7 +81,7 @@ const Footer = () => {
               <h4 className="font-mono text-[10px] sm:text-xs text-primary-500 mb-4 sm:mb-6 uppercase tracking-widest hidden md:block">// PROTOCOLS</h4>
               <ul className="space-y-3 sm:space-y-4">
                  <li>
-                    <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="group font-mono transition-colors inline-block w-full md:w-auto min-h-[44px] md:min-h-0 flex items-center">
+                    <a href="https://drive.google.com/file/d/1QD9VH1wqpZXa6xSoSnjHMWyfRk4dDSG_/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="group font-mono transition-colors inline-block w-full md:w-auto min-h-[44px] md:min-h-0 flex items-center">
                         {/* Mobile: Button Style */}
                         <span className="md:hidden w-full flex items-center justify-between border border-gray-800 bg-gray-900/50 px-4 py-3 text-xs tracking-widest text-white hover:bg-gray-800 rounded-sm">
                            <span>DOWNLOAD RESUME</span>

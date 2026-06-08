@@ -166,7 +166,7 @@ const About = () => {
                   {/* 4. Download Protocol & Links */}
                   <div className="space-y-3">
                      <a 
-                        href="/resume.pdf" 
+                        href="https://drive.google.com/file/d/1QD9VH1wqpZXa6xSoSnjHMWyfRk4dDSG_/view?usp=drive_link" 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="w-full py-4 border border-dashed border-cyan-500/50 bg-cyan-500/5 hover:bg-cyan-500/10 active:bg-cyan-500/20 rounded-lg flex items-center justify-center gap-3 text-cyan-400 font-mono text-xs tracking-widest transition-all group"
@@ -234,7 +234,7 @@ const About = () => {
 
                   <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 sm:pt-4">
                      <a 
-                        href="/resume.pdf" 
+                        href="https://drive.google.com/file/d/1QD9VH1wqpZXa6xSoSnjHMWyfRk4dDSG_/view?usp=drive_link" 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="px-6 sm:px-8 py-4 bg-cyan-500 hover:bg-cyan-400 active:bg-cyan-600 text-black font-bold font-mono tracking-widest text-xs sm:text-sm flex items-center justify-center gap-2 transition-all hover:scale-105 active:scale-95 rounded-lg min-h-[48px] sm:min-h-[52px]"
